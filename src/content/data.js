@@ -1,7 +1,134 @@
-// Portfolio content assembled from the provided resume and public info
-// Name: Pawan Kumar
-// Location: Manpur, Gaya, Bihar – 823003
-// Email: pawan4super30@gmail.com | Phone: 8756507317
+const projects = [
+  {
+    title: "Admin Dashboard (Breakout)",
+    period: "Dec 2024 - Present",
+    description:
+      "End‑to‑end dashboard for operations and analytics. Implemented modular UI, role‑based views, and real‑time insights.",
+    tags: ["React", "TypeScript", "Tailwind", "Framer Motion", "React Router", "React Hooks", "React Query", "React Context", "React Redux", "React Redux Toolkit", "AWS", "Cloudfront CDN", "Docker", "Kubernetes", "ArgoCD", "GIT", "GitHub/GitLab", "Technical Documentation", "Debugging", "Testing", "Software Design & Code Development"],
+    link: "https://getbreakout.ai/",
+  },
+  {
+    title: "Canso.ai",
+    period: "Feb 2024",
+    description: "This App provides Reimagine Fraud Control with AI Agents and MLOps",
+    tags: ["React.js", "JavaScript", "Data Structures", "RESTful WebServices", "(CSS)", "Cross-browser Compatibility", "REST APIs", "Express.js", "AI Agents", "MLOps", "Docker", "Kubernetes", "ArgoCD", "GitHub Actions", "SEO optimization", "Data Visualisation UI", "OpenApi Specification Using Swagger", "Agile Methodologies", "UI/UX designs", "Figma", "Coding", "Debugging", "Production Support", "Technical Support"],
+    link: "https://drive.google.com/uc?export=view&id=1O2Rk_hwXLyqAIgAZjsYWwXt0xb4ZHLEs",
+  },
+  {
+    title: "Football Manager App",
+    period: "Dec 2023",
+    description: "Footbal Manager App is an app which helps in managing footbal players efficiently via the interface, displaying all the details in a tabular format as well as showcasing the formation overview on the field for different type of players. This app provides features for roster management, player statistics, and formation overview. It is optimally architectured powered by React and visually striken UI demonstrating UI design & principles.",
+    tags: ["React", "TypeScript", "Tailwind", "Framer Motion", "Redux", "Clean Coding", "Data Structures", "Algorithms", "Problem Solving", "Skill Development", "Cross-browser Compatibility"],
+    link: "https://football-manager-app-mu.vercel.app/",
+  },
+  {
+    title: "E-Commerce App",
+    period: "Nov 2023",
+    description:
+      "An E-commerce App showcasing features including Authentication, Cart, Orders, Stripe Payment Checkout Integration etc. powered by NextJS and visually appealing UI with error handling UIs powered by tailwindcss.",
+    tags: ["React", "TypeScript", "Tailwind", "Framer Motion", "NextJS", "Stripe", "Authentication", "Cart", "Orders", "Error Handling", "UI/UX Design", "Clean Coding", "Data Structures", "Algorithms", "Problem Solving", "Skill Development", "Cross-browser Compatibility"],
+    link: "https://e-commerce-neon-nu.vercel.app/",
+  },
+  {
+    title: "Mini-Page Builder App",
+    period: "Oct 2023",
+    description: "A page builder app where user can design a page based on given blocks like, Label, Input, Button which can be used as Drag and Drop. User can also export the JSOn representation of the configuration of the page.",
+    tags: ["React", "TypeScript", "Tailwind", "Framer Motion", "React Hooks", "Data Structures", "Algorithms", "Problem Solving", "Skill Development", "Cross-browser Compatibility"],
+    link: "https://mini-page-builder-orcin.vercel.app/",
+  },
+  {
+    title: "Image Generator",
+    period: "Sep 2023",
+    description: "This App provides user to create an image using prompts powered by openAI image generation API , visually striken and showcasing them in a commnity page , implying all users can see the AI Image.",
+    tags: ["React.js", "Attention to Detail", "Clean Coding", "Cloudinary", "JavaScript", "Data Structures", "RESTful WebServices", "Node.js", "Algorithms", "openAI", "Cascading Style Sheets (CSS)", "Problem Solving", "Skill Development", "Cross-browser Compatibility", "REST APIs", "Express.js"],
+    link: "https://envision-image.netlify.app/",
+  },
+  {
+    title: "Music Player App",
+    period: "Sep 2023",
+    description: "This app showcase music player features playing songs, top charts and artists, using React fundamentals to develop the core features and functionality of app and Visually striken user-centeric UI powered by tailwindcss.",
+    tags: ["React", "TypeScript", "Tailwind", "Framer Motion", "React Hooks", "Data Structures", "Algorithms", "Problem Solving", "Skill Development", "Cross-browser Compatibility"],
+    link: "https://nirvana-musik-app.netlify.app/",
+  },
+  {
+    title: "Article Summarizer App",
+    period: "Aug 2023",
+    description: "Article Summarizer app helps in providing summary about any article. User can just provide the link with the article, and then User can get Brief Summary of the article.",
+    tags: ["React", "TypeScript", "Tailwind", "Framer Motion", "React Hooks", "Data Structures", "Algorithms", "Problem Solving", "Skill Development", "Cross-browser Compatibility", "REST APIs"],
+    link: "https://openai-article-summary.netlify.app/",
+  },
+  {
+    title: "Nike Landing App",
+    period: "Aug 2023",
+    description: "This App showcase a user centric & attractive UI , using the powerful concepts of TailwindCSS and Reactjs, It was a step forward to learning the fundamentals of tailwindcss.",
+    tags: ["React.js", "Attention to Detail", "Clean Coding", "JavaScript", "Data Structures", "Tailwind CSS", "Algorithms", "Cascading Style Sheets (CSS)", "Problem Solving", "Skill Development", "Cross-browser Compatibility"],
+    link: "https://nike-landing-ui-app.netlify.app/",
+  },
+];
+
+const certificates = [
+  {
+    title: "Namaste JavaScript",
+    issuer: "NamasteDev.com",
+    credentialId: "6UEH16",
+    link: "https://drive.google.com/uc?export=view&id=1y-hMXEDmlipiMlFUxtWPrtwR--BUAvVP",
+  },
+  {
+    title: "Namaste React",
+    issuer: "NamasteDev.com",
+    credentialId: "3HGTHN",
+    link: "https://drive.google.com/uc?export=view&id=1-CjhIF6s1zJQUMfGPc0WjgXUrXW-uN9_",
+  },
+];
+
+const extensiveSkills = [
+  "ReactJS",
+  "Javascript",
+  "Typescript",
+  "Redux",
+  "Python",
+  "Webpack",
+  "Tanstack libraries",
+  "Websocket",
+  "Storybook",
+  "Monorepo Structure",
+  "RTL",
+  "GSAP",
+  "REST API Integration",
+  "JWT",
+  "SOLID",
+  "Node.js",
+  "OWASP Compliance",
+  "ZAP pen-testing",
+  "Postgres",
+  "Ant Design",
+  "Webpack 5",
+  "Tailwind CSS",
+  "SCSS",
+  "MongoDB",
+  "Azure",
+  "AWS",
+  "CI/CD",
+  "LLMs",
+  "Cloudfront CDN",
+  "Docker",
+  "Kubernetes",
+  "ArgoCD",
+  "GitHub Actions",
+  "PWA",
+  "C++",
+  "Java",
+  "SEO optimization",
+  "Data Visualisation UI",
+  "OpenApi Specification Using Swagger",
+  "Agile Methodologies",
+  "UI/UX designs",
+  "Figma",
+  "Coding",
+  "Debugging",
+  "Production Support",
+  "Technical Support",
+];
 
 const data = {
   summary:
@@ -97,35 +224,9 @@ const data = {
       ],
     },
   ],
-  projects: [
-    // Public LinkedIn data can be restricted; using resume‑aligned highlights
-    {
-      title: "Admin Dashboard (Breakout)",
-      description:
-        "End‑to‑end dashboard for operations and analytics. Implemented modular UI, role‑based views, and real‑time insights.",
-      tags: ["React", "TypeScript", "Tailwind", "Framer Motion"],
-      link: "#",
-    },
-    {
-      title: "Recruiter Experience Optimization (Naukri.com)",
-      description:
-        "Enhanced Job Posting and Response Manager; added efficient filters and streamlined workflows for recruiters.",
-      tags: ["React", "Redux", "MUI", "RTL", "Jest"],
-      link: "#",
-    },
-    {
-      title: "Platform App (Yugen.ai)",
-      description:
-        "Greenfield build integrating micro‑frontends and secure API access; improved onboarding and user access flow.",
-      tags: ["React", "Micro‑frontend", "Webpack 5", "AWS", "Docker"],
-      link: "#",
-    },
-  ],
-  certificates: [
-    // Placeholder entries; can be enriched with specific certificate URLs if shared
-    // Example:
-    // { title: 'AWS Certified Cloud Practitioner', issuer: 'Amazon Web Services', link: '...' },
-  ],
+  projects: projects,
+  certificates: certificates,
+  extensiveSkills: extensiveSkills,
 };
 
 export default data;

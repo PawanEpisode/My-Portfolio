@@ -18,6 +18,9 @@ export default function Projects() {
           className="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-6 backdrop-blur hover:bg-slate-50 dark:hover:bg-white/10 transition text-slate-800 dark:text-white"
         >
           <div className="text-xl font-semibold">{p.title}</div>
+          <div className="text-sm text-slate-500 dark:text-white/50">
+            {p.period}
+          </div>
           <p className="text-slate-700 dark:text-white/80 mt-2">
             {p.description}
           </p>

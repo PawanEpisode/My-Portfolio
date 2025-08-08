@@ -9,6 +9,8 @@ import {
 import { Button } from "./ui/button";
 import { DialogClose } from "@radix-ui/react-dialog";
 import pawan from "../assets/my-image.jpeg";
+import data from "../content/data";
+import LinkIcon from "../lib/icons/link-icon";
 
 const AvatarWithSkeleton = () => {
   return (
@@ -16,7 +18,7 @@ const AvatarWithSkeleton = () => {
       <img
         src={pawan}
         alt="Pawan Kumar"
-        className="h-12 w-12 rounded-full object-fill ring-2 ring-indigo-500/20 transition-opacity"
+        className="h-12 w-12 rounded-full object-cover ring-2 ring-indigo-500/20 transition-opacity"
       />
     </div>
   );
@@ -104,73 +106,21 @@ const MoreAboutMe = () => {
               Some of my personal projects
             </h3>
             <ul role="list" className="grid sm:grid-cols-2 gap-4">
-              {[
-                {
-                  label: "Football Manager App",
-                  href: "https://football-manager-app-mu.vercel.app/",
-                },
-                {
-                  label: "E-Commerce App",
-                  href: "https://e-commerce-neon-nu.vercel.app/",
-                },
-                {
-                  label: "Mini-Page Builder App",
-                  href: "https://mini-page-builder-orcin.vercel.app/",
-                },
-                {
-                  label: "Music Player App",
-                  href: "https://nirvana-musik-app.netlify.app/",
-                },
-                {
-                  label: "Article Summarizer App",
-                  href: "https://openai-article-summary.netlify.app/",
-                },
-                {
-                  label: "Nike Landing App",
-                  href: "https://nike-landing-ui-app.netlify.app/",
-                },
-                {
-                  label: "Image Generator",
-                  href: "https://envision-image.netlify.app/",
-                },
-                {
-                  label: "Canso.ai Project Video (Yugen.ai)",
-                  href: "https://drive.google.com/uc?export=view&id=1O2Rk_hwXLyqAIgAZjsYWwXt0xb4ZHLEs",
-                },
-              ].map(({ label, href }) => (
+              {data.projects.map(({ title, link }) => (
                 <li
-                  key={href}
+                  key={link}
                   className="group rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-neutral-900 p-4 transition hover:shadow-sm hover:bg-slate-50 dark:hover:bg-neutral-800"
                 >
                   <a
-                    href={href}
+                    href={link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-between gap-3 text-slate-800 dark:text-white"
                   >
                     <span className="font-medium tracking-tight text-indigo-600 dark:text-indigo-400 underline-offset-4 hover:underline hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors">
-                      {label}
+                      {title}
                     </span>
-                    <svg
-                      className="h-4 w-4 text-indigo-600 dark:text-indigo-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M7 17L17 7"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                      <path
-                        d="M8 7H17V16"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                    </svg>
+                    <LinkIcon />
                   </a>
                 </li>
               ))}
@@ -186,52 +136,32 @@ const MoreAboutMe = () => {
               Certificates
             </h3>
             <ul role="list" className="grid sm:grid-cols-2 gap-4">
-              {[
-                {
-                  label: "Certificate 1",
-                  href: "https://drive.google.com/uc?export=view&id=1y-hMXEDmlipiMlFUxtWPrtwR--BUAvVP",
-                },
-                {
-                  label: "Certificate 2",
-                  href: "https://drive.google.com/uc?export=view&id=1-CjhIF6s1zJQUMfGPc0WjgXUrXW-uN9_",
-                },
-              ].map(({ label, href }) => (
-                <li
-                  key={href}
-                  className="group rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-neutral-900 p-4 transition hover:shadow-sm hover:bg-slate-50 dark:hover:bg-neutral-800"
-                >
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between gap-3 text-slate-800 dark:text-white"
+              {data.certificates.map(
+                ({ title, issuer, credentialId, link }) => (
+                  <li
+                    key={link}
+                    className="group rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-neutral-900 p-4 transition hover:shadow-sm hover:bg-slate-50 dark:hover:bg-neutral-800"
                   >
-                    <span className="font-medium tracking-tight text-indigo-600 dark:text-indigo-400 underline-offset-4 hover:underline hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors">
-                      {label}
-                    </span>
-                    <svg
-                      className="h-4 w-4 text-indigo-600 dark:text-indigo-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      aria-hidden="true"
+                    <a
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between gap-3 text-slate-800 dark:text-white"
                     >
-                      <path
-                        d="M7 17L17 7"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                      <path
-                        d="M8 7H17V16"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </a>
-                </li>
-              ))}
+                      <span className="font-medium tracking-tight text-indigo-600 dark:text-indigo-400 underline-offset-4 hover:underline hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors">
+                        {title}
+                        <span className="text-sm text-slate-500 dark:text-white/50">
+                          {issuer}
+                        </span>
+                        <span className="text-sm text-slate-500 dark:text-white/50">
+                          {credentialId}
+                        </span>
+                      </span>
+                      <LinkIcon />
+                    </a>
+                  </li>
+                )
+              )}
             </ul>
           </section>
 
@@ -244,53 +174,7 @@ const MoreAboutMe = () => {
               Skills
             </h3>
             <div className="flex flex-wrap gap-2">
-              {[
-                "ReactJS",
-                "Javascript",
-                "Typescript",
-                "Redux",
-                "Python",
-                "Webpack",
-                "Tanstack libraries",
-                "Websocket",
-                "Storybook",
-                "Monorepo Structure",
-                "RTL",
-                "GSAP",
-                "REST API Integration",
-                "JWT",
-                "SOLID",
-                "Node.js",
-                "OWASP Compliance",
-                "ZAP pen-testing",
-                "Postgres",
-                "Ant Design",
-                "Webpack 5",
-                "Tailwind CSS",
-                "SCSS",
-                "MongoDB",
-                "Azure",
-                "AWS",
-                "CI/CD",
-                "LLMs",
-                "Cloudfront CDN",
-                "Docker",
-                "Kubernetes",
-                "ArgoCD",
-                "GitHub Actions",
-                "PWA",
-                "C++",
-                "Java",
-                "SEO optimization",
-                "Data Visualisation UI",
-                "OpenApi Specification Using Swagger",
-                "Agile Methodologies",
-                "technical feasibility of UI/UX designs",
-                "Coding",
-                "Debugging",
-                "Production Support",
-                "Technical Support",
-              ].map((skill, idx) => (
+              {data.extensiveSkills.map((skill) => (
                 <span
                   key={skill}
                   className="inline-flex items-center rounded-full border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/10 px-3 py-1 text-xs font-medium text-slate-700 dark:text-white/80 shadow-sm transition-colors hover:bg-slate-100 dark:hover:bg-white/20"
