@@ -28,7 +28,7 @@ export default function Timeline() {
                 transition={{ duration: 0.5, delay: 0.05 * idx }}
                 className="flex-1 relative z-50 rounded-2xl bg-white dark:bg-black p-4 text-slate-800 dark:text-white"
               >
-                <div className="text-sm text-slate-600 dark:text-white/70 mb-1 flex items-center gap-2">
+                <div className="text-sm text-slate-600 dark:text-white/70 mb-1 flex flex-col sm:flex-row items-center gap-2">
                   {item.icon ? <img
                     width={40}
                     height={40}
@@ -36,10 +36,10 @@ export default function Timeline() {
                     alt={item.headTitle}
                     className="rounded-full object-fill"
                   />: <Building2 />}
-                  <span className="text-indigo-600 text-lg dark:text-indigo-400">
+                  <span className="text-indigo-600 text-center text-lg dark:text-indigo-400">
                     {item.headTitle}
                   </span>
-                  <span className="text-slate-600 dark:text-white/70">|</span>
+                  <span className="text-slate-600 hidden sm:block dark:text-white/70">|</span>
                   <span className="text-slate-600 dark:text-white/70">
                     {item.period}
                   </span>
@@ -57,7 +57,7 @@ export default function Timeline() {
                 </ul>
                 {item.skills && (
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {item.skills.map((s) => (
+                    {item.skills.slice(0,10).map((s) => (
                       <span
                         key={s}
                         className="text-xs rounded-full bg-indigo-500/10 border border-indigo-500/20 px-2 py-1 text-indigo-700 dark:text-indigo-300"

@@ -16,10 +16,11 @@ export default function Header() {
           <span className="flex items-center justify-center w-6 h-6 p-1 rounded text-white bg-indigo-600">
             P
           </span>
-          <span className="text-xl relative">
-            <span>Pawan Kumar | Engineer</span>
-          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full transition-all duration-300 origin-left group-hover:origin-right"></span>
-          </span>
+          <div className="text-xl relative flex gap-2">
+            <span>Pawan Kumar</span>
+            <span className="hidden sm:block"> | Engineer</span>
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full transition-all duration-300 origin-left group-hover:origin-right"></span>
+          </div>
         </a>
         <div className="flex items-center gap-3">
           <a

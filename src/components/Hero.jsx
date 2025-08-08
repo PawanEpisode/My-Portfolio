@@ -53,7 +53,7 @@ export default function Hero() {
         className="mt-24 md:mt-0"
       >
         <PinContainer title="Pawan Kumar" href={data.social.linkedin}>
-          <div className="flex flex-col sm:basis-1/2 w-[24rem] h-[24rem] rounded-3xl border-gradient overflow-hidden border border-slate-200 dark:border-white/10 bg-gradient-to-br dark:from-blue-500/30 dark:via-white/20 dark:to-red-600/20 from-indigo-600/30 via-fuchsia-600/20 to-pink-600/20">
+          <div className="flex flex-col sm:basis-1/2 w-[20rem] sm:w-[24rem] h-[24rem] rounded-3xl border-gradient overflow-hidden border border-slate-200 dark:border-white/10 bg-gradient-to-br dark:from-blue-500/30 dark:via-white/20 dark:to-red-600/20 from-indigo-600/30 via-fuchsia-600/20 to-pink-600/20">
             <img
               src={pawan}
               alt="Pawan Kumar"

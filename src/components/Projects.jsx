@@ -20,7 +20,7 @@ export default function Projects() {
           <img
             src={p.photo}
             alt={p.title}
-            className="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-105"
+            className="w-full h-84 sm:72 object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/40 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           <div className="absolute inset-0 flex flex-col justify-end p-5 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
