@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --gradient-from: 99 102 241;
+    /* indigo-500 */
+    --gradient-to: 168 85 247;
+    /* fuchsia-500 */
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-radial {
+    background-image: radial-gradient(circle at 20% 20%,
+        rgba(var(--gradient-from), 0.25),
+        transparent 40%);
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(to right,
+        rgb(var(--gradient-from)),
+        rgb(217 70 239),
+        rgb(244 63 94));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
