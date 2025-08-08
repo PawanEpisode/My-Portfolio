@@ -11,6 +11,7 @@ import { DialogClose } from "@radix-ui/react-dialog";
 import pawan from "../assets/my-image.jpeg";
 import data from "../content/data";
 import LinkIcon from "../lib/icons/link-icon";
+import Certificates from "./Certificates";
 
 const AvatarWithSkeleton = () => {
   return (
@@ -18,7 +19,7 @@ const AvatarWithSkeleton = () => {
       <img
         src={pawan}
         alt="Pawan Kumar"
-        className="h-12 w-12 rounded-full object-cover ring-2 ring-indigo-500/20 transition-opacity"
+        className="h-12 w-12 rounded-full object-fill ring-2 ring-indigo-500/20 transition-opacity"
       />
     </div>
   );
@@ -28,9 +29,9 @@ const MoreAboutMe = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">More about me</Button>
+        <Button>About me</Button>
       </DialogTrigger>
-      <DialogContent className="max-h-[85vh] overflow-y-auto">
+      <DialogContent className="max-h-[85vh] overflow-y-auto max-w-[80%] md:max-w-[50%]">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold dark:text-white">
             About My Journey
@@ -103,7 +104,7 @@ const MoreAboutMe = () => {
               id="about-projects"
               className="text-base font-semibold text-slate-900 dark:text-white"
             >
-              Some of my personal projects
+              Featured Projects
             </h3>
             <ul role="list" className="grid sm:grid-cols-2 gap-4">
               {data.projects.map(({ title, link }) => (
@@ -135,34 +136,7 @@ const MoreAboutMe = () => {
             >
               Certificates
             </h3>
-            <ul role="list" className="grid sm:grid-cols-2 gap-4">
-              {data.certificates.map(
-                ({ title, issuer, credentialId, link }) => (
-                  <li
-                    key={link}
-                    className="group rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-neutral-900 p-4 transition hover:shadow-sm hover:bg-slate-50 dark:hover:bg-neutral-800"
-                  >
-                    <a
-                      href={link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between gap-3 text-slate-800 dark:text-white"
-                    >
-                      <span className="font-medium tracking-tight text-indigo-600 dark:text-indigo-400 underline-offset-4 hover:underline hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors">
-                        {title}
-                        <span className="text-sm text-slate-500 dark:text-white/50">
-                          {issuer}
-                        </span>
-                        <span className="text-sm text-slate-500 dark:text-white/50">
-                          {credentialId}
-                        </span>
-                      </span>
-                      <LinkIcon />
-                    </a>
-                  </li>
-                )
-              )}
-            </ul>
+            <Certificates />
           </section>
 
           {/* Skills */}

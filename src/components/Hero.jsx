@@ -8,13 +8,14 @@ import {
   TooltipTrigger,
 } from "./ui/tooltip";
 import pawan from "../assets/my-image.jpeg";
+import { PinContainer } from "./3DPin";
 
 export default function Hero() {
   return (
-    <section className="pt-20 pb-16 grid md:grid-cols-2 gap-8 items-center">
+    <section className="pt-20 pb-16 grid md:grid-cols-2 gap-8 items-center justify-center">
       <div>
         <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-slate-900 dark:text-white">
-          Software Engineer crafting delightful web experiences
+          <span className="text-gradient italic">Software Engineer</span> crafting delightful web experiences
         </h1>
         <p className="mt-4 text-slate-700 dark:text-white/80">{data.summary}</p>
         <div className="mt-6 flex flex-wrap gap-3">
@@ -30,7 +31,7 @@ export default function Hero() {
               <TooltipTrigger asChild>
                 <a
                   href="https://drive.google.com/uc?export=download&id=12osFv7i6nMe6mUhpsj40jmeuRZ-RHsYd"
-                  className="px-4 py-2 rounded-lg bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 border border-transparent"
+                  className="px-4 py-2 rounded-lg bg-slate-900 text-white hover:ring-4 hover:ring-indigo-600 hover:bg-white hover:text-black dark:bg-white dark:text-slate-900 border border-transparent"
                 >
                   Download Resume
                 </a>
@@ -49,15 +50,19 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
-        className="aspect-square p-0.5 rounded-3xl border-gradient overflow-hidden border border-slate-200 dark:border-white/10 bg-gradient-to-br dark:from-blue-500/30 dark:via-white/20 dark:to-red-600/20 from-indigo-600/30 via-fuchsia-600/20 to-pink-600/20"
+        className="mt-24 md:mt-0"
       >
-        <img
-          src={pawan}
-          alt="Pawan Kumar"
-          className="h-full w-full rounded-3xl object-fill"
-          loading="eager"
-          decoding="async"
-        />
+        <PinContainer title="Pawan Kumar" href={data.social.linkedin}>
+          <div className="flex flex-col sm:basis-1/2 w-[24rem] h-[24rem] rounded-3xl border-gradient overflow-hidden border border-slate-200 dark:border-white/10 bg-gradient-to-br dark:from-blue-500/30 dark:via-white/20 dark:to-red-600/20 from-indigo-600/30 via-fuchsia-600/20 to-pink-600/20">
+            <img
+              src={pawan}
+              alt="Pawan Kumar"
+              className="h-full w-full rounded-3xl object-fill"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+        </PinContainer>
       </motion.div>
     </section>
   );

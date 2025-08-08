@@ -1,4 +1,5 @@
 import "./App.css";
+import { cn } from "./lib/utils";
 import { motion, useScroll, useSpring } from "framer-motion";
 import Section from "./components/Section";
 import Header from "./components/Header";
@@ -8,6 +9,8 @@ import Projects from "./components/Projects";
 import Certificates from "./components/Certificates";
 import Skills from "./components/Skills";
 import data from "./content/data";
+import Concepts from "./components/Concepts";
+import Footer from "./components/Footer";
 
 export default function App() {
   const { scrollYProgress } = useScroll();
@@ -18,23 +21,34 @@ export default function App() {
   });
 
   return (
-    <div className="bg-[radial-gradient(1000px_600px_at_10%_-10%,rgba(99,102,241,0.15),transparent),radial-gradient(800px_400px_at_90%_10%,rgba(236,72,153,0.12),transparent)] min-h-screen text-slate-900 dark:text-white bg-white dark:bg-black">
+    <div className="bg-white dark:bg-black">
+      {/* Grid backgrounds */}
+      <div
+        className={cn(
+          "absolute inset-0",
+          "[background-size:40px_40px]",
+          "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
+          "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]"
+        )}
+      />
+      {/* Radial gradient for the container to give a faded look */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
       <motion.div
         style={{ scaleX }}
-        className="fixed left-0 right-0 top-0 h-1 origin-left bg-gradient-to-r dark:from-yellow dark:via-white/20 dark:to-red-600/20 from-indigo-500 via-fuchsia-500 to-pink-500 z-50"
+        className="fixed left-0 right-0 top-0 h-1 origin-left bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-pink-500 z-[1000]"
       />
 
       <Header />
 
-      <main id="home" className="mx-auto max-w-5xl px-4">
+      <main id="home" className="mx-auto max-w-5xl px-4 relative z-50">
         <Hero />
 
         <Section id="story" title="A Story in Milestones">
           <Timeline />
         </Section>
 
-        <Section id="skills" title="Skills">
-          <Skills />
+        <Section id="concepts" title="Concepts Covered">
+          <Concepts />
         </Section>
 
         {data.projects.length > 0 && (
@@ -43,15 +57,15 @@ export default function App() {
           </Section>
         )}
 
-        {data.certificates.length > 0 && (
-          <Section id="certificates" title="Certificates">
-            <Certificates />
-          </Section>
-        )}
+        <Section id="skills" title="Skills">
+          <Skills />
+        </Section>
 
-        <footer className="py-16 text-center text-slate-600 dark:text-white/60">
-          © {new Date().getFullYear()} Pawan Kumar
-        </footer>
+        <Section id="certificates" title="Certificates">
+          <Certificates />
+        </Section>
+
+        <Footer />
       </main>
     </div>
   );

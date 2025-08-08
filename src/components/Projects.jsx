@@ -15,27 +15,31 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.05 * idx }}
-          className="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-6 backdrop-blur hover:bg-slate-50 dark:hover:bg-white/10 transition text-slate-800 dark:text-white"
+          className="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 transition"
         >
-          <div className="text-xl font-semibold">{p.title}</div>
-          <div className="text-sm text-slate-500 dark:text-white/50">
-            {p.period}
+          <img
+            src={p.photo}
+            alt={p.title}
+            className="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-black/40 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 flex flex-col justify-end p-5 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="text-xl font-semibold text-white">{p.title}</div>
+            <div className="text-sm text-white/70">{p.period}</div>
+            <p className="text-white/90 mt-2">{p.description}</p>
+            {p.tags && (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {p.tags.slice(0, 5).map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs rounded bg-white/10 border border-white/20 px-2 py-1 text-white"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
-          <p className="text-slate-700 dark:text-white/80 mt-2">
-            {p.description}
-          </p>
-          {p.tags && (
-            <div className="mt-3 flex flex-wrap gap-2">
-              {p.tags.map((t) => (
-                <span
-                  key={t}
-                  className="text-xs rounded bg-indigo-500/10 border border-indigo-500/20 px-2 py-1 text-indigo-700 dark:text-indigo-300"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          )}
         </motion.a>
       ))}
     </div>
