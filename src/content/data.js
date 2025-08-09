@@ -390,6 +390,7 @@ const conceptTags = [
 const timeline = [
   {
     period: "2015-2017",
+    link: "https://britishenglishschool.in/",
     headTitle: "British English School",
     title: "Completed CBSE‑12",
     subtitle: "84.2%",
@@ -400,6 +401,7 @@ const timeline = [
   {
     icon: IIITA,
     period: "Jul 2017 - May 2021",
+    link: "https://www.iiita.ac.in/",
     headTitle: "Indian Institute Of Information Technology Allahabad",
     title: "Bachelor of Technology - BTech, Information Technology",
     subtitle: "CGPA: 6.83",
@@ -438,6 +440,7 @@ const timeline = [
   {
     icon: Infoedge,
     period: "Sep 2021 - Jul 2023",
+    link: "https://www.naukri.com/",
     headTitle: "Infoedge (Naukri.com)",
     title: "Software Engineer",
     points: [
@@ -458,6 +461,7 @@ const timeline = [
   {
     icon: Yugen,
     period: "Feb 2024 - Oct 2024",
+    link: "https://www.yugen.ai/",
     headTitle: "Yugen.ai",
     title: "Frontend Engineer",
     points: [
@@ -478,6 +482,7 @@ const timeline = [
   {
     icon: Breakout,
     period: "Oct 2024 - Present",
+    link: "https://getbreakout.ai/",
     headTitle: "Breakout",
     title: "Software Engineer",
     points: [

@@ -1,11 +1,9 @@
-import { Github } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import data from "../content/data";
 import LinkedinIcon from "../lib/icons/linkedin-icon";
+import GithubIcon from "./GithubIcon";
 
 export default function Header() {
-  const theme = JSON.parse(JSON.stringify(localStorage.getItem("theme")));
-  console.log({ theme });
   return (
     <header className="sticky top-0 z-[100] backdrop-blur bg-white/70 dark:bg-black/30 border-b border-slate-200 dark:border-white/10 text-slate-800 dark:text-white">
       <div className="mx-auto max-w-5xl px-4 h-14 flex items-center justify-between">
@@ -29,11 +27,7 @@ export default function Header() {
             target="_blank"
             rel="noreferrer"
           >
-            <i
-              class={`devicon-github-original ${
-                theme === "dark" ? "" : "colored"
-              } text-[24px]`}
-            ></i>
+            <GithubIcon />
           </a>
           <a
             href={data.social.linkedin}

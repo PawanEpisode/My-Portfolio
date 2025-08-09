@@ -15,7 +15,8 @@ export default function Hero() {
     <section className="pt-20 pb-16 grid md:grid-cols-2 gap-8 items-center justify-center">
       <div>
         <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-slate-900 dark:text-white">
-          <span className="text-gradient italic">Software Engineer</span> crafting delightful web experiences
+          <span className="text-gradient italic">Software Engineer</span>{" "}
+          crafting delightful web experiences
         </h1>
         <p className="mt-4 text-slate-700 dark:text-white/80">{data.summary}</p>
         <div className="mt-6 flex flex-wrap gap-3">
@@ -50,7 +51,7 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
-        className="mt-24 md:mt-0"
+        className="my-56 sm:m-6"
       >
         <PinContainer title="Pawan Kumar" href={data.social.linkedin}>
           <div className="flex flex-col sm:basis-1/2 w-[20rem] sm:w-[24rem] h-[24rem] rounded-3xl border-gradient overflow-hidden border border-slate-200 dark:border-white/10 bg-gradient-to-br dark:from-blue-500/30 dark:via-white/20 dark:to-red-600/20 from-indigo-600/30 via-fuchsia-600/20 to-pink-600/20">

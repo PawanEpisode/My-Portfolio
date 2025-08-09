@@ -3,17 +3,17 @@ import data from "../content/data";
 export default function Certificates() {
   if (!data.certificates.length) return null;
   return (
-    <ul role="list" className="grid sm:grid-cols-2 gap-4">
+    <ul role="list" className="w-full grid sm:grid-cols-2 gap-4">
       {data.certificates.map(({ title, issuer, credentialId, link, photo }) => (
         <li
           key={link}
-          className="group rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-neutral-900 p-4 transition hover:shadow-sm hover:bg-slate-50 dark:hover:bg-neutral-800"
+          className="group w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-neutral-900 p-4 transition hover:shadow-sm hover:bg-slate-50 dark:hover:bg-neutral-800"
         >
           <a
             href={link}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-between gap-3 text-slate-800 dark:text-white"
+            className="flex w-full items-center justify-between gap-3 text-slate-800 dark:text-white"
           >
             <div className="flex flex-col gap-2 text-slate-900 dark:text-white">
               <img src={issuer} alt={issuer} className="w-56" />
@@ -27,8 +27,12 @@ export default function Certificates() {
                 </span>
               </div>
             </div>
-            <div className="w-56 h-40">
-            <img src={photo} alt={title} className="object-fill w-full h-full" />
+            <div className="sm:w-56 sm:h-40 w-40 h-32">
+              <img
+                src={photo}
+                alt={title}
+                className="object-fill w-full h-full"
+              />
             </div>
           </a>
         </li>
