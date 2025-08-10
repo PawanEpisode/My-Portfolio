@@ -20,7 +20,10 @@ function LoopSlider({ items, direction = "normal", duration = 32000 }) {
     >
       <div className="inner">
         {loopItems.map((label, idx) => (
-          <div className="tag dark:text-white" key={`${label}-${idx}`}>
+          <div
+            className="tag dark:text-white bg-white dark:bg-black"
+            key={`${label}-${idx}`}
+          >
             {label}
           </div>
         ))}

@@ -5,7 +5,7 @@ import GithubIcon from "./GithubIcon";
 
 const Footer = () => {
   return (
-    <div className="w-full flex flex-col sm:flex-row justify-between py-8 items-center border-t-2 border-t-indigo-600 text-center text-white">
+    <footer className="w-full flex flex-col sm:flex-row justify-between py-8 items-center border-t-2 border-t-indigo-600 text-center text-white max-w-5xl px-4 mx-auto relative z-2">
       <div className="flex flex-col gap-1 sm:items-start items-center">
         <span className="text-lg flex gap-2 text-slate-900 dark:text-white">
           Designed & developed with ❤️ by{" "}
@@ -47,7 +47,7 @@ const Footer = () => {
           <LinkedinIcon />
         </a>
       </div>
-    </div>
+    </footer>
   );
 };
 

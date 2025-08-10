@@ -2,24 +2,32 @@ import ThemeToggle from "./ThemeToggle";
 import data from "../content/data";
 import LinkedinIcon from "../lib/icons/linkedin-icon";
 import GithubIcon from "./GithubIcon";
+import MoreAboutMe from "./MoreAboutMe";
 
 export default function Header() {
   return (
     <header className="sticky top-0 z-[100] backdrop-blur bg-white/70 dark:bg-black/30 border-b border-slate-200 dark:border-white/10 text-slate-800 dark:text-white">
       <div className="mx-auto max-w-5xl px-4 h-14 flex items-center justify-between">
-        <a
-          href="#home"
-          className="group w-full flex gap-2 items-center font-semibold tracking-tight"
-        >
-          <span className="flex items-center justify-center w-6 h-6 p-1 rounded text-white bg-indigo-600">
-            P
-          </span>
-          <div className="text-xl relative flex gap-2">
-            <span>Pawan Kumar</span>
-            <span className="hidden sm:block"> | Engineer</span>
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full transition-all duration-300 origin-left group-hover:origin-right"></span>
+        <div className="flex gap-2 items-center">
+          <a
+            href="#home"
+            className="group w-full flex gap-2 items-center font-semibold tracking-tight"
+          >
+            <span className="flex items-center justify-center w-6 h-6 p-1 rounded text-white bg-indigo-600">
+              P
+            </span>
+            <div className="text-xl relative flex gap-1">
+              <span>Pawan</span>
+              <span>Kumar</span>
+              <span className="hidden sm:block"> | Engineer</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full transition-all duration-300 origin-left group-hover:origin-right"></span>
+            </div>
+          </a>
+          <div className="hidden sm:flex">
+            <MoreAboutMe btnClassName="!p-1 !px-2 w-20" />
           </div>
-        </a>
+        </div>
+
         <div className="flex items-center gap-3">
           <a
             href={data.social.github}

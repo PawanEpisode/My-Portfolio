@@ -12,7 +12,7 @@ import { PinContainer } from "./3DPin";
 
 export default function Hero() {
   return (
-    <section className="pt-20 pb-16 grid md:grid-cols-2 gap-8 items-center justify-center">
+    <section className="pt-20 pb-16 grid md:grid-cols-2 gap-8 items-center justify-center max-w-5xl px-4 mx-auto relative z-2">
       <div>
         <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-slate-900 dark:text-white">
           <span className="text-gradient italic">Software Engineer</span>{" "}
@@ -32,7 +32,7 @@ export default function Hero() {
               <TooltipTrigger asChild>
                 <a
                   href="https://drive.google.com/uc?export=download&id=12osFv7i6nMe6mUhpsj40jmeuRZ-RHsYd"
-                  className="px-4 py-2 rounded-lg bg-slate-900 text-white hover:ring-4 hover:ring-indigo-600 hover:bg-white hover:text-black dark:bg-white dark:text-slate-900 border border-transparent"
+                  className="px-4 py-2 rounded-lg bg-slate-900 text-white hover:ring-2 hover:ring-indigo-600 hover:bg-white hover:text-black dark:bg-white dark:text-slate-900 border border-transparent"
                 >
                   Download Resume
                 </a>
@@ -44,7 +44,9 @@ export default function Hero() {
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
-          <MoreAboutMe />
+          <div className="block sm:hidden">
+            <MoreAboutMe />
+          </div>
         </div>
       </div>
       <motion.div

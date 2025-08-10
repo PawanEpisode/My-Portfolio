@@ -25,13 +25,13 @@ const AvatarWithSkeleton = () => {
   );
 };
 
-const MoreAboutMe = () => {
+const MoreAboutMe = ({ btnClassName }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>About me</Button>
+        <Button className={btnClassName}>About me</Button>
       </DialogTrigger>
-      <DialogContent className="max-h-[85vh] overflow-y-auto max-w-[80%] md:max-w-[50%]">
+      <DialogContent className="max-h-[70dvh] overflow-y-auto max-w-[95%] md:max-w-[50%]">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold dark:text-white">
             About My Journey

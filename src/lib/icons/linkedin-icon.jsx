@@ -1,6 +1,6 @@
 import React from "react";
 
-const LinkedinIcon = ({ size = 24 }) => {
+const LinkedinIcon = ({ size = 40 }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

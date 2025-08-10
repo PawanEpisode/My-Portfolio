@@ -7,17 +7,17 @@ export default function Certificates() {
       {data.certificates.map(({ title, issuer, credentialId, link, photo }) => (
         <li
           key={link}
-          className="group w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-neutral-900 p-4 transition hover:shadow-sm hover:bg-slate-50 dark:hover:bg-neutral-800"
+          className="group w-full rounded-xl ring-2 ring-indigo-600 dark:border-white/10 bg-white dark:bg-neutral-900 p-4 transition hover:shadow-sm hover:bg-slate-50 dark:hover:bg-neutral-800"
         >
           <a
             href={link}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex w-full items-center justify-between gap-3 text-slate-800 dark:text-white"
+            className="flex flex-row sm:flex-col w-full items-center justify-between gap-3 text-slate-800 dark:text-white"
           >
-            <div className="flex flex-col gap-2 text-slate-900 dark:text-white">
+            <div className="flex w-full flex-col gap-2 text-slate-900 dark:text-white">
               <img src={issuer} alt={issuer} className="w-56" />
-              <span className="font-medium tracking-tight text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors line-clamp-1 sm:line-clamp-none">
+              <span className="font-medium tracking-tight text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors">
                 {title}
               </span>
               <div className="flex flex-col sm:flex-row sm:items-center gap-1">
@@ -27,7 +27,7 @@ export default function Certificates() {
                 </span>
               </div>
             </div>
-            <div className="sm:w-56 sm:h-40 w-40 h-32">
+            <div className="w-full h-full">
               <img
                 src={photo}
                 alt={title}
