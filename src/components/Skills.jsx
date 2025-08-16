@@ -1,5 +1,3 @@
-import data from "../content/data";
-
 const SkillHeader = ({ title, length }) => {
   return (
     <div className="flex items-center gap-2 mb-4">
@@ -13,8 +11,7 @@ const SkillHeader = ({ title, length }) => {
   );
 };
 
-const SkillItems = ({ category }) => {
-  const skills = data.skills[category];
+const SkillItems = ({ category, skills }) => {
   const skillColors = {
     languages:
       "bg-orange-50 text-orange-700 dark:bg-orange-50 dark:text-orange-600",
@@ -42,7 +39,7 @@ const SkillItems = ({ category }) => {
   );
 };
 
-export default function Skills() {
+export default function Skills({ skillValues }) {
   const CATEGORY_LABELS = {
     practices: "Best Practices",
   };
@@ -64,7 +61,7 @@ export default function Skills() {
     "softSkills",
   ];
 
-  const orderedEntries = Object.entries(data.skills).sort(([a], [b]) => {
+  const orderedEntries = Object.entries(skillValues).sort(([a], [b]) => {
     const indexA = CATEGORY_ORDER.indexOf(a);
     const indexB = CATEGORY_ORDER.indexOf(b);
     const safeA = indexA === -1 ? Number.MAX_SAFE_INTEGER : indexA;
@@ -80,7 +77,7 @@ export default function Skills() {
             title={CATEGORY_LABELS[category] || formatCategoryTitle(category)}
             length={skills.length}
           />
-          <SkillItems category={category} />
+          <SkillItems skills={skills} category={category} />
         </div>
       ))}
     </div>

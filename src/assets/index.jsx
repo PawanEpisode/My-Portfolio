@@ -1,6 +1,7 @@
 export { default as IIITA } from "./iiita_logo.jpeg";
 export { default as Infoedge } from "./infoedge_logo.jpeg";
 export { default as Yugen } from "./yugenanalytics_logo.jpeg";
+export { default as MilesEducation } from "./mileseducation_logo.jpeg";
 export { default as Breakout } from "./breakoutai_logo.jpeg";
 export { default as NamasteDev } from "./namastedev.webp";
 export { default as ArticleSummarizer } from "./article_summarizer_app.jpeg";
@@ -13,3 +14,4 @@ export { default as MusicPlayer } from "./musicplayer_app.jpeg";
 export { default as NikeLanding } from "./nike_landing_app.jpeg";
 export { default as JavascriptCertificate } from "./javascript_certificate.png";
 export { default as ReactCertificate } from "./react_certificate.png";
+export { default as PawanKumar } from "./my-image.jpeg";

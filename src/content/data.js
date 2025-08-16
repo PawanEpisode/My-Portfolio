@@ -14,6 +14,8 @@ import {
   NikeLanding,
   JavascriptCertificate,
   ReactCertificate,
+  MilesEducation,
+  PawanKumar,
 } from "../assets/index";
 
 const projects = [
@@ -286,54 +288,86 @@ const certificates = [
   },
 ];
 
-const extensiveSkills = [
-  "ReactJS",
-  "Javascript",
-  "Typescript",
-  "Redux",
-  "Python",
-  "Webpack",
-  "Tanstack libraries",
-  "Websocket",
-  "Storybook",
-  "Monorepo Structure",
-  "RTL",
-  "GSAP",
-  "REST API Integration",
-  "JWT",
-  "SOLID",
-  "Node.js",
-  "OWASP Compliance",
-  "ZAP pen-testing",
-  "Postgres",
-  "Ant Design",
-  "Webpack 5",
-  "Tailwind CSS",
-  "SCSS",
-  "MongoDB",
-  "Azure",
-  "AWS",
-  "CI/CD",
-  "LLMs",
-  "Cloudfront CDN",
-  "Docker",
-  "Kubernetes",
-  "ArgoCD",
-  "GitHub Actions",
-  "PWA",
-  "C++",
-  "Java",
-  "SEO optimization",
-  "Data Visualisation UI",
-  "OpenApi Specification Using Swagger",
-  "Agile Methodologies",
-  "UI/UX designs",
-  "Figma",
-  "Coding",
-  "Debugging",
-  "Production Support",
-  "Technical Support",
-];
+const skills = {
+  languages: [
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "C++",
+    "HTML",
+    "CSS",
+    "SQL",
+    "MongoDB",
+    "Postgres",
+  ],
+  frameworks: [
+    "ReactJS",
+    "Next.js",
+    "Node.js",
+    "SCSS",
+    "Sass",
+    "Redux",
+    "GSAP",
+    "React Router",
+    "Express.js",
+    "Tailwind CSS",
+    "Material UI",
+    "Ant Design",
+    "Shadcn UI",
+    "Tanstack libraries",
+  ],
+  tools: [
+    "Git",
+    "GitHub/GitLab",
+    "GitHub Actions",
+    "Docker",
+    "Kubernetes",
+    "AWS",
+    "Vite",
+    "ArgoCD",
+    "Jest",
+    "RTL",
+    "Figma",
+    "Postman",
+    "Webpack 5",
+    "Storybook",
+    "Mixpanel",
+    "Sentry",
+    "Cursor",
+    "Websocket",
+    "JWT",
+    "LLMs",
+    "AWS Cloudfront CDN",
+    "ZAP pen-testing",
+  ],
+  softSkills: [
+    "Problem Solving",
+    "Team Collaboration",
+    "Communication",
+    "Time Management",
+    "Leadership",
+  ],
+  practices: [
+    "REST APIs",
+    "UI/UX Design",
+    "Production Support",
+    "CI/CD",
+    "Monorepo",
+    "SOLID Principles",
+    "OWASP Compliance",
+    "SEO optimization",
+    "Technical Support",
+    "Monorepo Structure",
+    "Micro-Frontends",
+    "Design Patterns",
+    "Agile Methodologies",
+    "Frontend System Design",
+    "Technical Documentation",
+    "Performance Optimization",
+    "Data Visualisation UI",
+    "OpenApi Specification Using Swagger",
+  ],
+};
 
 const conceptTags = [
   "Functional Component",
@@ -388,16 +422,16 @@ const conceptTags = [
 ];
 
 const timeline = [
-  {
-    period: "2015-2017",
-    link: "https://britishenglishschool.in/",
-    headTitle: "British English School",
-    title: "Completed CBSE‑12",
-    subtitle: "84.2%",
-    points: [
-      "Strong foundation in math and science; early interest in software.",
-    ],
-  },
+  // {
+  //   period: "2015-2017",
+  //   link: "https://britishenglishschool.in/",
+  //   headTitle: "British English School",
+  //   title: "Completed CBSE‑12",
+  //   subtitle: "84.2%",
+  //   points: [
+  //     "Strong foundation in math and science; early interest in software.",
+  //   ],
+  // },
   {
     icon: IIITA,
     period: "Jul 2017 - May 2021",
@@ -456,6 +490,12 @@ const timeline = [
       "Material UI",
       "RTL",
       "Jest",
+      "Git",
+      "GitHub/GitLab",
+      "Agile Methodologies",
+      "Technical Documentation",
+      "Debugging",
+      "Testing",
     ],
   },
   {
@@ -463,7 +503,7 @@ const timeline = [
     period: "Feb 2024 - Oct 2024",
     link: "https://www.yugen.ai/",
     headTitle: "Yugen.ai",
-    title: "Frontend Engineer",
+    title: "Founding Engineer - Frontend",
     points: [
       "Collaborated with Platform Engineering to build a web application from scratch to streamline user access.",
       "Led API integration, architecture and system design; leveraged AWS, Docker, and Kubernetes.",
@@ -477,11 +517,39 @@ const timeline = [
       "AWS",
       "Docker",
       "Kubernetes",
+      "Git",
+      "GitHub/GitLab",
+      "Technical Documentation",
+    ],
+  },
+  {
+    icon: MilesEducation,
+    period: "Nov 2024 - Dec 2024",
+    link: "https://www.mileseducation.com/",
+    headTitle: "Miles Education",
+    title: "Senior Developer - Frontend",
+    points: [
+      "Managing and helping the team integrating new features and enhancements for the miles education website.",
+    ],
+    skills: [
+      "Next.js",
+      "React",
+      "AWS",
+      "JavaScript",
+      "TypeScript",
+      "API Integration",
+      "Supabase",
+      "Tailwind",
+      "Framer Motion",
+      "React Router",
+      "React Hooks",
+      "Cloudfront CDN",
+      "GitHub/GitLab",
     ],
   },
   {
     icon: Breakout,
-    period: "Oct 2024 - Present",
+    period: "Dec 2024 - Present",
     link: "https://getbreakout.ai/",
     headTitle: "Breakout",
     title: "Software Engineer",
@@ -505,6 +573,7 @@ const timeline = [
       "Docker",
       "Kubernetes",
       "ArgoCD",
+      "PRD/ERD",
       "GIT",
       "GitHub/GitLab",
       "Technical Documentation",
@@ -512,98 +581,66 @@ const timeline = [
   },
 ];
 
-const data = {
+const social = {
+  linkedin: "https://www.linkedin.com/in/pawankumar1201/",
+  github: "https://github.com/PawanEpisode/My-Portfolio",
+  followOnLinkedin:
+    "https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=pawankumar1201",
+};
+
+const moreAboutMe = {
+  resumeViewLink:
+    "https://drive.google.com/file/d/12osFv7i6nMe6mUhpsj40jmeuRZ-RHsYd/view?usp=sharing",
+  resumeDownloadLink:
+    "https://drive.google.com/uc?export=download&id=12osFv7i6nMe6mUhpsj40jmeuRZ-RHsYd",
+  professionalSummary: `Passionate Frontend Software Engineer with a proven track
+                  record of 4+ years in designing and implementing innovative
+                  and user-friendly web interfaces. Specializing in cutting-edge
+                  frontend technologies, including React, NextJS, JavaScript,
+                  Webpack 5, Cloudfront CDN, Docker, Kubernetes, ArgoCD, GitHub
+                  Actions, and OpenApi Specification Using Swagger.
+
+                  I've had the privilege of contributing to impactful projects
+                  that enhance user experiences. My expertise extends across the
+                  Software Development Lifecycle (SDLC), from requirement
+                  analysis and documentation to coding, testing, and
+                  maintenance. I thrive in dynamic environments, leveraging my
+                  analytical skills and strong communication abilities to
+                  collaborate effectively with cross-functional teams.
+
+                  I am always excited to continue pushing the boundaries of
+                  front-end development and contribute to creating seamless and
+                  visually appealing digital experiences.`,
+};
+
+const person = {
+  name: "Pawan Kumar",
+  profilePhoto: PawanKumar,
+  designationTitle: "Software Engineer",
+  designationSubtitle: "crafting delightful web experiences",
+  location: "Bangalore, Karnataka, India",
+  email: "pawan4super30@gmail.com",
+  phone: "+91 8756507317",
   summary:
     "An enthusiastic and high‑energy professional with ~4 years of experience building modern web applications. I focus on React, TypeScript, Tailwind, micro‑frontends, API integrations and platform engineering to deliver fast, accessible user experiences.",
-  social: {
-    linkedin: "https://www.linkedin.com/in/pawankumar1201/",
-    github: "https://github.com/PawanEpisode/My-Portfolio",
-  },
-  skills: {
-    languages: [
-      "JavaScript",
-      "TypeScript",
-      "Python",
-      "C++",
-      "HTML",
-      "CSS",
-      "SQL",
-      "MongoDB",
-      "Postgres"
-    ],
-    frameworks: [
-      "ReactJS",
-      "Next.js",
-      "Node.js", 
-      "SCSS",
-      "Sass",
-      "Redux",
-      "GSAP",
-      "React Router",
-      "Express.js",
-      "Tailwind CSS",
-      "Material UI",
-      "Ant Design",
-      "Shadcn UI",
-      "Tanstack libraries",
-    ],
-    tools: [
-      "Git",
-      "GitHub/GitLab",
-      "GitHub Actions",
-      "Docker",
-      "Kubernetes",
-      "AWS",
-      "Vite",
-      "ArgoCD",
-      "Jest",
-      "RTL",
-      "Figma",
-      "Postman",
-      "Webpack 5",
-      "Storybook",
-      "Mixpanel",
-      "Sentry",
-      "Cursor",
-      "Websocket",
-      "JWT",
-      "LLMs",
-      "AWS Cloudfront CDN",
-      "ZAP pen-testing"
-    ],
-    softSkills: [
-      "Problem Solving",
-      "Team Collaboration", 
-      "Communication",
-      "Time Management",
-      "Leadership",
-    ],
-    practices: [
-      "REST APIs",
-      "UI/UX Design",
-      "Production Support",
-      "CI/CD",
-      "Monorepo",
-      "SOLID Principles",
-      "OWASP Compliance",
-      "SEO optimization",
-      "Technical Support",
-      "Monorepo Structure",
-      "Micro-Frontends",
-      "Design Patterns",
-      "Agile Methodologies",
-      "Frontend System Design",
-      "Technical Documentation",
-      "Performance Optimization",
-      "Data Visualisation UI",
-      "OpenApi Specification Using Swagger"
-    ]
-  },
+};
+
+const data = {
+  person,
+  moreAboutMe,
   timeline,
-  projects: projects,
-  certificates: certificates,
-  extensiveSkills: extensiveSkills,
-  conceptTags: conceptTags,
+  projects,
+  certificates,
+  conceptTags,
+  social,
+  skills,
+  extensiveSkills: [
+    ...skills.languages,
+    ...skills.frameworks,
+    ...skills.tools,
+    ...skills.softSkills,
+    ...skills.practices,
+  ],
 };
 
 export default data;

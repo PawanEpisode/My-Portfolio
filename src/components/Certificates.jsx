@@ -1,10 +1,8 @@
-import data from "../content/data";
-
-export default function Certificates() {
-  if (!data.certificates.length) return null;
+export default function Certificates({ certificates }) {
+  if (!certificates.length) return null;
   return (
     <ul role="list" className="w-full grid sm:grid-cols-2 gap-4">
-      {data.certificates.map(({ title, issuer, credentialId, link, photo }) => (
+      {certificates.map(({ title, issuer, credentialId, link, photo }) => (
         <li
           key={link}
           className="group w-full rounded-xl ring-2 ring-indigo-600 dark:border-white/10 bg-white dark:bg-neutral-900 p-4 transition hover:shadow-sm hover:bg-slate-50 dark:hover:bg-neutral-800"
@@ -27,7 +25,7 @@ export default function Certificates() {
                 </span>
               </div>
             </div>
-            <div className="w-full h-full">
+            <div className="w-full h-full hover:scale-105 transition-all duration-300">
               <img
                 src={photo}
                 alt={title}

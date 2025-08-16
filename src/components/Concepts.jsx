@@ -1,5 +1,4 @@
 import React from "react";
-import data from "../content/data";
 
 function chunkArray(items, chunkCount) {
   const chunks = Array.from({ length: chunkCount }, () => []);
@@ -32,8 +31,8 @@ function LoopSlider({ items, direction = "normal", duration = 32000 }) {
   );
 }
 
-export default function Concepts() {
-  const tags = data.conceptTags || [];
+export default function Concepts({ conceptTags }) {
+  const tags = conceptTags || [];
   const groups = chunkArray(tags, 5);
 
   // Alternate directions and vary durations slightly per row for a natural feel
@@ -51,4 +50,4 @@ export default function Concepts() {
       ))}
     </div>
   );
-};
+}

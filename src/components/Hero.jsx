@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import data from "../content/data";
 import MoreAboutMe from "./MoreAboutMe";
 import {
   Tooltip,
@@ -7,18 +6,28 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "./ui/tooltip";
-import pawan from "../assets/my-image.jpeg";
 import { PinContainer } from "./3DPin";
 
-export default function Hero() {
+export default function Hero({
+  person,
+  social,
+  moreAboutMe,
+  extensiveSkills,
+  projects,
+  certificates,
+}) {
+  const { designationTitle, summary, profilePhoto, designationSubtitle } =
+    person;
+  const { followOnLinkedin } = social;
+  const { resumeDownloadLink } = moreAboutMe;
   return (
     <section className="pt-20 pb-16 grid md:grid-cols-2 gap-8 items-center justify-center max-w-5xl px-4 mx-auto relative z-2">
       <div>
         <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-slate-900 dark:text-white">
-          <span className="text-gradient italic">Software Engineer</span>{" "}
-          crafting delightful web experiences
+          <span className="text-gradient italic">{designationTitle}</span>{" "}
+          {designationSubtitle}
         </h1>
-        <p className="mt-4 text-slate-700 dark:text-white/80">{data.summary}</p>
+        <p className="mt-4 text-slate-700 dark:text-white/80">{summary}</p>
         <div className="mt-6 flex flex-wrap gap-3">
           <a
             href="#story"
@@ -31,7 +40,7 @@ export default function Hero() {
             <Tooltip>
               <TooltipTrigger asChild>
                 <a
-                  href="https://drive.google.com/uc?export=download&id=12osFv7i6nMe6mUhpsj40jmeuRZ-RHsYd"
+                  href={resumeDownloadLink}
                   className="px-4 py-2 rounded-lg bg-slate-900 text-white hover:ring-2 hover:ring-indigo-600 hover:bg-white hover:text-black dark:bg-white dark:text-slate-900 border border-transparent"
                 >
                   Download Resume
@@ -45,7 +54,13 @@ export default function Hero() {
             </Tooltip>
           </TooltipProvider>
           <div className="block sm:hidden">
-            <MoreAboutMe />
+            <MoreAboutMe
+              person={person}
+              moreAboutMe={moreAboutMe}
+              extensiveSkills={extensiveSkills}
+              projects={projects}
+              certificates={certificates}
+            />
           </div>
         </div>
       </div>
@@ -55,10 +70,10 @@ export default function Hero() {
         transition={{ duration: 0.6 }}
         className="my-56 sm:m-6"
       >
-        <PinContainer title="Pawan Kumar" href={data.social.linkedin}>
+        <PinContainer title="Pawan Kumar" href={followOnLinkedin}>
           <div className="flex flex-col sm:basis-1/2 w-[20rem] sm:w-[24rem] h-[24rem] rounded-3xl border-gradient overflow-hidden border border-slate-200 dark:border-white/10 bg-gradient-to-br dark:from-blue-500/30 dark:via-white/20 dark:to-red-600/20 from-indigo-600/30 via-fuchsia-600/20 to-pink-600/20">
             <img
-              src={pawan}
+              src={profilePhoto}
               alt="Pawan Kumar"
               className="h-full w-full rounded-3xl object-fill"
               loading="eager"

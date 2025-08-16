@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
-import data from "../content/data";
 
-export default function Projects() {
-  if (!data.projects.length) return null;
+export default function Projects({ projects }) {
   return (
     <div className="grid md:grid-cols-2 gap-6">
-      {data.projects.map((p, idx) => (
+      {projects.map((p, idx) => (
         <motion.a
           href={p.link}
           target="_blank"
