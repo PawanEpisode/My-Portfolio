@@ -19,10 +19,20 @@ export default function App() {
     mass: 0.4,
   });
 
-  const { person, social, moreAboutMe, extensiveSkills, projects, certificates, timeline, conceptTags, skills } = data;
+  const {
+    person,
+    social,
+    moreAboutMe,
+    extensiveSkills,
+    projects,
+    certificates,
+    timeline,
+    conceptTags,
+    skills,
+  } = data;
 
   return (
-    <div className="bg-white dark:bg-black">
+    <div className="bg-slate-200 dark:bg-black">
       <motion.div
         style={{ scaleX }}
         className="fixed left-0 right-0 top-0 h-1 origin-left bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-pink-500 z-[1000]"
@@ -52,7 +62,7 @@ export default function App() {
           <Timeline timeline={timeline} />
         </Section>
 
-        <Section id="concepts" title="Concepts Covered">
+        <Section id="concepts" title="Concepts Covered" addZIndex={false} >
           <Concepts conceptTags={conceptTags} />
         </Section>
 

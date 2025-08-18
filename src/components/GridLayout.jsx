@@ -8,7 +8,7 @@ const GridLayout = () => {
         className={cn(
           "absolute inset-0 z-1 pointer-events-none",
           "[background-size:30px_30px]",
-          "[background-image:linear-gradient(to_right,#eeeef0_1px,transparent_1px),linear-gradient(to_bottom,#eeeef0_1px,transparent_1px)]",
+          "[background-image:linear-gradient(to_right,#f2f2f2_1px,transparent_1px),linear-gradient(to_bottom,#f2f2f2_1px,transparent_1px)]",
           "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]"
         )}
       />

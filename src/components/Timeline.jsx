@@ -73,7 +73,7 @@ const TimeLineSkills = ({ visibleSkills, hiddenSkills }) => {
               {hiddenSkills.length} more
             </button>
           </TooltipTrigger>
-          <TooltipContent side="top" className="max-w-xs !p-4 relative !z-50">
+          <TooltipContent side="top" className="max-w-xs !p-4">
             <div className="flex flex-wrap gap-1">
               {hiddenSkills.map((s) => (
                 <SkillBadge key={s} skill={s} />

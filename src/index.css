@@ -85,7 +85,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 8px;
+  padding: 4px 8px;
   text-align: center;
   outline: none;
   text-decoration: none !important;
@@ -104,7 +104,7 @@
 
 .shimmer-diagonal {
   display: inline-block;
-  background: linear-gradient(to bottom right, rgb(168, 85, 247) 40%, rgb(99, 102, 241),50%, rgb(168, 85, 247) 60%);
+  background: linear-gradient(to bottom right, rgb(168, 85, 247) 40%, rgb(99, 102, 241), 50%, rgb(168, 85, 247) 60%);
   background-size: 200% 200%;
   background-repeat: no-repeat;
   animation: shimmerBackground 4s infinite linear;

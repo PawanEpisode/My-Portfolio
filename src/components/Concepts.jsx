@@ -20,7 +20,7 @@ function LoopSlider({ items, direction = "normal", duration = 32000 }) {
       <div className="inner">
         {loopItems.map((label, idx) => (
           <div
-            className="tag dark:text-white bg-white dark:bg-black"
+            className="tag dark:text-white !bg-white dark:!bg-black"
             key={`${label}-${idx}`}
           >
             {label}
@@ -39,7 +39,7 @@ export default function Concepts({ conceptTags }) {
   const baseDuration = 32000; // ms
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 relative z-1">
       {groups.map((group, index) => (
         <LoopSlider
           key={index}

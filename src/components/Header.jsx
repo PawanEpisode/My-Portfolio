@@ -25,7 +25,7 @@ export default function Header({
     designationTitleArray[designationTitleArray.length - 1];
   return (
     <header className="sticky top-0 z-[100] backdrop-blur bg-white/70 dark:bg-black/30 border-b border-slate-200 dark:border-white/40 text-slate-800 dark:text-white">
-      <div className="mx-auto max-w-5xl px-4 h-14 flex items-center justify-between">
+      <div className="mx-auto max-w-5xl px-4 py-2 flex items-center justify-between">
         <div className="flex gap-2 items-center">
           <a
             href="#home"
