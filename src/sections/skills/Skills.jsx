@@ -13,13 +13,15 @@ import ConceptMarquee from "./components/ConceptMarquee";
 export default function Skills({ skillValues, conceptTags, id }) {
   return (
     <>
-      <div className="hidden md:block" id={id}>
-        <SectionHeader label="Skills & Expertise" title="Technologies I *master*" />
-        <DesktopSkills skillValues={skillValues} />
-      </div>
+      <div id={id}>
+        <div className="hidden md:block">
+          <SectionHeader label="Skills & Expertise" title="Technologies I *master*" />
+          <DesktopSkills skillValues={skillValues} />
+        </div>
 
-      <div id={id} className="md:hidden">
-        <MobileSkills skillValues={skillValues} />
+        <div className="md:hidden">
+          <MobileSkills skillValues={skillValues} />
+        </div>
       </div>
 
       <ConceptMarquee conceptTags={conceptTags} />

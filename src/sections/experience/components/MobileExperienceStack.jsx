@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import ExperienceCard from "./ExperienceCard";
 
 /** Mobile vertical timeline layout for the experience section. */
-export default function MobileExperienceStack({ items, id }) {
+export default function MobileExperienceStack({ items }) {
   return (
-    <section id={id} className="py-20 px-6" style={{ borderTop: "1px solid var(--border)" }}>
+    <section className="py-20 px-6" style={{ borderTop: "1px solid var(--border)" }}>
       <div className="mb-12">
         <p className="section-label">Career Path</p>
         <h2 className="section-title-main" style={{ fontSize: "clamp(2rem, 8vw, 3rem)" }}>

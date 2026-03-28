@@ -29,7 +29,7 @@ export default function SectionHeader({ label, title }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="section-title-main"
+          className="section-title-main max-w-2xl"
         >
           {parseMixedTitle(title)}
         </motion.h2>

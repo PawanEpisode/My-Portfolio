@@ -16,7 +16,7 @@ export default function HeroProfileCard({ person, social }) {
       initial={{ opacity: 0, x: 48 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-      className="relative flex items-center justify-center lg:justify-end"
+      className="relative flex items-center justify-center mt-12 lg:mt-0 lg:justify-end"
     >
       {/* Ambient glow behind card */}
       <div

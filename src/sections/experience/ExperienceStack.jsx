@@ -14,15 +14,15 @@ export default function ExperienceStack({ timeline, id }) {
   const items = useMemo(() => [...timeline].reverse(), [timeline]);
 
   return (
-    <>
-      <div className="hidden md:block" id={id}>
+    <div id={id}>
+      <div className="hidden md:block">
         <SectionHeader label="Experience" title="Where I've *shipped* things" />
         <DesktopExperienceStack items={items} />
       </div>
 
       <div className="md:hidden">
-        <MobileExperienceStack items={items} id={id} />
+        <MobileExperienceStack items={items} />
       </div>
-    </>
+    </div>
   );
 }

@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import { ACCENT_COLORS } from "../constants";
 
 /** Mobile card-list layout for the projects section. */
-export default function MobileProjectsStack({ projects, id }) {
+export default function MobileProjectsStack({ projects }) {
   return (
-    <section id={id} className="py-20 px-6" style={{ borderTop: "1px solid var(--border)" }}>
+    <section className="py-20 px-6" style={{ borderTop: "1px solid var(--border)" }}>
       <div className="mb-12">
         <p className="section-label">Selected Work</p>
         <h2 className="section-title-main" style={{ fontSize: "clamp(2rem, 8vw, 3rem)" }}>

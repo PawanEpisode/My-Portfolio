@@ -10,13 +10,27 @@ import { VISIBLE_CHIPS } from "../constants";
  */
 export default function SkillChips({ skills }) {
   const [expanded, setExpanded] = useState(false);
-  const sorted  = useMemo(() => [...skills].sort((a, b) => a.length - b.length), [skills]);
+  const sorted = useMemo(
+    () => [...skills].sort((a, b) => a.length - b.length),
+    [skills],
+  );
   const visible = sorted.slice(0, VISIBLE_CHIPS);
-  const hidden  = sorted.slice(VISIBLE_CHIPS);
+  const hidden = sorted.slice(VISIBLE_CHIPS);
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginTop: "12px" }}>
-      {visible.map((s) => <SkillPill key={s} skill={s} />)}
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "6px",
+        marginTop: "12px",
+        maxHeight: "200px",
+        overflow: "auto",
+      }}
+    >
+      {visible.map((s) => (
+        <SkillPill key={s} skill={s} />
+      ))}
       {expanded && hidden.map((s) => <SkillPill key={s} skill={s} />)}
 
       {hidden.length > 0 && (
@@ -38,9 +52,15 @@ export default function SkillChips({ skills }) {
             transition: "border-color 0.2s",
           }}
         >
-          {expanded
-            ? <><ChevronUp size={10} /> Show less</>
-            : <><ChevronDown size={10} />+{hidden.length} more</>}
+          {expanded ? (
+            <>
+              <ChevronUp size={10} /> Show less
+            </>
+          ) : (
+            <>
+              <ChevronDown size={10} />+{hidden.length} more
+            </>
+          )}
         </button>
       )}
     </div>

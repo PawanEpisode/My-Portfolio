@@ -11,15 +11,15 @@ import MobileProjectsStack from "./components/MobileProjectsStack";
 
 export default function ProjectsStack({ projects, id }) {
   return (
-    <>
-      <div className="hidden md:block" id={id}>
+    <div id={id}>
+      <div className="hidden md:block">
         <SectionHeader label="Selected Work" title="Projects that *made an impact*" />
         <DesktopProjectsStack projects={projects} />
       </div>
 
       <div className="md:hidden">
-        <MobileProjectsStack projects={projects} id={id} />
+        <MobileProjectsStack projects={projects} />
       </div>
-    </>
+    </div>
   );
 }

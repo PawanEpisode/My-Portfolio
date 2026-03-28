@@ -27,7 +27,7 @@ export default function ConceptMarquee({ conceptTags }) {
   if (!conceptTags?.length) return null;
 
   const conceptGroups = chunkArray(conceptTags, 4);
-  const baseDuration  = 28000;
+  const baseDuration  = 50000;
 
   return (
     <div className="py-14 px-6" style={{ borderTop: "1px solid var(--border)" }}>
@@ -46,7 +46,7 @@ export default function ConceptMarquee({ conceptTags }) {
               key={idx}
               items={group}
               direction={idx % 2 === 0 ? "normal" : "reverse"}
-              duration={baseDuration - idx * 2000 + (idx % 2 === 0 ? 600 : 900)}
+              duration={baseDuration - idx * 500 + (idx % 2 === 0 ? 100 : 300)}
             />
           ))}
         </div>

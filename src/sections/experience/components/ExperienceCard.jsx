@@ -75,10 +75,10 @@ export default function ExperienceCard({ item }) {
         )}
       </div>
 
-      {/* Bullet points (max 3) */}
+      {/* Bullet points */}
       {item.points && (
         <ul style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          {item.points.slice(0, 3).map((pt, i) => (
+          {item.points.map((pt, i) => (
             <li key={i} style={{ display: "flex", gap: 8, fontSize: 13, lineHeight: 1.5 }}>
               <span
                 style={{
@@ -92,7 +92,7 @@ export default function ExperienceCard({ item }) {
         </ul>
       )}
 
-      {item.skills && <SkillChips skills={item.skills} />}
+      {item.skills && <SkillChips key={item.id} skills={item.skills} />}
     </div>
   );
 }
