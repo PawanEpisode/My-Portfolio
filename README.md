@@ -197,3 +197,8 @@ Any static host that serves the `dist/` output works.
 ---
 
 If you spot any inconsistencies or want to add new sections, start by updating `src/content/data.js` and composing a new component under `src/components/`, then wire it in `src/App.jsx`.
+
+## TODO
+- Create a FORM UI to capture all data points and store it in AWS S3. Provide a URL link in which user can see thier own portfolio website based on provided data in the form.
+- Backend services for api creation and api integration
+- Also adding Color schema as well in the api - theme colors (black + white) for toggle , primary + secondary based color

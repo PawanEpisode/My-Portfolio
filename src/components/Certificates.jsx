@@ -1,40 +1,107 @@
+import { motion } from "framer-motion";
+import { ExternalLink, Award } from "lucide-react";
+
 export default function Certificates({ certificates }) {
-  if (!certificates.length) return null;
+  if (!certificates?.length) return null;
+
   return (
-    <ul role="list" className="w-full grid sm:grid-cols-2 gap-4">
-      {certificates.map(({ title, issuer, credentialId, link, photo }) => (
-        <li
+    <div className="grid sm:grid-cols-2 gap-6">
+      {certificates.map(({ title, issuer, credentialId, link, photo }, idx) => (
+        <motion.a
           key={link}
-          className="group w-full rounded-xl ring-2 ring-indigo-600 dark:border-white/10 bg-white dark:bg-neutral-900 p-4 transition hover:shadow-sm hover:bg-slate-50 dark:hover:bg-neutral-800"
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ y: -4 }}
+          className="group relative rounded-2xl overflow-hidden flex flex-col"
+          style={{
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            transition: "border-color 0.3s, box-shadow 0.3s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = "rgba(129,140,248,0.35)";
+            e.currentTarget.style.boxShadow = "0 16px 48px rgba(0,0,0,0.35), 0 0 0 1px rgba(129,140,248,0.15)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = "var(--border)";
+            e.currentTarget.style.boxShadow = "none";
+          }}
         >
-          <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-row sm:flex-col w-full items-center justify-between gap-3 text-slate-800 dark:text-white"
+          {/* Certificate image */}
+          <div
+            className="relative overflow-hidden"
+            style={{ height: "180px", background: "rgba(255,255,255,0.02)" }}
           >
-            <div className="flex w-full flex-col gap-2 text-slate-900 dark:text-white">
-              <img src={issuer} alt={issuer} className="w-56" />
-              <span className="font-medium tracking-tight text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors">
-                {title}
-              </span>
-              <div className="flex flex-col sm:flex-row sm:items-center gap-1">
-                <span className="text-sm hidden sm:inline">Credential ID:</span>
-                <span className="text-xs sm:text-sm px-2 w-fit rounded-2xl bg-indigo-400 text-white dark:text-white/90 truncate max-w-[150px] sm:max-w-none">
-                  {credentialId}
-                </span>
+            <img
+              src={photo}
+              alt={title}
+              className="w-full h-full object-contain p-4 transition-transform duration-400 group-hover:scale-[1.03]"
+            />
+            {/* Gradient overlay on hover */}
+            <div
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style={{
+                background: "linear-gradient(135deg, rgba(129,140,248,0.08), rgba(34,211,238,0.04))",
+              }}
+            />
+          </div>
+
+          {/* Info */}
+          <div
+            className="flex-1 p-5"
+            style={{ borderTop: "1px solid var(--border)" }}
+          >
+            {/* Issuer logo — show naturally; the namastedev.webp has its own branding */}
+            <div className="flex items-center justify-between mb-3">
+              <div
+                className="rounded-lg px-2 py-1"
+                style={{ background: "rgba(255,255,255,0.08)", display: "inline-flex" }}
+              >
+                <img
+                  src={issuer}
+                  alt="Issuer"
+                  className="h-7 object-contain"
+                />
               </div>
-            </div>
-            <div className="w-full h-full hover:scale-105 transition-all duration-300">
-              <img
-                src={photo}
-                alt={title}
-                className="object-fill w-full h-full"
+              <ExternalLink
+                size={14}
+                className="opacity-0 group-hover:opacity-100 transition-opacity"
+                style={{ color: "var(--accent-indigo)" }}
               />
             </div>
-          </a>
-        </li>
+
+            <h3
+              className="text-base font-bold mb-3"
+              style={{ color: "var(--text-primary)" }}
+            >
+              {title}
+            </h3>
+
+            {/* Credential ID */}
+            <div className="flex items-center gap-2">
+              <Award size={13} style={{ color: "var(--accent-indigo)" }} />
+              <span className="text-xs" style={{ color: "var(--text-muted)" }}>
+                Credential ID:{" "}
+              </span>
+              <code
+                className="text-xs font-mono px-2 py-0.5 rounded"
+                style={{
+                  background: "rgba(129,140,248,0.1)",
+                  border: "1px solid rgba(129,140,248,0.2)",
+                  color: "var(--accent-indigo)",
+                }}
+              >
+                {credentialId}
+              </code>
+            </div>
+          </div>
+        </motion.a>
       ))}
-    </ul>
+    </div>
   );
 }

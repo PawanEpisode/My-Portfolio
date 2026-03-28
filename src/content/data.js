@@ -622,7 +622,7 @@ const person = {
   email: "pawan4super30@gmail.com",
   phone: "+91 8756507317",
   summary:
-    "An enthusiastic and high‑energy professional with ~4 years of experience building modern web applications. I focus on React, TypeScript, Tailwind, micro‑frontends, API integrations and platform engineering to deliver fast, accessible user experiences.",
+    "An enthusiastic and high‑energy professional with more than 4 years of experience building modern web applications. I focus on React, TypeScript, Tailwind, micro‑frontends, API integrations and platform engineering to deliver fast, accessible user experiences.",
 };
 
 const data = {
