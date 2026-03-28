@@ -1,12 +1,12 @@
 import { motion, useScroll, useSpring } from "framer-motion";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import ExperienceStack from "./components/ExperienceStack";
-import ProjectsStack from "./components/ProjectsStack";
-import Certificates from "./components/Certificates";
-import Skills from "./components/Skills";
-import Footer from "./components/Footer";
-import Section from "./components/Section";
+import Header from "./layout/Header";
+import Footer from "./layout/Footer";
+import Hero from "./sections/hero/Hero";
+import ExperienceStack from "./sections/experience/ExperienceStack";
+import ProjectsStack from "./sections/projects/ProjectsStack";
+import Skills from "./sections/skills/Skills";
+import Certificates from "./sections/certificates/Certificates";
+import Section from "./shared/components/Section";
 import data from "./content/data";
 
 export default function App() {
@@ -21,7 +21,7 @@ export default function App() {
 
   return (
     <div style={{ backgroundColor: "var(--bg-primary)", color: "var(--text-primary)" }} className="min-h-screen">
-      {/* Noise texture */}
+      {/* Noise texture overlay */}
       <div className="noise-overlay" />
 
       {/* Scroll progress bar */}
@@ -48,24 +48,12 @@ export default function App() {
         />
 
         {/*
-          ExperienceStack rendered OUTSIDE <Section> intentionally.
-          The sticky scroll-driven layout needs no transform-creating
-          ancestor — Section's whileInView wrapper breaks position:sticky.
+          ExperienceStack, ProjectsStack, and Skills are rendered OUTSIDE <Section>
+          intentionally. Their sticky scroll-driven layouts require position:sticky,
+          which breaks inside Section's whileInView transform wrapper.
         */}
         <ExperienceStack timeline={timeline} id="experience" />
-
-        {/*
-          ProjectsStack rendered OUTSIDE <Section> intentionally.
-          The sticky scroll-driven layout needs no transform-creating
-          ancestor — Section's whileInView wrapper breaks position:sticky.
-        */}
         <ProjectsStack projects={projects} id="projects" />
-
-        {/*
-          Skills rendered OUTSIDE <Section> intentionally.
-          The sticky scroll-driven layout needs no transform-creating
-          ancestor — Section's whileInView wrapper breaks position:sticky.
-        */}
         <Skills skillValues={skills} conceptTags={conceptTags} id="skills" />
 
         <Section id="certificates" label="Achievements" title="*Certifications* & Badges">

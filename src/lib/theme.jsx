@@ -6,7 +6,7 @@ function getInitialTheme() {
   try {
     const stored = localStorage.getItem("theme");
     if (stored === "light" || stored === "dark") return stored;
-  } catch (err) {
+  } catch {
     // ignore
   }
   if (typeof window !== "undefined" && window.matchMedia) {
@@ -26,7 +26,7 @@ export function ThemeProvider({ children }) {
     else root.classList.remove("dark");
     try {
       localStorage.setItem("theme", theme);
-    } catch (err) {
+    } catch {
       // ignore
     }
   }, [theme]);

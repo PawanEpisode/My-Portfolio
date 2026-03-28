@@ -1,0 +1,17 @@
+import { DEVICON_MAP } from "../constants";
+
+/** Single skill pill with optional devicon and themed color. */
+export default function SkillTag({ skill, color, bg, border }) {
+  const iconClass = DEVICON_MAP[skill];
+  return (
+    <span
+      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium"
+      style={{ background: bg, border: `1px solid ${border}`, color }}
+    >
+      {iconClass && (
+        <i className={iconClass} style={{ fontSize: "13px", lineHeight: 1, flexShrink: 0 }} />
+      )}
+      {skill}
+    </span>
+  );
+}
