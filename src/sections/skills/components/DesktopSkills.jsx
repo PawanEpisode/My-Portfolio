@@ -2,6 +2,7 @@ import { useStackScroll } from "../../../shared/hooks/useStackScroll";
 import { CATEGORY_ORDER, SKILL_SCROLL_VH } from "../constants";
 import MilestoneBar from "./MilestoneBar";
 import CategoryCard from "./CategoryCard";
+import SectionNav from "../../../shared/components/SectionNav";
 
 /** Desktop sticky-scroll layout for the skills section. */
 export default function DesktopSkills({ skillValues }) {
@@ -16,6 +17,8 @@ export default function DesktopSkills({ skillValues }) {
       className="relative"
     >
       <div className="sticky top-[5%] overflow-hidden">
+        <SectionNav prevSection="projects" nextSection="certificates" />
+
         <div
           className="absolute inset-0 pointer-events-none"
           style={{

@@ -355,3 +355,34 @@ body {
   background: rgba(129, 140, 248, 0.08);
   transform: translateY(-2px);
 }
+
+/* ─── Section Navigation Buttons ────────────────────────────── */
+.section-nav-btn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    transform 0.15s ease, box-shadow 0.2s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.section-nav-btn:hover {
+  background: rgba(129, 140, 248, 0.12);
+  border-color: rgba(129, 140, 248, 0.55);
+  color: var(--accent-indigo);
+  transform: scale(1.1);
+  box-shadow: 0 0 14px rgba(129, 140, 248, 0.22);
+}
+
+.section-nav-btn:active {
+  transform: scale(0.93);
+  box-shadow: none;
+}

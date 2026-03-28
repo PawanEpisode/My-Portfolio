@@ -62,6 +62,9 @@ export default function ContactForm({ person, social }) {
         message: values.message.trim(),
       });
       setStatus("success");
+      setTimeout(() => {
+        setStatus("idle");
+      }, 5000);
       setValues(INITIAL_VALUES);
       setErrors(INITIAL_ERRORS);
     } catch {

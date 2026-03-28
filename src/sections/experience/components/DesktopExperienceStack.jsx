@@ -1,6 +1,7 @@
 import { motion, useTransform } from "framer-motion";
 import { useStackScroll } from "../../../shared/hooks/useStackScroll";
 import ExperienceCard from "./ExperienceCard";
+import SectionNav from "../../../shared/components/SectionNav";
 import { SCROLL_PER_CARD } from "../constants";
 
 /** Single animated stack card wrapper driven by scrollYProgress. */
@@ -41,6 +42,7 @@ export default function DesktopExperienceStack({ items }) {
   return (
     <div ref={containerRef} style={{ height: totalHeight }}>
       <div style={{ position: "sticky", top: "20%", height: "60vh", overflow: "hidden" }}>
+        <SectionNav prevSection="home" nextSection="projects" />
         <div
           style={{
             position: "absolute", inset: 0, pointerEvents: "none",

@@ -1,6 +1,7 @@
 import { motion, useTransform } from "framer-motion";
 import { useStackScroll } from "../../../shared/hooks/useStackScroll";
 import ProjectCard from "./ProjectCard";
+import SectionNav from "../../../shared/components/SectionNav";
 import { SCROLL_PER_CARD } from "../constants";
 
 /** Single animated stack card wrapper driven by scrollYProgress. */
@@ -65,6 +66,8 @@ export default function DesktopProjectsStack({ projects }) {
           overflow: "hidden",
         }}
       >
+        <SectionNav prevSection="experience" nextSection="skills" />
+
         <div
           style={{
             position: "absolute",
