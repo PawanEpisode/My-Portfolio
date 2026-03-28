@@ -6,6 +6,7 @@ import ExperienceStack from "./sections/experience/ExperienceStack";
 import ProjectsStack from "./sections/projects/ProjectsStack";
 import Skills from "./sections/skills/Skills";
 import Certificates from "./sections/certificates/Certificates";
+import Contact from "./sections/contact/Contact";
 import Section from "./shared/components/Section";
 import data from "./content/data";
 
@@ -59,6 +60,8 @@ export default function App() {
         <Section id="certificates" label="Achievements" title="*Certifications* & Badges">
           <Certificates certificates={certificates} />
         </Section>
+
+        <Contact person={person} social={social} />
 
         <Footer person={person} social={social} />
       </main>
