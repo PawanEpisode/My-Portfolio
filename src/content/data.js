@@ -228,7 +228,7 @@ const projects = [
   },
   {
     photo: ArticleSummarizer,
-    title: "Article Summarizer App",
+    title: "Article Summary App",
     period: "Aug 2023",
     description:
       "Article Summarizer app helps in providing summary about any article. User can just provide the link with the article, and then User can get Brief Summary of the article.",

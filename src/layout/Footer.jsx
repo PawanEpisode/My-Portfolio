@@ -9,7 +9,7 @@ export default function Footer({ person, social }) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden border-t border-border px-6 py-16">
+    <footer className="relative overflow-hidden border-t border-border px-4 py-12">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_50%_100%,rgba(129,140,248,0.05),transparent)]" />
 
       <div className="relative z-10 mx-auto max-w-6xl">

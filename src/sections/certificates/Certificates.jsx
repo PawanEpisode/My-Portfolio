@@ -5,7 +5,7 @@ export default function Certificates({ certificates }) {
   if (!certificates?.length) return null;
 
   return (
-    <div className="w-full max-w-6xl grid gap-6 sm:grid-cols-2">
+    <div className="w-full px-4 lg:max-w-4xl grid gap-6 sm:grid-cols-2">
       {certificates.map(({ title, issuer, credentialId, link, photo }, idx) => (
         <motion.a
           key={link}
@@ -21,19 +21,19 @@ export default function Certificates({ certificates }) {
         >
           {/* Certificate image */}
           <div
-            className="relative h-[180px] overflow-hidden"
+            className="relative h-[180px] w-full"
             style={{ background: "var(--cert-image-bg)" }}
           >
             <img
               src={photo}
               alt={title}
-              className="h-full w-full object-contain p-4 transition-transform duration-[400ms] group-hover:scale-[1.03]"
+              className="h-full w-full object-fill transition-transform duration-[400ms] group-hover:scale-[1.03]"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-[rgba(129,140,248,0.08)] to-[rgba(34,211,238,0.04)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </div>
 
           {/* Info */}
-          <div className="flex-1 border-t border-border p-5">
+          <div className="flex-1 border-t border-border p-4">
             <div className="mb-3 flex items-center justify-between">
               <div
                 className="inline-flex rounded-lg px-2 py-1"

@@ -550,3 +550,13 @@ i[class*=" devicon-"] {
   vertical-align: -0.15em;
   speak: never;
 }
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

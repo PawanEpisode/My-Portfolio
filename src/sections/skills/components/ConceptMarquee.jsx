@@ -30,13 +30,13 @@ export default function ConceptMarquee({ conceptTags }) {
   const baseDuration  = 50000;
 
   return (
-    <div className="border-t border-border px-6 py-14">
+    <div className="border-t border-border px-6 py-12">
       <div className="max-w-6xl mx-auto">
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="section-label mb-6"
+          className="section-label mb-6 w-full text-center"
         >
           Concepts &amp; Topics
         </motion.p>

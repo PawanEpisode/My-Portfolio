@@ -9,7 +9,7 @@ import { parseMixedTitle } from "../utils/parseMixedTitle";
  */
 export default function SectionHeader({ label, title }) {
   return (
-    <div className="relative border-t border-border px-6 pb-12 pt-20">
+    <div className="relative border-t border-border px-6 py-12">
       <div className="max-w-6xl mx-auto relative flex flex-col items-center">
         <motion.p
           initial={{ opacity: 0, x: -16 }}

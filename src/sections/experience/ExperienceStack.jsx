@@ -15,14 +15,14 @@ export default function ExperienceStack({ timeline, id }) {
 
   return (
     <div id={id}>
-      <div className="hidden md:block">
+      <div className="block">
         <SectionHeader label="Experience" title="Where I've *shipped* things" />
         <DesktopExperienceStack items={items} />
       </div>
 
-      <div className="md:hidden">
+      {/* <div className="md:hidden">
         <MobileExperienceStack items={items} />
-      </div>
+      </div> */}
     </div>
   );
 }

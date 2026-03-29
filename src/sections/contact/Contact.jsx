@@ -5,7 +5,7 @@ export default function Contact({ person, social }) {
   return (
     <section
       id="contact"
-      className="relative border-t border-border py-24 px-6"
+      className="relative border-t border-border py-12 px-4"
     >
       {/* Ambient background glow */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_100%,rgba(129,140,248,0.07),transparent)]" />
@@ -28,7 +28,7 @@ export default function Contact({ person, social }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="section-title-main mb-4 text-center"
+          className="section-title-main mb-4 text-center w-[90%] lg:w-full"
         >
           {"Let's build something "}
           <span className="section-title-accent">remarkable</span>
@@ -41,7 +41,7 @@ export default function Contact({ person, social }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-12 text-base text-muted"
+          className="mb-6 text-base text-muted text-center w-full"
         >
           Have a project in mind? I respond within 24 hours and am open to
           exciting collaborations.

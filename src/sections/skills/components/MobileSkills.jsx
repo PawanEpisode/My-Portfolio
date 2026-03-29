@@ -79,10 +79,10 @@ export default function MobileSkills({ skillValues }) {
   );
 
   return (
-    <section className="border-t border-border px-4 pb-20 pt-24 min-[360px]:px-6">
-      <div className="mb-12 min-w-0">
+    <section className="border-t border-border px-4 py-12 min-[360px]:px-6">
+      <div className="mb-12 min-w-0 flex flex-col items-center">
         <p className="section-label">Skills &amp; Expertise</p>
-        <h2 className="section-title-main">
+        <h2 className="section-title-main text-center">
           Technologies I <em className="section-title-accent">master</em>
         </h2>
       </div>

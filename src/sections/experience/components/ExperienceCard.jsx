@@ -5,7 +5,7 @@ import SkillChips from "./SkillChips";
 export default function ExperienceCard({ item }) {
   return (
     <div
-      className="flex h-full w-full flex-col gap-3.5 overflow-hidden rounded-[20px] border border-[rgba(129,140,248,0.22)] bg-bg-secondary p-7 backdrop-blur-[24px]"
+      className="flex h-full w-full flex-col gap-3.5 overflow-hidden rounded-[20px] border border-[rgba(129,140,248,0.22)] bg-bg-secondary p-4 lg:p-7 backdrop-blur-[24px]"
       style={{ boxShadow: "var(--experience-card-shadow)" }}
     >
       {/* Company header */}
