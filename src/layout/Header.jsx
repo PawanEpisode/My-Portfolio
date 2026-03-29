@@ -16,7 +16,7 @@ const NAV_ITEMS = [
 
 export default function Header({ person, social, moreAboutMe }) {
   const { name }           = person;
-  const { linkedin, github } = social;
+  const { linkedin } = social;
   const { resumeViewLink } = moreAboutMe;
 
   const scrolled = useScrolled(40);
@@ -59,17 +59,6 @@ export default function Header({ person, social, moreAboutMe }) {
           {/* Right actions */}
           <div className="flex items-center gap-2">
             <ThemeToggleButton />
-
-            <a
-              href={github}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              className="flex h-8 w-8 items-center justify-center rounded-lg text-muted transition-all duration-200 hover:bg-surface-hover hover:text-foreground"
-            >
-              <Github size={16} />
-            </a>
-
             <a
               href={linkedin}
               target="_blank"

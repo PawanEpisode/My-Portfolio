@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, MapPin, Phone, Heart } from "lucide-react";
+import { Linkedin, Mail, MapPin, Phone, Heart } from "lucide-react";
 
 const LOGO_SRC = "/assets/pk_logo_comet.gif";
 
 export default function Footer({ person, social }) {
   const { name, email, phone, location } = person;
-  const { linkedin, github, followOnLinkedin } = social;
+  const { linkedin, followOnLinkedin } = social;
   const year = new Date().getFullYear();
 
   return (
@@ -75,20 +75,6 @@ export default function Footer({ person, social }) {
               Connect
             </h4>
             <div className="flex flex-col gap-3">
-              <a
-                href={github}
-                target="_blank"
-                rel="noreferrer"
-                className="group flex items-center gap-3"
-              >
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-surface transition-all duration-200 hover:border-border-hover hover:bg-white/[0.08]">
-                  <Github size={15} className="text-muted" />
-                </div>
-                <span className="text-sm text-muted transition-colors group-hover:text-foreground">
-                  GitHub
-                </span>
-              </a>
-
               <a
                 href={linkedin}
                 target="_blank"
