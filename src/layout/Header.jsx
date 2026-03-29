@@ -37,9 +37,6 @@ export default function Header({ person, social, moreAboutMe }) {
         >
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2.5 group">
-            {/* <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#818cf8] to-[#22d3ee] text-sm font-bold text-white">
-              {initials}
-            </span> */}
             <img src={LOGO_SRC} alt="Logo" className="w-8 h-8 rounded-full" />
             <span className="hidden text-sm font-semibold text-foreground sm:block">
               {name}
