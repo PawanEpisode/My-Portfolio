@@ -5,7 +5,7 @@ export default function Certificates({ certificates }) {
   if (!certificates?.length) return null;
 
   return (
-    <div className="grid gap-6 sm:grid-cols-2">
+    <div className="w-full max-w-6xl grid gap-6 sm:grid-cols-2">
       {certificates.map(({ title, issuer, credentialId, link, photo }, idx) => (
         <motion.a
           key={link}

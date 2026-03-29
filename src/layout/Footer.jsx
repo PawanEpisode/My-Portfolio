@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, MapPin, Phone, Heart } from "lucide-react";
+import { Logo } from "../assets/index.jsx";
 
 export default function Footer({ person, social }) {
   const { name, email, phone, location } = person;
@@ -21,16 +22,12 @@ export default function Footer({ person, social }) {
               transition={{ duration: 0.5 }}
             >
               <div className="mb-4 flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#818cf8] to-[#22d3ee] text-sm font-black text-white">
-                  PK
-                </span>
-                <div>
-                  <p className="text-sm font-bold text-foreground">{name}</p>
-                  <p className="text-xs text-muted">Software Engineer</p>
-                </div>
+                <img src={Logo} alt="Logo" className="w-8 h-8 rounded-full" />
+                <p className="text-sm font-bold text-foreground">{name}</p>
               </div>
               <p className="text-sm leading-relaxed text-muted">
-                Building fast, accessible, and delightful web experiences with modern frontend technologies.
+                Building fast, accessible, and delightful web experiences with
+                modern frontend technologies.
               </p>
             </motion.div>
           </div>
@@ -77,7 +74,12 @@ export default function Footer({ person, social }) {
               Connect
             </h4>
             <div className="flex flex-col gap-3">
-              <a href={github} target="_blank" rel="noreferrer" className="group flex items-center gap-3">
+              <a
+                href={github}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center gap-3"
+              >
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-surface transition-all duration-200 hover:border-border-hover hover:bg-white/[0.08]">
                   <Github size={15} className="text-muted" />
                 </div>
@@ -86,7 +88,12 @@ export default function Footer({ person, social }) {
                 </span>
               </a>
 
-              <a href={linkedin} target="_blank" rel="noreferrer" className="group flex items-center gap-3">
+              <a
+                href={linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center gap-3"
+              >
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-surface transition-all duration-200 hover:border-[rgba(129,140,248,0.35)] hover:bg-[rgba(129,140,248,0.15)]">
                   <Linkedin size={15} className="text-muted" />
                 </div>
@@ -117,12 +124,10 @@ export default function Footer({ person, social }) {
         >
           <p className="flex items-center gap-1.5 text-xs text-subtle">
             Designed &amp; built with{" "}
-            <Heart size={11} className="fill-[#f472b6] text-[#f472b6]" />
-            {" "}by {name}
+            <Heart size={11} className="fill-[#f472b6] text-[#f472b6]" /> by{" "}
+            {name}
           </p>
-          <p className="text-xs text-subtle">
-            © {year} · All rights reserved
-          </p>
+          <p className="text-xs text-subtle">© {year} · All rights reserved</p>
         </motion.div>
       </div>
     </footer>

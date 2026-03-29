@@ -7,7 +7,7 @@ import ProjectsStack from "./sections/projects/ProjectsStack";
 import Skills from "./sections/skills/Skills";
 import Certificates from "./sections/certificates/Certificates";
 import Contact from "./sections/contact/Contact";
-import Section from "./shared/components/Section";
+import SectionHeader from "./shared/components/SectionHeader";
 import data from "./content/data";
 
 export default function App() {
@@ -18,7 +18,16 @@ export default function App() {
     mass: 0.4,
   });
 
-  const { person, social, moreAboutMe, projects, certificates, timeline, conceptTags, skills } = data;
+  const {
+    person,
+    social,
+    moreAboutMe,
+    projects,
+    certificates,
+    timeline,
+    conceptTags,
+    skills,
+  } = data;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -53,9 +62,13 @@ export default function App() {
         <ProjectsStack projects={projects} id="projects" />
         <Skills skillValues={skills} conceptTags={conceptTags} id="skills" />
 
-        <Section id="certificates" label="Achievements" title="*Certifications* & Badges">
+        <div id="certificates" className="w-full flex flex-col items-center pb-12">
+          <SectionHeader
+            label="Achievements"
+            title="*Certifications* & Badges"
+          />
           <Certificates certificates={certificates} />
-        </Section>
+        </div>
 
         <Contact person={person} social={social} />
 

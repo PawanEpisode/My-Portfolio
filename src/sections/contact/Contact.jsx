@@ -10,7 +10,7 @@ export default function Contact({ person, social }) {
       {/* Ambient background glow */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_100%,rgba(129,140,248,0.07),transparent)]" />
 
-      <div className="relative z-10 max-w-3xl mx-auto">
+      <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
         {/* Section label */}
         <motion.p
           initial={{ opacity: 0, x: -16 }}
@@ -28,7 +28,7 @@ export default function Contact({ person, social }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="section-title-main mb-4"
+          className="section-title-main mb-4 text-center"
         >
           {"Let's build something "}
           <span className="section-title-accent">remarkable</span>

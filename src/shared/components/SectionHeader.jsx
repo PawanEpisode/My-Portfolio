@@ -10,7 +10,7 @@ import { parseMixedTitle } from "../utils/parseMixedTitle";
 export default function SectionHeader({ label, title }) {
   return (
     <div className="relative border-t border-border px-6 pb-12 pt-20">
-      <div className="max-w-6xl mx-auto relative">
+      <div className="max-w-6xl mx-auto relative flex flex-col items-center">
         <motion.p
           initial={{ opacity: 0, x: -16 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -26,7 +26,7 @@ export default function SectionHeader({ label, title }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="section-title-main max-w-2xl"
+          className="section-title-main max-w-2xl text-center"
         >
           {parseMixedTitle(title)}
         </motion.h2>

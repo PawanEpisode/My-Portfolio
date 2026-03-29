@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Menu, X, FileText } from "lucide-react";
 import { useScrolled } from "../shared/hooks/useScrolled";
 import ThemeToggleButton from "../theme/ThemeToggleButton.jsx";
+import { Logo } from "../assets/index.jsx";
 
 const NAV_ITEMS = [
   { label: "Experience",   href: "#experience" },
@@ -20,8 +21,6 @@ export default function Header({ person, social, moreAboutMe }) {
   const scrolled = useScrolled(40);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const initials = name.split(" ").map((n) => n[0]).join("");
-
   return (
     <>
       <motion.header
@@ -37,9 +36,10 @@ export default function Header({ person, social, moreAboutMe }) {
         >
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2.5 group">
-            <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#818cf8] to-[#22d3ee] text-sm font-bold text-white">
+            {/* <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#818cf8] to-[#22d3ee] text-sm font-bold text-white">
               {initials}
-            </span>
+            </span> */}
+            <img src={Logo} alt="Logo" className="w-8 h-8 rounded-full" />
             <span className="hidden text-sm font-semibold text-foreground sm:block">
               {name}
             </span>
