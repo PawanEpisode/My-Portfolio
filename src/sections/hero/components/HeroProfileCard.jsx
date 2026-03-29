@@ -16,117 +16,55 @@ export default function HeroProfileCard({ person, social }) {
       initial={{ opacity: 0, x: 48 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-      className="relative flex items-center justify-center mt-12 lg:mt-0 lg:justify-end"
+      className="relative mt-12 flex items-center justify-center lg:mt-0 lg:justify-end"
     >
       {/* Ambient glow behind card */}
-      <div
-        style={{
-          position: "absolute",
-          width: "clamp(300px, 38vw, 460px)",
-          height: "clamp(300px, 38vw, 460px)",
-          borderRadius: "50%",
-          background: "radial-gradient(ellipse at center, rgba(129,140,248,0.16), rgba(34,211,238,0.06) 55%, transparent 75%)",
-          filter: "blur(28px)",
-          pointerEvents: "none",
-        }}
-      />
+      <div className="pointer-events-none absolute h-[clamp(300px,38vw,460px)] w-[clamp(300px,38vw,460px)] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(129,140,248,0.16),rgba(34,211,238,0.06)_55%,transparent_75%)] blur-[28px]" />
 
       {/* Profile card */}
-      <div
-        style={{
-          position: "relative",
-          width: "clamp(280px, 34vw, 400px)",
-          borderRadius: 28,
-          background: "rgba(255,255,255,0.03)",
-          border: "1px solid rgba(255,255,255,0.1)",
-          boxShadow: "0 40px 100px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.08)",
-          backdropFilter: "blur(24px)",
-          overflow: "visible",
-        }}
-      >
+      <div className="relative w-[clamp(280px,34vw,400px)] overflow-visible rounded-[28px] border border-white/10 bg-white/[0.03] shadow-[0_40px_100px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-[24px]">
         {/* Faux browser chrome */}
-        <div
-          style={{
-            padding: "12px 16px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            borderBottom: "1px solid rgba(255,255,255,0.055)",
-          }}
-        >
-          <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+        <div className="flex items-center justify-between border-b border-white/[0.055] px-4 py-3">
+          <div className="flex items-center gap-1.5">
             {["#ff5f57", "#febc2e", "#28c840"].map((c) => (
-              <div key={c} style={{ width: 10, height: 10, borderRadius: "50%", background: c }} />
+              <div
+                key={c}
+                className="h-2.5 w-2.5 rounded-full"
+                style={{ background: c }}
+              />
             ))}
           </div>
-          <span
-            style={{
-              fontSize: 11,
-              fontFamily: '"DM Mono", monospace',
-              color: "var(--text-subtle)",
-              letterSpacing: "0.04em",
-            }}
-          >
+          <span className="font-['DM_Mono',monospace] text-[11px] tracking-[0.04em] text-subtle">
             pawan.dev/profile
           </span>
-          <div style={{ width: 52 }} />
+          <div className="w-[52px]" />
         </div>
 
         {/* Profile photo */}
-        <div style={{ padding: "16px 16px 0" }}>
-          <div
-            style={{
-              borderRadius: 18,
-              overflow: "hidden",
-              position: "relative",
-              aspectRatio: "4 / 5",
-              background: "rgba(129,140,248,0.06)",
-            }}
-          >
+        <div className="px-4 pt-4">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[18px] bg-[rgba(129,140,248,0.06)]">
             <img
               src={profilePhoto}
               alt={name}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              className="block h-full w-full object-cover"
               loading="eager"
             />
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background: "linear-gradient(to top, rgba(3,7,17,0.55) 0%, transparent 45%)",
-              }}
-            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(3,7,17,0.55)] from-0% to-transparent to-45%" />
           </div>
         </div>
 
         {/* Card footer: name + availability */}
-        <div
-          style={{
-            padding: "14px 18px 18px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
+        <div className="flex items-center justify-between px-[18px] pb-[18px] pt-3.5">
           <div>
-            <p style={{ fontSize: 15, fontWeight: 800, color: "var(--text-primary)", lineHeight: 1.2 }}>
+            <p className="text-[15px] font-extrabold leading-tight text-foreground">
               {name}
             </p>
-            <p style={{ fontSize: 11, fontFamily: '"DM Mono", monospace', color: "var(--text-muted)", marginTop: 3 }}>
+            <p className="mt-0.5 font-['DM_Mono',monospace] text-[11px] text-muted">
               Frontend Engineer · 4+ yrs
             </p>
           </div>
-          <div
-            style={{
-              display: "flex", alignItems: "center", gap: 5,
-              padding: "5px 11px", borderRadius: 9999,
-              background: "rgba(34,211,238,0.08)",
-              border: "1px solid rgba(34,211,238,0.22)",
-              fontSize: 11, fontWeight: 600,
-              color: "var(--accent-cyan)", whiteSpace: "nowrap",
-            }}
-          >
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22d3ee", animation: "glow-pulse 2s ease-in-out infinite" }} />
+          <div className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-[rgba(34,211,238,0.22)] bg-[rgba(34,211,238,0.08)] px-[11px] py-1.5 text-[11px] font-semibold text-accent-cyan">
+            <span className="h-1.5 w-1.5 animate-[glow-pulse_2s_ease-in-out_infinite] rounded-full bg-[#22d3ee]" />
             Available
           </div>
         </div>
@@ -140,28 +78,16 @@ export default function HeroProfileCard({ person, social }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           whileHover={{ scale: 1.05 }}
-          style={{
-            position: "absolute", top: -18, right: -22,
-            display: "flex", alignItems: "center", gap: 8,
-            padding: "8px 12px", borderRadius: 14,
-            background: "rgba(10,102,194,0.15)",
-            border: "1px solid rgba(10,102,194,0.35)",
-            backdropFilter: "blur(16px)", textDecoration: "none",
-            animation: "float-slow 7s ease-in-out infinite", cursor: "pointer",
-          }}
+          className="absolute -right-[22px] -top-[18px] flex cursor-pointer items-center gap-2 rounded-[14px] border border-[rgba(10,102,194,0.35)] bg-[rgba(10,102,194,0.15)] px-3 py-2 backdrop-blur-[16px] animate-[float-slow_7s_ease-in-out_infinite] no-underline"
         >
-          <div
-            style={{
-              width: 28, height: 28, borderRadius: 8, background: "#0A66C2",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              color: "#fff", fontSize: 12, fontWeight: 800, flexShrink: 0,
-            }}
-          >
+          <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg bg-[#0A66C2] text-xs font-extrabold text-white">
             in
           </div>
           <div>
-            <p style={{ fontSize: 11, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2 }}>Connect</p>
-            <p style={{ fontSize: 10, color: "var(--text-primary)" }}>on LinkedIn</p>
+            <p className="text-[11px] font-bold leading-tight text-foreground">
+              Connect
+            </p>
+            <p className="text-[10px] text-foreground">on LinkedIn</p>
           </div>
         </motion.a>
 
@@ -174,31 +100,20 @@ export default function HeroProfileCard({ person, social }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.3, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           whileHover={{ scale: 1.05 }}
-          style={{
-            position: "absolute", bottom: -18, left: -22,
-            display: "flex", alignItems: "center", gap: 8,
-            padding: "8px 12px", borderRadius: 14,
-            background: "rgba(255,255,255,0.04)",
-            border: "1px solid rgba(255,255,255,0.12)",
-            backdropFilter: "blur(16px)", textDecoration: "none",
-            animation: "float-slow-2 8s ease-in-out infinite", cursor: "pointer",
-          }}
+          className="absolute -bottom-[18px] -left-[22px] flex cursor-pointer items-center gap-2 rounded-[14px] border border-white/12 bg-white/[0.04] px-3 py-2 backdrop-blur-[16px] animate-[float-slow-2_8s_ease-in-out_infinite] no-underline"
         >
-          <div
-            style={{
-              width: 28, height: 28, borderRadius: 8,
-              background: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
-            }}
-          >
+          <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg border border-white/12 bg-white/[0.07]">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="white">
               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
             </svg>
           </div>
           <div>
-            <p style={{ fontSize: 11, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2 }}>Open Source</p>
-            <p style={{ fontSize: 10, color: "var(--text-primary)", fontFamily: '"DM Mono", monospace' }}>@PawanEpisode</p>
+            <p className="text-[11px] font-bold leading-tight text-foreground">
+              Open Source
+            </p>
+            <p className="font-['DM_Mono',monospace] text-[10px] text-foreground">
+              @PawanEpisode
+            </p>
           </div>
         </motion.a>
 
@@ -207,29 +122,19 @@ export default function HeroProfileCard({ person, social }) {
           initial={{ opacity: 0, x: -12 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1.5, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          style={{
-            position: "absolute", top: "28%", left: -28,
-            display: "flex", flexDirection: "column", gap: 6,
-            animation: "float-slow 9s ease-in-out infinite reverse",
-          }}
+          className="absolute -left-7 top-[28%] flex flex-col gap-1.5 animate-[float-slow_9s_ease-in-out_infinite_reverse]"
         >
           {[
-            { icon: "devicon-react-original colored",   label: "React" },
+            { icon: "devicon-react-original colored", label: "React" },
             { icon: "devicon-typescript-plain colored", label: "TS" },
-            { icon: "devicon-nextjs-plain",             label: "Next" },
+            { icon: "devicon-nextjs-plain colored", label: "Next" },
           ].map(({ icon, label }) => (
             <div
               key={label}
               title={label}
-              style={{
-                width: 36, height: 36, borderRadius: 10,
-                background: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                backdropFilter: "blur(12px)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-              }}
+              className="flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/10 bg-white/[0.08]"
             >
-              <i className={icon} style={{ fontSize: 18 }} />
+              <i className={`${icon} inline-block text-lg leading-none not-italic`} aria-hidden />
             </div>
           ))}
         </motion.div>
@@ -239,20 +144,14 @@ export default function HeroProfileCard({ person, social }) {
           initial={{ opacity: 0, x: 12 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1.6, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          style={{
-            position: "absolute", top: "60%", right: -22,
-            display: "flex", alignItems: "center", gap: 7,
-            padding: "8px 12px", borderRadius: 12,
-            background: "rgba(168,139,250,0.1)",
-            border: "1px solid rgba(168,139,250,0.25)",
-            backdropFilter: "blur(14px)",
-            animation: "float-slow-2 6s ease-in-out infinite",
-          }}
+          className="absolute -right-[22px] top-[60%] flex items-center gap-[7px] rounded-xl border border-[rgba(168,139,250,0.25)] bg-[rgba(168,139,250,0.1)] px-3 py-2 backdrop-blur-[14px] animate-[float-slow-2_6s_ease-in-out_infinite]"
         >
-          <Star size={13} style={{ color: "var(--accent-violet)", flexShrink: 0 }} />
+          <Star size={13} className="flex-shrink-0 text-accent-violet" />
           <div>
-            <p style={{ fontSize: 12, fontWeight: 800, color: "var(--text-primary)", lineHeight: 1 }}>8+</p>
-            <p style={{ fontSize: 9, color: "var(--text-primary)", marginTop: 2 }}>Projects</p>
+            <p className="text-xs font-extrabold leading-none text-foreground">
+              8+
+            </p>
+            <p className="mt-0.5 text-[9px] text-foreground">Projects</p>
           </div>
         </motion.div>
       </div>

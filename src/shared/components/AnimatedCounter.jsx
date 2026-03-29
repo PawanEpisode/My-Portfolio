@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
  */
 export default function AnimatedCounter({ current, total }) {
   return (
-    <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
+    <div className="flex items-baseline gap-1.5">
       <AnimatePresence mode="wait">
         <motion.span
           key={current}
@@ -17,13 +17,12 @@ export default function AnimatedCounter({ current, total }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
-          className="text-gradient-static"
-          style={{ fontSize: 40, fontWeight: 900, lineHeight: 1 }}
+          className="text-gradient-static text-[40px] font-black leading-none"
         >
           {String(current).padStart(2, "0")}
         </motion.span>
       </AnimatePresence>
-      <span style={{ fontSize: 16, fontWeight: 600, color: "var(--text-subtle)" }}>
+      <span className="text-base font-semibold text-subtle">
         / {String(total).padStart(2, "0")}
       </span>
     </div>

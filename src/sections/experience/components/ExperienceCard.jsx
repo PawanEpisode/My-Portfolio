@@ -4,72 +4,39 @@ import SkillChips from "./SkillChips";
 /** Full content rendered inside each experience stack card. */
 export default function ExperienceCard({ item }) {
   return (
-    <div
-      style={{
-        width: "100%", height: "100%", borderRadius: "20px", padding: "28px",
-        background: "rgb(10,12,26)",
-        border: "1px solid rgba(129,140,248,0.22)",
-        boxShadow: "0 32px 80px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05)",
-        backdropFilter: "blur(24px)",
-        display: "flex", flexDirection: "column", gap: "14px",
-        overflow: "hidden",
-      }}
-    >
+    <div className="flex h-full w-full flex-col gap-3.5 overflow-hidden rounded-[20px] border border-[rgba(129,140,248,0.22)] bg-[rgb(10,12,26)] p-7 shadow-[0_32px_80px_rgba(0,0,0,0.5),inset_0_0_0_1px_rgba(255,255,255,0.05)] backdrop-blur-[24px]">
       {/* Company header */}
-      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-        <div
-          style={{
-            width: 52, height: 52, borderRadius: 14, padding: 2,
-            background: "linear-gradient(135deg, #818cf8, #22d3ee)",
-            flexShrink: 0,
-          }}
-        >
-          <div
-            style={{
-              width: "100%", height: "100%", borderRadius: 12, overflow: "hidden",
-              background: "var(--bg-primary)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-            }}
-          >
+      <div className="flex items-center gap-3">
+        <div className="h-[52px] w-[52px] flex-shrink-0 rounded-[14px] bg-gradient-to-br from-[#818cf8] to-[#22d3ee] p-0.5">
+          <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-xl bg-background">
             {item.icon
-              ? <img src={item.icon} alt={item.headTitle} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-              : <Building2 size={22} style={{ color: "var(--text-muted)" }} />
+              ? <img src={item.icon} alt={item.headTitle} className="h-full w-full object-cover" />
+              : <Building2 size={22} className="text-muted" />
             }
           </div>
         </div>
 
-        <div style={{ minWidth: 0 }}>
+        <div className="min-w-0">
           <a
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              display: "inline-flex", alignItems: "center", gap: 4,
-              fontSize: 13, fontWeight: 700,
-              color: "var(--accent-indigo)", textDecoration: "none",
-            }}
+            className="inline-flex items-center gap-1 text-[13px] font-bold text-accent-indigo no-underline"
           >
             {item.headTitle}
             <ExternalLink size={11} />
           </a>
-          <p style={{ fontSize: 11, color: "var(--text-muted)", marginTop: 2 }}>{item.period}</p>
+          <p className="mt-0.5 text-[11px] text-muted">{item.period}</p>
         </div>
       </div>
 
       {/* Role title + type badge */}
       <div>
-        <h3 style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", lineHeight: 1.25 }}>
+        <h3 className="text-xl font-extrabold leading-tight text-foreground">
           {item.title}
         </h3>
         {item.subtitle && (
-          <span
-            style={{
-              display: "inline-block", fontSize: 11, padding: "3px 10px", borderRadius: 9999,
-              marginTop: 8, fontWeight: 600,
-              background: "rgba(34,211,238,0.1)", border: "1px solid rgba(34,211,238,0.25)",
-              color: "var(--accent-cyan)",
-            }}
-          >
+          <span className="mt-2 inline-block rounded-full border border-[rgba(34,211,238,0.25)] bg-[rgba(34,211,238,0.1)] px-2.5 py-0.5 text-[11px] font-semibold text-accent-cyan">
             {item.subtitle}
           </span>
         )}
@@ -77,16 +44,11 @@ export default function ExperienceCard({ item }) {
 
       {/* Bullet points */}
       {item.points && (
-        <ul style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <ul className="flex flex-col gap-2">
           {item.points.map((pt, i) => (
-            <li key={i} style={{ display: "flex", gap: 8, fontSize: 13, lineHeight: 1.5 }}>
-              <span
-                style={{
-                  marginTop: 7, width: 5, height: 5, borderRadius: "50%",
-                  flexShrink: 0, background: "var(--accent-indigo)",
-                }}
-              />
-              <span style={{ color: "var(--text-muted)" }}>{pt}</span>
+            <li key={i} className="flex gap-2 text-[13px] leading-normal">
+              <span className="mt-[7px] h-[5px] w-[5px] flex-shrink-0 rounded-full bg-accent-indigo" />
+              <span className="text-muted">{pt}</span>
             </li>
           ))}
         </ul>

@@ -75,10 +75,7 @@ export default function ContactForm({ person, social }) {
   };
 
   return (
-    <div
-      className="glass rounded-2xl p-6 sm:p-8"
-      style={{ border: "1px solid var(--border)" }}
-    >
+    <div className="glass rounded-2xl border border-border p-6 sm:p-8">
       <form onSubmit={handleSubmit} noValidate>
         {/* Name + Email row */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">

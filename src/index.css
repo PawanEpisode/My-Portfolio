@@ -20,6 +20,24 @@
   --glow-pink: rgba(244, 114, 182, 0.12);
 }
 
+/* ─── Tailwind theme bridge (:root tokens → utilities) ───────── */
+@theme {
+  --color-background: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-foreground: var(--text-primary);
+  --color-muted: var(--text-muted);
+  --color-subtle: var(--text-subtle);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-accent-indigo: var(--accent-indigo);
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-pink: var(--accent-pink);
+  --color-accent-violet: var(--accent-violet);
+  --shadow-focus: 0 0 0 3px var(--glow-indigo);
+}
+
 /* ─── Base ───────────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
@@ -385,4 +403,28 @@ body {
 .section-nav-btn:active {
   transform: scale(0.93);
   box-shadow: none;
+}
+
+/* ─── Devicon + Tailwind Preflight ───────────────────────────
+   Preflight resets every `::before` / `::after` (margin, padding, border).
+   Devicon draws glyphs via ::before + the "devicon" webfont — reinforce both
+   so icons keep working after @import "tailwindcss". */
+[class^="devicon-"]::before,
+[class*=" devicon-"]::before {
+  font-family: "devicon" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+i[class^="devicon-"],
+i[class*=" devicon-"] {
+  font-family: "devicon" !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  display: inline-block;
+  line-height: 1 !important;
+  vertical-align: -0.15em;
+  speak: never;
 }

@@ -21,19 +21,15 @@ export default function App() {
   const { person, social, moreAboutMe, projects, certificates, timeline, conceptTags, skills } = data;
 
   return (
-    <div style={{ backgroundColor: "var(--bg-primary)", color: "var(--text-primary)" }} className="min-h-screen">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Noise texture overlay */}
       <div className="noise-overlay" />
 
       {/* Scroll progress bar */}
       <div className="fixed left-0 right-0 top-0 h-[2px] z-[9999] pointer-events-none overflow-hidden">
         <motion.div
-          style={{
-            scaleX,
-            transformOrigin: "left",
-            height: "100%",
-            background: "linear-gradient(to right, #818cf8, #22d3ee, #f472b6)",
-          }}
+          className="origin-left h-full bg-gradient-to-r from-[#818cf8] via-[#22d3ee] to-[#f472b6]"
+          style={{ scaleX }}
         />
       </div>
 

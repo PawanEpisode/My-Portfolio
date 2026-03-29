@@ -30,7 +30,7 @@ export default function ConceptMarquee({ conceptTags }) {
   const baseDuration  = 50000;
 
   return (
-    <div className="py-14 px-6" style={{ borderTop: "1px solid var(--border)" }}>
+    <div className="border-t border-border px-6 py-14">
       <div className="max-w-6xl mx-auto">
         <motion.p
           initial={{ opacity: 0, y: 12 }}

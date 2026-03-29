@@ -74,7 +74,7 @@ export const DEVICON_MAP = {
   MongoDB:             "devicon-mongodb-plain colored",
   Postgres:            "devicon-postgresql-plain colored",
   ReactJS:             "devicon-react-original colored",
-  "Next.js":           "devicon-nextjs-plain",
+  "Next.js":           "devicon-nextjs-plain colored",
   "Node.js":           "devicon-nodejs-plain colored",
   SCSS:                "devicon-sass-plain colored",
   Sass:                "devicon-sass-plain colored",

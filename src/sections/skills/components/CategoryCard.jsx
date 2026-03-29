@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { CATEGORY_CONFIG, MAX_VISIBLE_TAGS } from "../constants";
+import { CATEGORY_CONFIG } from "../constants";
 import SkillTag from "./SkillTag";
 
 /**
@@ -14,44 +14,33 @@ export default function CategoryCard({ categoryKey, skills, state }) {
     <motion.div
       animate={{ scale: isActive ? 1 : 0.9 }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="rounded-2xl p-5 flex flex-col gap-3"
+      className="flex flex-col gap-3 rounded-2xl p-5 transition-[background,border-color] duration-[400ms]"
       style={{
         background: isActive ? cfg.bg : "var(--surface)",
         border: isActive
           ? `1px solid ${cfg.border}`
           : "1px solid var(--border)",
-        transition: "background 0.4s, border-color 0.4s",
       }}
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
           <span
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-2xl font-bold flex-shrink-0"
+            className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-2xl font-bold transition-all duration-[400ms]"
             style={{
               background: isActive ? cfg.bg : "var(--surface)",
-              color: isActive ? cfg.color : "var(--text-subtle)",
+              color: isActive ? '#ffffff' : "var(--text-subtle)",
               border: `1px solid ${cfg.border}`,
-              transition: "all 0.4s",
             }}
           >
             {cfg.icon}
           </span>
           <div>
             <h3
-              className="text-sm font-bold leading-tight"
-              style={{
-                color: isActive ? cfg.color : "var(--text-subtle)",
-                transition: "color 0.4s",
-              }}
+              className="text-sm font-bold leading-tight transition-colors duration-[400ms]"
+              style={{ color: isActive ? '#ffffff' : "var(--text-subtle)" }}
             >
               {cfg.label}
             </h3>
-            <p
-              className="text-xs mt-0.5"
-              style={{ color: "var(--text-subtle)" }}
-            >
-              {skills.length} skills
-            </p>
           </div>
         </div>
       </div>
@@ -69,7 +58,7 @@ export default function CategoryCard({ categoryKey, skills, state }) {
             <SkillTag
               key={skill}
               skill={skill}
-              color={cfg.color}
+              color={'#ffffff'}
               bg={cfg.bg}
               border={cfg.border}
               isActive={isActive}

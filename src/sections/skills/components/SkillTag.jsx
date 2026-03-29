@@ -13,10 +13,7 @@ export default function SkillTag({ skill, color, bg, border, isActive }) {
       }}
     >
       {iconClass && (
-        <i
-          className={iconClass}
-          style={{ fontSize: "13px", lineHeight: 1, flexShrink: 0 }}
-        />
+        <i className={`${iconClass} inline-block shrink-0 text-[13px] leading-none not-italic`} aria-hidden />
       )}
       {skill}
     </span>

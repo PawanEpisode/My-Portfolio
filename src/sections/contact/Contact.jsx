@@ -5,17 +5,10 @@ export default function Contact({ person, social }) {
   return (
     <section
       id="contact"
-      className="relative py-24 px-6"
-      style={{ borderTop: "1px solid var(--border)" }}
+      className="relative border-t border-border py-24 px-6"
     >
       {/* Ambient background glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 50% at 50% 100%, rgba(129,140,248,0.07), transparent)",
-        }}
-      />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_100%,rgba(129,140,248,0.07),transparent)]" />
 
       <div className="relative z-10 max-w-3xl mx-auto">
         {/* Section label */}
@@ -48,8 +41,7 @@ export default function Contact({ person, social }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-base mb-12"
-          style={{ color: "var(--text-muted)" }}
+          className="mb-12 text-base text-muted"
         >
           Have a project in mind? I respond within 24 hours and am open to
           exciting collaborations.

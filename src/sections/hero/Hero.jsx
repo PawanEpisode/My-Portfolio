@@ -27,12 +27,11 @@ export default function Hero({ person, social, moreAboutMe, projects, certificat
     <section
       id="home"
       ref={ref}
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-      style={{ paddingTop: "88px" }}
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden pt-[88px]"
     >
       <HeroBackground />
 
-      <motion.div style={{ y, opacity }} className="relative z-10 max-w-6xl mx-auto px-6 w-full">
+      <motion.div style={{ y, opacity }} className="relative z-10 mx-auto w-full max-w-6xl px-6">
         <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-88px)]">
           <HeroContent
             person={person}

@@ -13,32 +13,31 @@ function MobileSkillCategory({ categoryKey, skills, isActive, onToggle }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="rounded-2xl overflow-hidden"
+      className="overflow-hidden rounded-2xl bg-surface transition-[border-color] duration-300"
       style={{
-        background: "var(--surface)",
         border: isActive ? `1px solid ${cfg.border}` : "1px solid var(--border)",
-        transition: "border-color 0.3s",
       }}
     >
-      <button onClick={onToggle} className="w-full flex items-center justify-between p-5 text-left">
+      <button onClick={onToggle} className="flex w-full items-center justify-between p-5 text-left">
         <div className="flex items-center gap-3">
           <span
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold"
+            className="flex h-8 w-8 items-center justify-center rounded-lg text-sm font-bold"
             style={{ background: cfg.bg, color: cfg.color, border: `1px solid ${cfg.border}` }}
           >
             {cfg.icon}
           </span>
           <div>
-            <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
+            <h3 className="text-sm font-semibold text-foreground">
               {cfg.label}
             </h3>
-            <p className="text-xs" style={{ color: "var(--text-muted)" }}>{skills.length} skills</p>
+            <p className="text-xs text-muted">{skills.length} skills</p>
           </div>
         </div>
         <div
-          className="w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold transition-transform duration-200"
+          className="flex h-6 w-6 items-center justify-center rounded-full text-sm font-bold transition-transform duration-200"
           style={{
-            background: cfg.bg, color: cfg.color,
+            background: cfg.bg,
+            color: cfg.color,
             transform: isActive ? "rotate(45deg)" : "rotate(0deg)",
           }}
         >
@@ -52,8 +51,7 @@ function MobileSkillCategory({ categoryKey, skills, isActive, onToggle }) {
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.25 }}
-          className="px-5 pb-5"
-          style={{ borderTop: "1px solid var(--border)" }}
+          className="border-t border-border px-5 pb-5"
         >
           <div className="flex flex-wrap gap-2 pt-4">
             {skills.map((skill) => (
@@ -81,10 +79,10 @@ export default function MobileSkills({ skillValues }) {
   );
 
   return (
-    <section className="py-20 px-6" style={{ borderTop: "1px solid var(--border)" }}>
+    <section className="border-t border-border px-6 py-20">
       <div className="mb-12">
         <p className="section-label">Skills &amp; Expertise</p>
-        <h2 className="section-title-main" style={{ fontSize: "clamp(2rem, 8vw, 3rem)" }}>
+        <h2 className="section-title-main text-[clamp(2rem,8vw,3rem)]">
           Technologies I <em className="section-title-accent">master</em>
         </h2>
       </div>

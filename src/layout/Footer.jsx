@@ -7,19 +7,11 @@ export default function Footer({ person, social }) {
   const year = new Date().getFullYear();
 
   return (
-    <footer
-      className="relative py-16 px-6 overflow-hidden"
-      style={{ borderTop: "1px solid var(--border)" }}
-    >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse 50% 60% at 50% 100%, rgba(129,140,248,0.05), transparent)",
-        }}
-      />
+    <footer className="relative overflow-hidden border-t border-border px-6 py-16">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_50%_100%,rgba(129,140,248,0.05),transparent)]" />
 
-      <div className="relative z-10 max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-12">
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <div className="grid gap-12 md:grid-cols-3">
           {/* Brand */}
           <div className="md:col-span-1">
             <motion.div
@@ -28,19 +20,16 @@ export default function Footer({ person, social }) {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <span
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-white text-sm font-black"
-                  style={{ background: "linear-gradient(135deg, #818cf8, #22d3ee)" }}
-                >
+              <div className="mb-4 flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#818cf8] to-[#22d3ee] text-sm font-black text-white">
                   PK
                 </span>
                 <div>
-                  <p className="text-sm font-bold" style={{ color: "var(--text-primary)" }}>{name}</p>
-                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>Software Engineer</p>
+                  <p className="text-sm font-bold text-foreground">{name}</p>
+                  <p className="text-xs text-muted">Software Engineer</p>
                 </div>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              <p className="text-sm leading-relaxed text-muted">
                 Building fast, accessible, and delightful web experiences with modern frontend technologies.
               </p>
             </motion.div>
@@ -54,25 +43,22 @@ export default function Footer({ person, social }) {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="md:col-span-1"
           >
-            <h4 className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: "var(--text-muted)" }}>
+            <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-muted">
               Contact
             </h4>
             <div className="flex flex-col gap-3">
               <a
                 href={`mailto:${email}`}
-                className="flex items-center gap-2 text-sm transition-colors"
-                style={{ color: "var(--text-muted)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent-indigo)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
+                className="flex items-center gap-2 text-sm text-muted transition-colors hover:text-accent-indigo"
               >
                 <Mail size={14} />
                 {email}
               </a>
-              <span className="flex items-center gap-2 text-sm" style={{ color: "var(--text-muted)" }}>
+              <span className="flex items-center gap-2 text-sm text-muted">
                 <Phone size={14} />
                 {phone}
               </span>
-              <span className="flex items-center gap-2 text-sm" style={{ color: "var(--text-muted)" }}>
+              <span className="flex items-center gap-2 text-sm text-muted">
                 <MapPin size={14} />
                 {location}
               </span>
@@ -87,56 +73,24 @@ export default function Footer({ person, social }) {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="md:col-span-1"
           >
-            <h4 className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: "var(--text-muted)" }}>
+            <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-muted">
               Connect
             </h4>
             <div className="flex flex-col gap-3">
-              <a href={github} target="_blank" rel="noreferrer" className="flex items-center gap-3 group">
-                <div
-                  className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200"
-                  style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "rgba(255,255,255,0.08)";
-                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.18)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "var(--surface)";
-                    e.currentTarget.style.borderColor = "var(--border)";
-                  }}
-                >
-                  <Github size={15} style={{ color: "var(--text-muted)" }} />
+              <a href={github} target="_blank" rel="noreferrer" className="group flex items-center gap-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-surface transition-all duration-200 hover:border-border-hover hover:bg-white/[0.08]">
+                  <Github size={15} className="text-muted" />
                 </div>
-                <span
-                  className="text-sm transition-colors"
-                  style={{ color: "var(--text-muted)" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-primary)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
-                >
+                <span className="text-sm text-muted transition-colors group-hover:text-foreground">
                   GitHub
                 </span>
               </a>
 
-              <a href={linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-3 group">
-                <div
-                  className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200"
-                  style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "rgba(129,140,248,0.15)";
-                    e.currentTarget.style.borderColor = "rgba(129,140,248,0.35)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "var(--surface)";
-                    e.currentTarget.style.borderColor = "var(--border)";
-                  }}
-                >
-                  <Linkedin size={15} style={{ color: "var(--text-muted)" }} />
+              <a href={linkedin} target="_blank" rel="noreferrer" className="group flex items-center gap-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-surface transition-all duration-200 hover:border-[rgba(129,140,248,0.35)] hover:bg-[rgba(129,140,248,0.15)]">
+                  <Linkedin size={15} className="text-muted" />
                 </div>
-                <span
-                  className="text-sm transition-colors"
-                  style={{ color: "var(--text-muted)" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-primary)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
-                >
+                <span className="text-sm text-muted transition-colors group-hover:text-foreground">
                   LinkedIn
                 </span>
               </a>
@@ -145,8 +99,7 @@ export default function Footer({ person, social }) {
                 href={followOnLinkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="btn-primary w-fit mt-2 text-sm"
-                style={{ padding: "0.5rem 1.25rem", fontSize: "0.8125rem" }}
+                className="btn-primary mt-2 w-fit px-5 py-2 text-[0.8125rem]"
               >
                 Follow on LinkedIn
               </a>
@@ -160,15 +113,14 @@ export default function Footer({ person, social }) {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
-          style={{ borderTop: "1px solid var(--border)" }}
+          className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 sm:flex-row"
         >
-          <p className="text-xs flex items-center gap-1.5" style={{ color: "var(--text-subtle)" }}>
+          <p className="flex items-center gap-1.5 text-xs text-subtle">
             Designed &amp; built with{" "}
-            <Heart size={11} style={{ color: "#f472b6", fill: "#f472b6" }} />
+            <Heart size={11} className="fill-[#f472b6] text-[#f472b6]" />
             {" "}by {name}
           </p>
-          <p className="text-xs" style={{ color: "var(--text-subtle)" }}>
+          <p className="text-xs text-subtle">
             © {year} · All rights reserved
           </p>
         </motion.div>

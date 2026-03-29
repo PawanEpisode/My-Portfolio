@@ -19,18 +19,9 @@ export default function DesktopSkills({ skillValues }) {
       <div className="sticky top-[5%] overflow-hidden">
         <SectionNav prevSection="projects" nextSection="certificates" />
 
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 55% 50% at 28% 50%, rgba(129,140,248,0.05), transparent)",
-          }}
-        />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_50%_at_28%_50%,rgba(129,140,248,0.05),transparent)]" />
 
-        <div
-          className="relative z-10 h-full flex flex-col px-6 max-w-6xl mx-auto w-full"
-          style={{ paddingTop: "80px", paddingBottom: "32px" }}
-        >
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl flex-col px-6 pb-8 pt-20">
           <div className="flex gap-10 w-full items-start mb-8">
             <MilestoneBar activeIndex={activeIndex} />
           </div>

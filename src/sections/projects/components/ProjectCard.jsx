@@ -2,7 +2,6 @@ import { useRef, useState, useCallback } from "react";
 import {
   motion,
   useTransform,
-  AnimatePresence,
   useMotionValue,
   useSpring,
 } from "framer-motion";
@@ -15,14 +14,10 @@ function CursorButton({ title, accent, isVisible }) {
     <motion.div
       animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.65 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
+      className="pointer-events-none inline-flex select-none items-center gap-2 whitespace-nowrap rounded-full px-[22px] py-[11px] text-[13px] font-bold tracking-wide text-white"
       style={{
-        display: "inline-flex", alignItems: "center", gap: 8,
-        padding: "11px 22px", borderRadius: 9999,
-        fontWeight: 700, fontSize: 13, color: "#fff",
         background: `linear-gradient(135deg, ${accent.from}, ${accent.to})`,
         boxShadow: `0 8px 32px ${accent.from}66, 0 2px 8px rgba(0,0,0,0.5)`,
-        whiteSpace: "nowrap", pointerEvents: "none", userSelect: "none",
-        letterSpacing: "0.01em",
       }}
     >
       Open {title}
@@ -58,6 +53,11 @@ export default function ProjectCard({ project, index, isActive }) {
 
   if (!isActive && isHovered) setIsHovered(false);
 
+  const cardBorder = isActive ? `${accent.from}48` : "rgba(255,255,255,0.07)";
+  const cardShadow = isActive
+    ? `0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px ${accent.from}1a, inset 0 1px 0 rgba(255,255,255,0.06)`
+    : "0 8px 24px rgba(0,0,0,0.3)";
+
   return (
     // Outer wrapper: no overflow:hidden so the cursor button can roam freely
     // across the full card area without being clipped.
@@ -66,22 +66,15 @@ export default function ProjectCard({ project, index, isActive }) {
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      style={{
-        width: "100%", height: "100%", position: "relative",
-        cursor: isHovered && isActive ? "none" : "auto",
-      }}
+      className="relative h-full w-full"
+      style={{ cursor: isHovered && isActive ? "none" : "auto" }}
     >
       {/* Visible card with rounded corners + clipped content */}
       <div
+        className="relative flex h-full w-full overflow-hidden rounded-[20px] bg-[rgb(10,12,26)] transition-[border-color,box-shadow] duration-[400ms] ease-out"
         style={{
-          width: "100%", height: "100%", borderRadius: 20, overflow: "hidden",
-          background: "rgb(10,12,26)",
-          border: `1px solid ${isActive ? `${accent.from}48` : "rgba(255,255,255,0.07)"}`,
-          boxShadow: isActive
-            ? `0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px ${accent.from}1a, inset 0 1px 0 rgba(255,255,255,0.06)`
-            : "0 8px 24px rgba(0,0,0,0.3)",
-          display: "flex", position: "relative",
-          transition: "border-color 0.4s ease, box-shadow 0.4s ease",
+          border: `1px solid ${cardBorder}`,
+          boxShadow: cardShadow,
         }}
       >
         {/* Full-card click anchor (active only) */}
@@ -91,71 +84,58 @@ export default function ProjectCard({ project, index, isActive }) {
             target="_blank"
             rel="noreferrer"
             aria-label={`Open ${title}`}
-            style={{ position: "absolute", inset: 0, zIndex: 15, cursor: isHovered ? "none" : "pointer" }}
+            className="absolute inset-0 z-[15]"
+            style={{ cursor: isHovered ? "none" : "pointer" }}
           />
         )}
 
         {/* Left: project image */}
-        <div style={{ width: "70%", flexShrink: 0, position: "relative", overflow: "hidden" }}>
+        <div className="relative w-[70%] flex-shrink-0 overflow-hidden">
           <motion.img
             src={photo}
             alt={title}
             animate={{ scale: isActive ? 1.05 : 1 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            style={{ width: "100%", height: "100%", objectFit: "fill", display: "block" }}
+            className="block h-full w-full object-fill"
           />
           <motion.div
             animate={{ opacity: isActive ? 1 : 0.2 }}
             transition={{ duration: 0.5 }}
+            className="absolute inset-0"
             style={{
-              position: "absolute", inset: 0,
               background: `linear-gradient(160deg, ${accent.from}2a, ${accent.to}16)`,
             }}
           />
-          <div
-            style={{
-              position: "absolute", top: 0, right: 0, bottom: 0, width: "48%",
-              background: "linear-gradient(to right, transparent, rgb(10,12,26))",
-            }}
-          />
+          <div className="absolute inset-y-0 right-0 w-[48%] bg-gradient-to-r from-transparent to-[rgb(10,12,26)]" />
         </div>
 
         {/* Right: project details */}
-        <div
-          style={{
-            flex: 1, padding: "28px 28px 28px 14px",
-            display: "flex", flexDirection: "column", gap: 14, justifyContent: "center",
-            overflow: "hidden", position: "relative", zIndex: 1,
-          }}
-        >
+        <div className="relative z-[1] flex flex-1 flex-col justify-center gap-3.5 overflow-hidden py-7 pl-3.5 pr-7">
           <span
+            className="self-start rounded-full border px-2.5 py-0.5 text-[11px] font-semibold tracking-wide"
             style={{
-              alignSelf: "flex-start", padding: "3px 10px", borderRadius: 9999,
-              fontSize: 11, fontWeight: 600,
-              background: `${accent.from}18`, border: `1px solid ${accent.from}38`,
-              color: accent.from, letterSpacing: "0.02em",
+              background: `${accent.from}18`,
+              borderColor: `${accent.from}38`,
+              color: accent.from,
             }}
           >
             {period}
           </span>
 
-          <h3 style={{ fontSize: "clamp(1.05rem, 1.35vw, 1.4rem)", fontWeight: 800, lineHeight: 1.25, color: "var(--text-primary)", letterSpacing: "-0.025em" }}>
+          <h3 className="text-[clamp(1.05rem,1.35vw,1.4rem)] font-extrabold leading-tight tracking-[-0.025em] text-foreground">
             {title}
           </h3>
 
-          <p style={{ fontSize: 13, lineHeight: 1.7, color: "var(--text-muted)", display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+          <p className="line-clamp-3 text-[13px] leading-[1.7] text-muted">
             {description}
           </p>
 
           {tags && (
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+            <div className="flex flex-wrap gap-1.5">
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  style={{
-                    padding: "3px 9px", borderRadius: 9999, fontSize: 11, fontWeight: 500,
-                    background: "rgba(255,255,255,0.04)", border: "1px solid var(--border)", color: "var(--text-muted)",
-                  }}
+                  className="rounded-full border border-border bg-white/[0.04] px-2 py-0.5 text-[11px] font-medium text-muted"
                 >
                   {tag}
                 </span>
@@ -169,11 +149,8 @@ export default function ProjectCard({ project, index, isActive }) {
           so it can freely follow the cursor across the full card area. */}
       {isActive && (
         <motion.div
-          style={{
-            position: "absolute", top: 0, left: 0,
-            x: btnX, y: btnY,
-            pointerEvents: "none", zIndex: 20,
-          }}
+          className="pointer-events-none absolute left-0 top-0 z-20"
+          style={{ x: btnX, y: btnY }}
         >
           <CursorButton title={title} accent={accent} isVisible={isHovered} />
         </motion.div>

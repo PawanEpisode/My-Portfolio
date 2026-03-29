@@ -18,16 +18,7 @@ export default function SkillChips({ skills }) {
   const hidden = sorted.slice(VISIBLE_CHIPS);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "6px",
-        marginTop: "12px",
-        maxHeight: "200px",
-        overflow: "auto",
-      }}
-    >
+    <div className="mt-3 flex max-h-[200px] flex-wrap gap-1.5 overflow-auto">
       {visible.map((s) => (
         <SkillPill key={s} skill={s} />
       ))}
@@ -37,20 +28,7 @@ export default function SkillChips({ skills }) {
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 4,
-            padding: "3px 10px",
-            borderRadius: 9999,
-            fontSize: 11,
-            fontWeight: 500,
-            background: "rgba(255,255,255,0.04)",
-            border: "1px solid var(--border)",
-            color: "var(--text-muted)",
-            cursor: "pointer",
-            transition: "border-color 0.2s",
-          }}
+          className="inline-flex cursor-pointer items-center gap-1 rounded-full border border-border bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-medium text-muted transition-[border-color] duration-200 hover:border-border-hover"
         >
           {expanded ? (
             <>

@@ -31,17 +31,8 @@ export default function SectionNav({ prevSection, nextSection, style }) {
       initial={{ opacity: 0, scale: 0.75 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.4, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      style={{
-        position: "absolute",
-        right: 24,
-        bottom: 24,
-        zIndex: 100,
-        display: "flex",
-        flexDirection: "column",
-        gap: 6,
-        pointerEvents: "auto",
-        ...style,
-      }}
+      className="pointer-events-auto absolute bottom-6 right-6 z-[100] flex flex-col gap-1.5"
+      style={style}
     >
       {prevSection && (
         <button

@@ -14,17 +14,10 @@ export default function Section({ id, label, title, subtitle, children }) {
   return (
     <section
       id={id}
-      className="relative py-24 px-6"
-      style={{ borderTop: "1px solid var(--border)" }}
+      className="relative border-t border-border px-6 py-24"
     >
       {/* Subtle background glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(129,140,248,0.04), transparent)",
-        }}
-      />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(129,140,248,0.04),transparent)]" />
 
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Header row */}
@@ -57,8 +50,7 @@ export default function Section({ id, label, title, subtitle, children }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-4 text-base max-w-lg"
-              style={{ color: "var(--text-muted)" }}
+              className="mt-4 max-w-lg text-base text-muted"
             >
               {subtitle}
             </motion.p>

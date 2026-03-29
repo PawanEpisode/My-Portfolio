@@ -4,10 +4,10 @@ import { ACCENT_COLORS } from "../constants";
 /** Mobile card-list layout for the projects section. */
 export default function MobileProjectsStack({ projects }) {
   return (
-    <section className="py-20 px-6" style={{ borderTop: "1px solid var(--border)" }}>
+    <section className="border-t border-border px-6 py-20">
       <div className="mb-12">
         <p className="section-label">Selected Work</p>
-        <h2 className="section-title-main" style={{ fontSize: "clamp(2rem, 8vw, 3rem)" }}>
+        <h2 className="section-title-main text-[clamp(2rem,8vw,3rem)]">
           Projects that{" "}
           <em className="section-title-accent">made an impact</em>
         </h2>
@@ -26,54 +26,47 @@ export default function MobileProjectsStack({ projects }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: idx * 0.05, ease: [0.22, 1, 0.36, 1] }}
-              style={{
-                display: "block", borderRadius: 16, overflow: "hidden",
-                background: "rgb(10,12,26)", border: "1px solid var(--border)", textDecoration: "none",
-              }}
+              className="block overflow-hidden rounded-2xl border border-border bg-[rgb(10,12,26)] no-underline"
             >
-              <div style={{ height: 180, position: "relative", overflow: "hidden" }}>
+              <div className="relative h-[180px] overflow-hidden">
                 <img
                   src={project.photo}
                   alt={project.title}
-                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  className="block h-full w-full object-cover"
                 />
-                <div style={{ position: "absolute", inset: 0, background: `linear-gradient(135deg, ${accent.from}22, transparent)` }} />
-                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 56, background: "linear-gradient(to top, rgb(10,12,26), transparent)" }} />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: `linear-gradient(135deg, ${accent.from}22, transparent)` }}
+                />
+                <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[rgb(10,12,26)] to-transparent" />
               </div>
 
-              <div style={{ padding: "16px" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8, marginBottom: 8 }}>
-                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.3 }}>
+              <div className="p-4">
+                <div className="mb-2 flex items-start justify-between gap-2">
+                  <h3 className="text-base font-bold leading-snug text-foreground">
                     {project.title}
                   </h3>
                   <span
+                    className="flex-shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold"
                     style={{
-                      fontSize: 10, padding: "2px 8px", borderRadius: 9999,
-                      background: `${accent.from}18`, border: `1px solid ${accent.from}38`,
-                      color: accent.from, flexShrink: 0, fontWeight: 600,
+                      background: `${accent.from}18`,
+                      borderColor: `${accent.from}38`,
+                      color: accent.from,
                     }}
                   >
                     {project.period}
                   </span>
                 </div>
 
-                <p
-                  style={{
-                    fontSize: 12, color: "var(--text-muted)", lineHeight: 1.65, marginBottom: 10,
-                    display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden",
-                  }}
-                >
+                <p className="mb-2.5 line-clamp-2 text-xs leading-relaxed text-muted">
                   {project.description}
                 </p>
 
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                <div className="flex flex-wrap gap-1">
                   {project.tags?.slice(0, 3).map((tag) => (
                     <span
                       key={tag}
-                      style={{
-                        fontSize: 10, padding: "2px 8px", borderRadius: 9999,
-                        background: "rgba(255,255,255,0.04)", border: "1px solid var(--border)", color: "var(--text-muted)",
-                      }}
+                      className="rounded-full border border-border bg-white/[0.04] px-2 py-0.5 text-[10px] text-muted"
                     >
                       {tag}
                     </span>

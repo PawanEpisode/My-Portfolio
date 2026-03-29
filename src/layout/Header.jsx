@@ -35,13 +35,10 @@ export default function Header({ person, social, moreAboutMe }) {
         >
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2.5 group">
-            <span
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
-              style={{ background: "linear-gradient(135deg, #818cf8, #22d3ee)" }}
-            >
+            <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#818cf8] to-[#22d3ee] text-sm font-bold text-white">
               {initials}
             </span>
-            <span className="text-sm font-semibold hidden sm:block" style={{ color: "var(--text-primary)" }}>
+            <span className="hidden text-sm font-semibold text-foreground sm:block">
               {name}
             </span>
           </a>
@@ -52,10 +49,7 @@ export default function Header({ person, social, moreAboutMe }) {
               <a
                 key={item.href}
                 href={item.href}
-                className="px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-white/8"
-                style={{ color: "var(--text-muted)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-primary)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
+                className="rounded-lg px-3 py-1.5 text-sm font-medium text-muted transition-all duration-200 hover:bg-white/8 hover:text-foreground"
               >
                 {item.label}
               </a>
@@ -69,16 +63,7 @@ export default function Header({ person, social, moreAboutMe }) {
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub"
-              className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200"
-              style={{ color: "var(--text-muted)" }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = "var(--text-primary)";
-                e.currentTarget.style.background = "var(--surface-hover)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = "var(--text-muted)";
-                e.currentTarget.style.background = "transparent";
-              }}
+              className="flex h-8 w-8 items-center justify-center rounded-lg text-muted transition-all duration-200 hover:bg-surface-hover hover:text-foreground"
             >
               <Github size={16} />
             </a>
@@ -88,16 +73,7 @@ export default function Header({ person, social, moreAboutMe }) {
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
-              className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200"
-              style={{ color: "var(--text-muted)" }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = "#818cf8";
-                e.currentTarget.style.background = "rgba(129,140,248,0.1)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = "var(--text-muted)";
-                e.currentTarget.style.background = "transparent";
-              }}
+              className="flex h-8 w-8 items-center justify-center rounded-lg text-muted transition-all duration-200 hover:bg-[rgba(129,140,248,0.1)] hover:text-accent-indigo"
             >
               <Linkedin size={16} />
             </a>
@@ -106,18 +82,7 @@ export default function Header({ person, social, moreAboutMe }) {
               href={resumeViewLink}
               target="_blank"
               rel="noreferrer"
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200"
-              style={{
-                background: "linear-gradient(135deg, rgba(129,140,248,0.15), rgba(34,211,238,0.1))",
-                border: "1px solid rgba(129,140,248,0.25)",
-                color: "var(--accent-indigo)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "linear-gradient(135deg, rgba(129,140,248,0.25), rgba(34,211,238,0.15))";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "linear-gradient(135deg, rgba(129,140,248,0.15), rgba(34,211,238,0.1))";
-              }}
+              className="hidden items-center gap-1.5 rounded-lg border border-[rgba(129,140,248,0.25)] bg-gradient-to-br from-[rgba(129,140,248,0.15)] to-[rgba(34,211,238,0.1)] px-3 py-1.5 text-xs font-semibold text-accent-indigo transition-all duration-200 hover:from-[rgba(129,140,248,0.25)] hover:to-[rgba(34,211,238,0.15)] sm:flex"
             >
               <FileText size={13} />
               Resume
@@ -125,8 +90,7 @@ export default function Header({ person, social, moreAboutMe }) {
 
             {/* Mobile menu toggle */}
             <button
-              className="md:hidden w-8 h-8 rounded-lg flex items-center justify-center"
-              style={{ color: "var(--text-muted)", background: "var(--surface)" }}
+              className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface text-muted md:hidden"
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Toggle menu"
             >
@@ -144,24 +108,14 @@ export default function Header({ person, social, moreAboutMe }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-[72px] left-4 right-4 z-[499] rounded-2xl p-4 flex flex-col gap-1 glass-elevated shadow-[0_16px_48px_rgba(0,0,0,0.5)]"
-            style={{ borderColor: "rgba(255,255,255,0.1)" }}
+            className="glass-elevated fixed top-[72px] left-4 right-4 z-[499] flex flex-col gap-1 rounded-2xl border border-white/10 p-4 shadow-[0_16px_48px_rgba(0,0,0,0.5)]"
           >
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200"
-                style={{ color: "var(--text-muted)" }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "var(--text-primary)";
-                  e.currentTarget.style.background = "var(--surface-hover)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "var(--text-muted)";
-                  e.currentTarget.style.background = "transparent";
-                }}
+                className="rounded-xl px-4 py-3 text-sm font-medium text-muted transition-all duration-200 hover:bg-surface-hover hover:text-foreground"
               >
                 {item.label}
               </a>

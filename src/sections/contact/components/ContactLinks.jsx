@@ -1,24 +1,12 @@
 import { Mail, Github, Linkedin } from "lucide-react";
 
-const LINK_STYLE_BASE = {
-  display: "inline-flex",
-  alignItems: "center",
-  gap: "0.4rem",
-  fontSize: "0.8125rem",
-  color: "var(--text-muted)",
-  transition: "color 0.2s",
-  textDecoration: "none",
-};
-
 function ContactLink({ href, icon: Icon, label, external = false }) {
   return (
     <a
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
-      style={LINK_STYLE_BASE}
-      onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent-indigo)")}
-      onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
+      className="inline-flex items-center gap-[0.4rem] text-[0.8125rem] text-muted no-underline transition-colors hover:text-accent-indigo"
     >
       <Icon size={13} />
       {label}
@@ -28,10 +16,7 @@ function ContactLink({ href, icon: Icon, label, external = false }) {
 
 function Separator() {
   return (
-    <span
-      className="hidden sm:block"
-      style={{ color: "var(--border-hover)", userSelect: "none" }}
-    >
+    <span className="hidden select-none text-border-hover sm:block">
       ·
     </span>
   );
@@ -39,10 +24,7 @@ function Separator() {
 
 export default function ContactLinks({ person, social }) {
   return (
-    <div
-      className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 pt-5 mt-5"
-      style={{ borderTop: "1px solid var(--border)" }}
-    >
+    <div className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 border-t border-border pt-5">
       <ContactLink
         href={`mailto:${person.email}`}
         icon={Mail}

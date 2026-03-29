@@ -30,15 +30,12 @@ function StackCard({ project, index, totalCards, scrollYProgress, isActive }) {
 
   return (
     <motion.div
+      className="absolute inset-0 origin-top will-change-[transform,opacity]"
       style={{
-        position: "absolute",
-        inset: 0,
         zIndex: (index + 1) * 10,
         y,
         scale,
         opacity,
-        transformOrigin: "top center",
-        willChange: "transform, opacity",
         // Non-active cards have higher z-index than cards below them and
         // would intercept mouse events even at zero opacity without this.
         pointerEvents: isActive ? "auto" : "none",
@@ -58,37 +55,13 @@ export default function DesktopProjectsStack({ projects }) {
 
   return (
     <div ref={containerRef} style={{ height: totalHeight }}>
-      <div
-        style={{
-          position: "sticky",
-          top: "20%",
-          height: "60vh",
-          overflow: "hidden",
-        }}
-      >
+      <div className="sticky top-[20%] h-[60vh] overflow-hidden">
         <SectionNav prevSection="experience" nextSection="skills" />
 
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            pointerEvents: "none",
-            background:
-              "radial-gradient(ellipse 55% 50% at 28% 50%, rgba(129,140,248,0.06), transparent)",
-          }}
-        />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_50%_at_28%_50%,rgba(129,140,248,0.06),transparent)]" />
 
-        <div
-          style={{
-            position: "relative",
-            zIndex: 1,
-            height: "100%",
-            maxWidth: 1200,
-            margin: "0 auto",
-            padding: "24px",
-          }}
-        >
-          <div style={{ position: "relative", height: '100%', width: '100%' }}>
+        <div className="relative z-[1] mx-auto h-full max-w-[1200px] p-6">
+          <div className="relative h-full w-full">
             {projects.map((project, idx) => (
               <StackCard
                 key={idx}

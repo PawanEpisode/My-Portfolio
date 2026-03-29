@@ -18,11 +18,12 @@ function StackCard({ item, index, totalCards, scrollYProgress, isActive }) {
 
   return (
     <motion.div
+      className="absolute inset-0 origin-top will-change-[transform,opacity]"
       style={{
-        position: "absolute", inset: 0, zIndex: (index + 1) * 10,
-        y, scale, opacity,
-        transformOrigin: "top center",
-        willChange: "transform, opacity",
+        zIndex: (index + 1) * 10,
+        y,
+        scale,
+        opacity,
         // Only the visible card should receive pointer events; every card
         // above it in z-index order would otherwise swallow clicks even when
         // it is invisible (opacity/transform do not suppress pointer events).
@@ -41,22 +42,12 @@ export default function DesktopExperienceStack({ items }) {
 
   return (
     <div ref={containerRef} style={{ height: totalHeight }}>
-      <div style={{ position: "sticky", top: "20%", height: "60vh", overflow: "hidden" }}>
+      <div className="sticky top-[20%] h-[60vh] overflow-hidden">
         <SectionNav prevSection="home" nextSection="projects" />
-        <div
-          style={{
-            position: "absolute", inset: 0, pointerEvents: "none",
-            background: "radial-gradient(ellipse 55% 50% at 28% 50%, rgba(129,140,248,0.06), transparent)",
-          }}
-        />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_50%_at_28%_50%,rgba(129,140,248,0.06),transparent)]" />
 
-        <div
-          style={{
-            position: "relative", zIndex: 1, height: "100%",
-            maxWidth: 600, margin: "0 auto", padding: "24px",
-          }}
-        >
-          <div style={{ position: "relative", height: '100%', maxHeight: 600, width: '100%' }}>
+        <div className="relative z-[1] mx-auto h-full max-w-[600px] p-6">
+          <div className="relative h-full max-h-[600px] w-full">
             {items.map((item, idx) => (
               <StackCard
                 key={idx}
