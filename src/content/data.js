@@ -1,22 +1,21 @@
-import {
-  IIITA,
-  Infoedge,
-  Yugen,
-  Breakout,
-  NamasteDev,
-  ArticleSummarizer,
-  Canso,
-  Ecommerce,
-  Football,
-  ImageGenerator,
-  MinipageBuilder,
-  MusicPlayer,
-  NikeLanding,
-  JavascriptCertificate,
-  ReactCertificate,
-  MilesEducation,
-  PawanKumar,
-} from "../assets/index";
+/** Static image URLs — files live in `public/assets/` (served at `/assets/…`). */
+const IIITA = "/assets/iiita_logo.jpeg";
+const Infoedge = "/assets/infoedge_logo.jpeg";
+const Yugen = "/assets/yugenanalytics_logo.jpeg";
+const Breakout = "/assets/breakoutai_logo.jpeg";
+const NamasteDev = "/assets/namastedev.webp";
+const ArticleSummarizer = "/assets/article_summarizer_app.jpeg";
+const Canso = "/assets/canso_app.png";
+const Ecommerce = "/assets/ecommerce_app.jpeg";
+const Football = "/assets/football_app.jpeg";
+const ImageGenerator = "/assets/image_generator_app.jpeg";
+const MinipageBuilder = "/assets/minipage_builder_app.jpeg";
+const MusicPlayer = "/assets/musicplayer_app.jpeg";
+const NikeLanding = "/assets/nike_landing_app.jpeg";
+const JavascriptCertificate = "/assets/javascript_certificate.png";
+const ReactCertificate = "/assets/react_certificate.png";
+const MilesEducation = "/assets/mileseducation_logo.jpeg";
+const PawanKumar = "/assets/my-image.jpeg";
 
 const projects = [
   // {

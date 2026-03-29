@@ -15,4 +15,3 @@ export { default as NikeLanding } from "./nike_landing_app.jpeg";
 export { default as JavascriptCertificate } from "./javascript_certificate.png";
 export { default as ReactCertificate } from "./react_certificate.png";
 export { default as PawanKumar } from "./my-image.jpeg";
-export { default as Logo } from "./pk_logo_comet.gif";

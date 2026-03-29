@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Menu, X, FileText } from "lucide-react";
 import { useScrolled } from "../shared/hooks/useScrolled";
 import ThemeToggleButton from "../theme/ThemeToggleButton.jsx";
-import { Logo } from "../assets/index.jsx";
+
+const LOGO_SRC = "/assets/pk_logo_comet.gif";
 
 const NAV_ITEMS = [
   { label: "Experience",   href: "#experience" },
@@ -39,7 +40,7 @@ export default function Header({ person, social, moreAboutMe }) {
             {/* <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#818cf8] to-[#22d3ee] text-sm font-bold text-white">
               {initials}
             </span> */}
-            <img src={Logo} alt="Logo" className="w-8 h-8 rounded-full" />
+            <img src={LOGO_SRC} alt="Logo" className="w-8 h-8 rounded-full" />
             <span className="hidden text-sm font-semibold text-foreground sm:block">
               {name}
             </span>

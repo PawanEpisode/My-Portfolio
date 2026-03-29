@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, MapPin, Phone, Heart } from "lucide-react";
-import { Logo } from "../assets/index.jsx";
+
+const LOGO_SRC = "/assets/pk_logo_comet.gif";
 
 export default function Footer({ person, social }) {
   const { name, email, phone, location } = person;
@@ -22,7 +23,7 @@ export default function Footer({ person, social }) {
               transition={{ duration: 0.5 }}
             >
               <div className="mb-4 flex items-center gap-3">
-                <img src={Logo} alt="Logo" className="w-8 h-8 rounded-full" />
+                <img src={LOGO_SRC} alt="Logo" className="w-8 h-8 rounded-full" />
                 <p className="text-sm font-bold text-foreground">{name}</p>
               </div>
               <p className="text-sm leading-relaxed text-muted">
