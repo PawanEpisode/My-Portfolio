@@ -20,7 +20,10 @@ export default function Certificates({ certificates }) {
           className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-[border-color,box-shadow] duration-300 hover:border-[rgba(129,140,248,0.35)] hover:shadow-[0_16px_48px_rgba(0,0,0,0.35),0_0_0_1px_rgba(129,140,248,0.15)]"
         >
           {/* Certificate image */}
-          <div className="relative h-[180px] overflow-hidden bg-white/[0.02]">
+          <div
+            className="relative h-[180px] overflow-hidden"
+            style={{ background: "var(--cert-image-bg)" }}
+          >
             <img
               src={photo}
               alt={title}
@@ -32,7 +35,10 @@ export default function Certificates({ certificates }) {
           {/* Info */}
           <div className="flex-1 border-t border-border p-5">
             <div className="mb-3 flex items-center justify-between">
-              <div className="inline-flex rounded-lg bg-white/[0.08] px-2 py-1">
+              <div
+                className="inline-flex rounded-lg px-2 py-1"
+                style={{ background: "var(--cert-issuer-bg)" }}
+              >
                 <img src={issuer} alt="Issuer" className="h-7 object-contain" />
               </div>
               <ExternalLink

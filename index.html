@@ -6,7 +6,23 @@
   <link rel="icon" type="image/jpeg" href="/my-image.jpeg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pawan Kumar · Portfolio</title>
-  <meta name="theme-color" content="#0b1020" />
+  <meta name="theme-color" content="#f1f5f9" />
+  <!-- Sync with src/theme/localTimeTheme.js (THEME_STORAGE_KEY + resolve rules) -->
+  <script>
+    (function () {
+      try {
+        var k = "portfolio-theme";
+        var p = localStorage.getItem(k);
+        var h = new Date().getHours();
+        var dark = p === "dark" || (p !== "light" && (h < 6 || h >= 18));
+        var r = document.documentElement;
+        r.classList.toggle("dark", dark);
+        r.style.colorScheme = dark ? "dark" : "light";
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute("content", dark ? "#0b1020" : "#f1f5f9");
+      } catch (e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400&display=swap" rel="stylesheet">

@@ -14,7 +14,11 @@ export default function HeroBackground() {
         className="orb-3 absolute left-[60%] top-[40%] h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle_at_center,rgba(244,114,182,0.08),transparent_68%)]"
       />
       <div
-        className="absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.022)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.022)_1px,transparent_1px)] [background-size:60px_60px]"
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)`,
+          backgroundSize: "60px 60px",
+        }}
       />
     </div>
   );

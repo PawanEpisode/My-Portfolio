@@ -2,6 +2,56 @@
 
 /* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --surface: rgba(15, 23, 42, 0.04);
+  --surface-hover: rgba(15, 23, 42, 0.08);
+  --border: rgba(15, 23, 42, 0.1);
+  --border-hover: rgba(15, 23, 42, 0.22);
+  --text-primary: #0f172a;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+  --accent-indigo: #818cf8;
+  --accent-cyan: #22d3ee;
+  --accent-pink: #f472b6;
+  --accent-violet: #a78bfa;
+  --glow-indigo: rgba(99, 102, 241, 0.22);
+  --glow-cyan: rgba(8, 145, 178, 0.18);
+  --glow-pink: rgba(219, 39, 119, 0.14);
+  --noise-opacity: 0.014;
+  --grid-line: rgba(15, 23, 42, 0.07);
+  --card-elevated-bg: rgba(255, 255, 255, 0.72);
+  --card-elevated-border: rgba(15, 23, 42, 0.1);
+  --selection-bg: rgba(129, 140, 248, 0.28);
+  --selection-fg: #0f172a;
+  --tag-pill-bg: rgba(15, 23, 42, 0.06);
+  --project-card-inset: rgba(15, 23, 42, 0.05);
+  --project-card-shadow-drop: rgba(15, 23, 42, 0.2);
+  --project-card-shadow-active: 0 32px 80px var(--project-card-shadow-drop),
+    0 0 0 1px rgba(15, 23, 42, 0.06);
+  --project-card-shadow-idle: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --experience-card-shadow: 0 32px 80px rgba(15, 23, 42, 0.1),
+    inset 0 0 0 1px rgba(15, 23, 42, 0.06);
+  --cert-image-bg: rgba(15, 23, 42, 0.03);
+  --cert-issuer-bg: rgba(15, 23, 42, 0.06);
+  --profile-card-bg: rgba(255, 255, 255, 0.72);
+  --profile-card-border: rgba(15, 23, 42, 0.12);
+  --profile-card-shadow: 0 40px 100px rgba(15, 23, 42, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  --profile-chrome-border: rgba(15, 23, 42, 0.08);
+  --profile-photo-scrim: linear-gradient(
+    to top,
+    rgba(15, 23, 42, 0.4) 0%,
+    transparent 45%
+  );
+  --profile-github-badge-bg: rgba(15, 23, 42, 0.04);
+  --profile-github-badge-border: rgba(15, 23, 42, 0.12);
+  --profile-github-icon-bg: rgba(15, 23, 42, 0.06);
+  --profile-stack-pill-border: rgba(15, 23, 42, 0.12);
+  --profile-stack-pill-bg: rgba(255, 255, 255, 0.85);
+}
+
+.dark {
   --bg-primary: #030711;
   --bg-secondary: #080d1c;
   --surface: rgba(255, 255, 255, 0.03);
@@ -18,6 +68,37 @@
   --glow-indigo: rgba(129, 140, 248, 0.18);
   --glow-cyan: rgba(34, 211, 238, 0.12);
   --glow-pink: rgba(244, 114, 182, 0.12);
+  --noise-opacity: 0.028;
+  --grid-line: rgba(255, 255, 255, 0.022);
+  --card-elevated-bg: rgba(255, 255, 255, 0.05);
+  --card-elevated-border: rgba(255, 255, 255, 0.1);
+  --selection-bg: rgba(129, 140, 248, 0.35);
+  --selection-fg: #fff;
+  --tag-pill-bg: rgba(255, 255, 255, 0.04);
+  --project-card-inset: rgba(255, 255, 255, 0.06);
+  --project-card-shadow-drop: rgba(0, 0, 0, 0.6);
+  --project-card-shadow-active: 0 32px 80px var(--project-card-shadow-drop),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  --project-card-shadow-idle: 0 8px 24px rgba(0, 0, 0, 0.3);
+  --experience-card-shadow: 0 32px 80px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --cert-image-bg: rgba(255, 255, 255, 0.02);
+  --cert-issuer-bg: rgba(255, 255, 255, 0.08);
+  --profile-card-bg: rgba(255, 255, 255, 0.03);
+  --profile-card-border: rgba(255, 255, 255, 0.1);
+  --profile-card-shadow: 0 40px 100px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --profile-chrome-border: rgba(255, 255, 255, 0.055);
+  --profile-photo-scrim: linear-gradient(
+    to top,
+    rgba(3, 7, 17, 0.55) 0%,
+    transparent 45%
+  );
+  --profile-github-badge-bg: rgba(255, 255, 255, 0.04);
+  --profile-github-badge-border: rgba(255, 255, 255, 0.12);
+  --profile-github-icon-bg: rgba(255, 255, 255, 0.07);
+  --profile-stack-pill-border: rgba(255, 255, 255, 0.1);
+  --profile-stack-pill-bg: rgba(255, 255, 255, 0.08);
 }
 
 /* ─── Tailwind theme bridge (:root tokens → utilities) ───────── */
@@ -51,8 +132,8 @@ body {
 }
 
 ::selection {
-  background: rgba(129, 140, 248, 0.3);
-  color: #fff;
+  background: var(--selection-bg);
+  color: var(--selection-fg);
 }
 
 /* ─── Keyframes ──────────────────────────────────────────────── */
@@ -147,10 +228,10 @@ body {
 }
 
 .glass-elevated {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--card-elevated-bg);
   backdrop-filter: blur(20px) saturate(200%);
   -webkit-backdrop-filter: blur(20px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--card-elevated-border);
 }
 
 /* ─── Gradient Borders ───────────────────────────────────────── */
@@ -236,8 +317,8 @@ body {
   padding: 0.3rem 0.75rem;
   border-radius: 9999px;
   font-size: 0.8125rem;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  background: var(--surface);
   color: var(--text-muted);
 }
 
@@ -255,7 +336,7 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.028;
+  opacity: var(--noise-opacity);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
 }
 

@@ -4,7 +4,10 @@ import SkillChips from "./SkillChips";
 /** Full content rendered inside each experience stack card. */
 export default function ExperienceCard({ item }) {
   return (
-    <div className="flex h-full w-full flex-col gap-3.5 overflow-hidden rounded-[20px] border border-[rgba(129,140,248,0.22)] bg-[rgb(10,12,26)] p-7 shadow-[0_32px_80px_rgba(0,0,0,0.5),inset_0_0_0_1px_rgba(255,255,255,0.05)] backdrop-blur-[24px]">
+    <div
+      className="flex h-full w-full flex-col gap-3.5 overflow-hidden rounded-[20px] border border-[rgba(129,140,248,0.22)] bg-bg-secondary p-7 backdrop-blur-[24px]"
+      style={{ boxShadow: "var(--experience-card-shadow)" }}
+    >
       {/* Company header */}
       <div className="flex items-center gap-3">
         <div className="h-[52px] w-[52px] flex-shrink-0 rounded-[14px] bg-gradient-to-br from-[#818cf8] to-[#22d3ee] p-0.5">

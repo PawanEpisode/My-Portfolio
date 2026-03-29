@@ -26,7 +26,7 @@ export default function MobileProjectsStack({ projects }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: idx * 0.05, ease: [0.22, 1, 0.36, 1] }}
-              className="block overflow-hidden rounded-2xl border border-border bg-[rgb(10,12,26)] no-underline"
+              className="block overflow-hidden rounded-2xl border border-border bg-bg-secondary no-underline"
             >
               <div className="relative h-[180px] overflow-hidden">
                 <img
@@ -38,7 +38,7 @@ export default function MobileProjectsStack({ projects }) {
                   className="absolute inset-0"
                   style={{ background: `linear-gradient(135deg, ${accent.from}22, transparent)` }}
                 />
-                <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[rgb(10,12,26)] to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-bg-secondary to-transparent" />
               </div>
 
               <div className="p-4">
@@ -66,7 +66,8 @@ export default function MobileProjectsStack({ projects }) {
                   {project.tags?.slice(0, 3).map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-border bg-white/[0.04] px-2 py-0.5 text-[10px] text-muted"
+                      className="rounded-full border border-border px-2 py-0.5 text-[10px] text-muted"
+                      style={{ background: "var(--tag-pill-bg)" }}
                     >
                       {tag}
                     </span>

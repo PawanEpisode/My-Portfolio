@@ -28,7 +28,8 @@ export default function SkillChips({ skills }) {
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
-          className="inline-flex cursor-pointer items-center gap-1 rounded-full border border-border bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-medium text-muted transition-[border-color] duration-200 hover:border-border-hover"
+          className="inline-flex cursor-pointer items-center gap-1 rounded-full border border-border px-2.5 py-0.5 text-[11px] font-medium text-muted transition-[border-color] duration-200 hover:border-border-hover"
+          style={{ background: "var(--tag-pill-bg)" }}
         >
           {expanded ? (
             <>

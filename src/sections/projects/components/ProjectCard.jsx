@@ -53,10 +53,10 @@ export default function ProjectCard({ project, index, isActive }) {
 
   if (!isActive && isHovered) setIsHovered(false);
 
-  const cardBorder = isActive ? `${accent.from}48` : "rgba(255,255,255,0.07)";
+  const cardBorder = isActive ? `${accent.from}48` : "var(--border)";
   const cardShadow = isActive
-    ? `0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px ${accent.from}1a, inset 0 1px 0 rgba(255,255,255,0.06)`
-    : "0 8px 24px rgba(0,0,0,0.3)";
+    ? `0 32px 80px var(--project-card-shadow-drop), 0 0 0 1px ${accent.from}1a, inset 0 1px 0 var(--project-card-inset)`
+    : "var(--project-card-shadow-idle)";
 
   return (
     // Outer wrapper: no overflow:hidden so the cursor button can roam freely
@@ -71,7 +71,7 @@ export default function ProjectCard({ project, index, isActive }) {
     >
       {/* Visible card with rounded corners + clipped content */}
       <div
-        className="relative flex h-full w-full overflow-hidden rounded-[20px] bg-[rgb(10,12,26)] transition-[border-color,box-shadow] duration-[400ms] ease-out"
+        className="relative flex h-full w-full overflow-hidden rounded-[20px] bg-bg-secondary transition-[border-color,box-shadow] duration-[400ms] ease-out"
         style={{
           border: `1px solid ${cardBorder}`,
           boxShadow: cardShadow,
@@ -106,7 +106,7 @@ export default function ProjectCard({ project, index, isActive }) {
               background: `linear-gradient(160deg, ${accent.from}2a, ${accent.to}16)`,
             }}
           />
-          <div className="absolute inset-y-0 right-0 w-[48%] bg-gradient-to-r from-transparent to-[rgb(10,12,26)]" />
+          <div className="absolute inset-y-0 right-0 w-[48%] bg-gradient-to-r from-transparent to-bg-secondary" />
         </div>
 
         {/* Right: project details */}
@@ -135,7 +135,8 @@ export default function ProjectCard({ project, index, isActive }) {
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-border bg-white/[0.04] px-2 py-0.5 text-[11px] font-medium text-muted"
+                  className="rounded-full border border-border px-2 py-0.5 text-[11px] font-medium text-muted"
+                  style={{ background: "var(--tag-pill-bg)" }}
                 >
                   {tag}
                 </span>

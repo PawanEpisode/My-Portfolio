@@ -28,7 +28,7 @@ export default function CategoryCard({ categoryKey, skills, state }) {
             className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-2xl font-bold transition-all duration-[400ms]"
             style={{
               background: isActive ? cfg.bg : "var(--surface)",
-              color: isActive ? '#ffffff' : "var(--text-subtle)",
+              color: isActive ? "var(--text-primary)" : "var(--text-muted)",
               border: `1px solid ${cfg.border}`,
             }}
           >
@@ -37,7 +37,9 @@ export default function CategoryCard({ categoryKey, skills, state }) {
           <div>
             <h3
               className="text-sm font-bold leading-tight transition-colors duration-[400ms]"
-              style={{ color: isActive ? '#ffffff' : "var(--text-subtle)" }}
+              style={{
+                color: isActive ? "var(--text-primary)" : "var(--text-muted)",
+              }}
             >
               {cfg.label}
             </h3>
@@ -58,7 +60,6 @@ export default function CategoryCard({ categoryKey, skills, state }) {
             <SkillTag
               key={skill}
               skill={skill}
-              color={'#ffffff'}
               bg={cfg.bg}
               border={cfg.border}
               isActive={isActive}

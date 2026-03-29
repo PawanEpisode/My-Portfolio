@@ -8,9 +8,9 @@ export default function MilestoneBar({ activeIndex }) {
   return (
     <div className="w-full px-2">
       <div className="relative flex w-full items-center justify-between">
-        <div className="absolute left-0 right-0 top-10 h-0.5 -translate-y-1/2 rounded-full bg-border" />
+        <div className="absolute z-1 left-0 right-0 top-11 h-0.5 -translate-y-1/2 rounded-full bg-border" />
         <div
-          className="absolute left-0 top-10 h-0.5 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#818cf8] to-[#22d3ee] transition-[width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          className="absolute z-1 left-0 top-11 h-0.5 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#818cf8] to-[#22d3ee] transition-[width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
           style={{ width: `${fillPercent}%` }}
         />
         {CATEGORY_ORDER.map((key, idx) => {
@@ -21,10 +21,11 @@ export default function MilestoneBar({ activeIndex }) {
               <span
                 className="truncate px-2 py-1 text-center text-[10px] font-semibold uppercase tracking-widest transition-colors duration-[400ms]"
                 style={{
-                  background: isActive ? cfg.color : "var(--bg-primary)",
-                  color: isActive ? "#fff" : "var(--text-subtle)",
+                  background: isActive ? cfg.color : "var(--surface)",
+                  color: isActive ? "#fff" : "var(--text-muted)",
                   borderRadius: "9999px",
                   padding: "4px 8px",
+                  border: isActive ? "none" : "1px solid var(--border)",
                 }}
               >
                 {cfg.shortLabel}
@@ -33,14 +34,14 @@ export default function MilestoneBar({ activeIndex }) {
                 key={key}
                 animate={{ scale: isActive ? 1.3 : 1 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="z-[1] flex-shrink-0 rounded-full transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                className="z-50 flex-shrink-0 rounded-full transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
                 style={{
                   width: isActive ? 16 : 12,
                   height: isActive ? 16 : 12,
-                  background: isActive ? cfg.color : "var(--bg-primary)",
+                  background: isActive ? cfg.color : "var(--surface)",
                   border: isActive
                     ? `2px solid ${cfg.color}`
-                    : "2px solid var(--text-subtle)",
+                    : "2px solid var(--border)",
                   boxShadow: isActive ? `0 0 12px ${cfg.glow}` : "none",
                 }}
               >

@@ -2,12 +2,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Menu, X, FileText } from "lucide-react";
 import { useScrolled } from "../shared/hooks/useScrolled";
+import ThemeToggleButton from "../theme/ThemeToggleButton.jsx";
 
 const NAV_ITEMS = [
   { label: "Experience",   href: "#experience" },
   { label: "Projects",     href: "#projects" },
   { label: "Skills",       href: "#skills" },
   { label: "Certificates", href: "#certificates" },
+  { label: "Contact Me",      href: "#contact" },
 ];
 
 export default function Header({ person, social, moreAboutMe }) {
@@ -58,6 +60,8 @@ export default function Header({ person, social, moreAboutMe }) {
 
           {/* Right actions */}
           <div className="flex items-center gap-2">
+            <ThemeToggleButton />
+
             <a
               href={github}
               target="_blank"
@@ -108,7 +112,7 @@ export default function Header({ person, social, moreAboutMe }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.2 }}
-            className="glass-elevated fixed top-[72px] left-4 right-4 z-[499] flex flex-col gap-1 rounded-2xl border border-white/10 p-4 shadow-[0_16px_48px_rgba(0,0,0,0.5)]"
+            className="glass-elevated fixed top-[72px] left-4 right-4 z-[499] flex flex-col gap-1 rounded-2xl border border-border p-4 shadow-[0_16px_48px_rgba(0,0,0,0.2)] dark:shadow-[0_16px_48px_rgba(0,0,0,0.5)]"
           >
             {NAV_ITEMS.map((item) => (
               <a
