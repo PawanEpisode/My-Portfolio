@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, Linkedin, Menu, X, FileText } from "lucide-react";
+import { Linkedin, Menu, X, FileText } from "lucide-react";
 import { useScrolled } from "../shared/hooks/useScrolled";
 import ThemeToggleButton from "../theme/ThemeToggleButton.jsx";
 
@@ -22,16 +22,30 @@ export default function Header({ person, social, moreAboutMe }) {
   const scrolled = useScrolled(40);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [mobileOpen]);
+
   return (
     <>
       <motion.header
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0,   opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-0 left-0 right-0 z-[500] flex justify-center pt-4 px-4"
+        className="fixed top-0 left-0 right-0 z-[500] flex justify-center pt-3 px-3 min-[360px]:pt-4 min-[360px]:px-4"
       >
         <div
-          className={`w-full max-w-4xl rounded-2xl px-4 py-3 flex items-center justify-between transition-all duration-300 ${
+          className={`header-bar-glass w-full min-w-0 max-w-4xl rounded-2xl px-3 py-2.5 min-[360px]:px-4 min-[360px]:py-3 flex items-center justify-between gap-2 transition-all duration-300 ${
             scrolled ? "glass-elevated shadow-[0_8px_32px_rgba(0,0,0,0.4)]" : "glass"
           }`}
         >
@@ -57,7 +71,7 @@ export default function Header({ person, social, moreAboutMe }) {
           </nav>
 
           {/* Right actions */}
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-1 min-[360px]:gap-2">
             <ThemeToggleButton />
             <a
               href={linkedin}
@@ -81,9 +95,12 @@ export default function Header({ person, social, moreAboutMe }) {
 
             {/* Mobile menu toggle */}
             <button
+              type="button"
               className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface text-muted md:hidden"
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation"
             >
               {mobileOpen ? <X size={16} /> : <Menu size={16} />}
             </button>
@@ -91,27 +108,45 @@ export default function Header({ person, social, moreAboutMe }) {
         </div>
       </motion.header>
 
-      {/* Mobile menu */}
+      {/* Mobile menu: scrim + opaque panel (see .mobile-nav-* in index.css) */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.2 }}
-            className="glass-elevated fixed top-[72px] left-4 right-4 z-[499] flex flex-col gap-1 rounded-2xl border border-border p-4 shadow-[0_16px_48px_rgba(0,0,0,0.2)] dark:shadow-[0_16px_48px_rgba(0,0,0,0.5)]"
-          >
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className="rounded-xl px-4 py-3 text-sm font-medium text-muted transition-all duration-200 hover:bg-surface-hover hover:text-foreground"
-              >
-                {item.label}
-              </a>
-            ))}
-          </motion.div>
+          <>
+            <motion.button
+              key="mobile-nav-scrim"
+              type="button"
+              aria-label="Close menu"
+              className="mobile-nav-scrim fixed inset-0 z-[498] md:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setMobileOpen(false)}
+            />
+            <motion.div
+              key="mobile-nav-panel"
+              id="mobile-navigation"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Site navigation"
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.2 }}
+              className="mobile-nav-panel fixed top-[64px] min-[360px]:top-[72px] left-3 right-3 min-[360px]:left-4 min-[360px]:right-4 z-[499] flex max-h-[min(70vh,calc(100dvh-5.5rem))] flex-col gap-0.5 overflow-y-auto overscroll-contain rounded-2xl p-2 min-[360px]:p-3 md:hidden"
+            >
+              {NAV_ITEMS.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="rounded-xl px-4 py-3 text-sm font-medium text-foreground/90 transition-colors duration-200 hover:bg-surface-hover hover:text-foreground"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

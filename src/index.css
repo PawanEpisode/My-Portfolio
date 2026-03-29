@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Fixed header (~88px with padding) — anchor jumps + focus rings stay visible */
+html {
+  scroll-padding-top: 5.5rem;
+}
+
 /* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
   --bg-primary: #f8fafc;
@@ -234,6 +239,39 @@ body {
   border: 1px solid var(--card-elevated-border);
 }
 
+/*
+ * Mobile header + drawer: use opaque surfaces. Real phones often composite
+ * backdrop-filter differently than Chrome DevTools device mode, so glass-only
+ * panels stay see-through and nav text washes out over bright hero imagery.
+ */
+@media (max-width: 767px) {
+  .header-bar-glass.glass,
+  .header-bar-glass.glass-elevated {
+    background-color: var(--bg-secondary);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+.mobile-nav-scrim {
+  -webkit-tap-highlight-color: transparent;
+  background: rgba(15, 23, 42, 0.42);
+}
+
+.dark .mobile-nav-scrim {
+  background: rgba(3, 7, 17, 0.88);
+}
+
+.mobile-nav-panel {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.18);
+}
+
+.dark .mobile-nav-panel {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+}
+
 /* ─── Gradient Borders ───────────────────────────────────────── */
 .gradient-border {
   position: relative;
@@ -365,11 +403,14 @@ body {
 /* ─── Section header — large mixed-typography title ─────────── */
 .section-title-main {
   font-family: "Syne", sans-serif;
-  font-size: clamp(2.4rem, 5.5vw, 5.2rem);
+  /* Min below ~2.4rem so long words (e.g. “Technologies”) fit ~320px-wide viewports */
+  font-size: clamp(1.75rem, 5.5vw, 5.2rem);
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.08;
   letter-spacing: -0.03em;
   color: var(--text-primary);
+  max-width: 100%;
+  text-wrap: balance;
 }
 
 .section-title-accent {

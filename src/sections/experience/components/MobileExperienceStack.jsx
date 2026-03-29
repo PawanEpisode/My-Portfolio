@@ -4,10 +4,10 @@ import ExperienceCard from "./ExperienceCard";
 /** Mobile vertical timeline layout for the experience section. */
 export default function MobileExperienceStack({ items }) {
   return (
-    <section className="border-t border-border px-6 py-20">
-      <div className="mb-12">
+    <section className="border-t border-border px-4 pb-20 pt-24 min-[360px]:px-6">
+      <div className="mb-12 min-w-0">
         <p className="section-label">Career Path</p>
-        <h2 className="section-title-main text-[clamp(2rem,8vw,3rem)]">
+        <h2 className="section-title-main">
           Where I&apos;ve{" "}
           <em className="section-title-accent">shipped</em>
           {" "}things

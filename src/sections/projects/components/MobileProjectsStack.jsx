@@ -4,10 +4,10 @@ import { ACCENT_COLORS } from "../constants";
 /** Mobile card-list layout for the projects section. */
 export default function MobileProjectsStack({ projects }) {
   return (
-    <section className="border-t border-border px-6 py-20">
-      <div className="mb-12">
+    <section className="border-t border-border px-4 pb-20 pt-24 min-[360px]:px-6">
+      <div className="mb-12 min-w-0">
         <p className="section-label">Selected Work</p>
-        <h2 className="section-title-main text-[clamp(2rem,8vw,3rem)]">
+        <h2 className="section-title-main">
           Projects that{" "}
           <em className="section-title-accent">made an impact</em>
         </h2>

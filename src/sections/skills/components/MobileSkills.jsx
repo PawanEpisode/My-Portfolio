@@ -18,7 +18,7 @@ function MobileSkillCategory({ categoryKey, skills, isActive, onToggle }) {
         border: isActive ? `1px solid ${cfg.border}` : "1px solid var(--border)",
       }}
     >
-      <button onClick={onToggle} className="flex w-full items-center justify-between p-5 text-left">
+      <button onClick={onToggle} className="flex w-full items-center justify-between gap-2 p-4 text-left min-[360px]:p-5">
         <div className="flex items-center gap-3">
           <span
             className="flex h-8 w-8 items-center justify-center rounded-lg text-sm font-bold"
@@ -51,7 +51,7 @@ function MobileSkillCategory({ categoryKey, skills, isActive, onToggle }) {
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.25 }}
-          className="border-t border-border px-5 pb-5"
+          className="border-t border-border px-4 pb-4 min-[360px]:px-5 min-[360px]:pb-5"
         >
           <div className="flex flex-wrap gap-2 pt-4">
             {skills.map((skill) => (
@@ -79,10 +79,10 @@ export default function MobileSkills({ skillValues }) {
   );
 
   return (
-    <section className="border-t border-border px-6 py-20">
-      <div className="mb-12">
+    <section className="border-t border-border px-4 pb-20 pt-24 min-[360px]:px-6">
+      <div className="mb-12 min-w-0">
         <p className="section-label">Skills &amp; Expertise</p>
-        <h2 className="section-title-main text-[clamp(2rem,8vw,3rem)]">
+        <h2 className="section-title-main">
           Technologies I <em className="section-title-accent">master</em>
         </h2>
       </div>
