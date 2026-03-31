@@ -586,12 +586,12 @@ const social = {
   followOnLinkedin:
     "https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=pawankumar1201",
 };
-
+// https://drive.google.com/file/d/1vJqnSguo8C6-om55DHRoilBBcoZ1p1Ny/view?usp=sharing
 const moreAboutMe = {
   resumeViewLink:
-    "https://drive.google.com/file/d/12osFv7i6nMe6mUhpsj40jmeuRZ-RHsYd/view?usp=sharing",
+    "https://drive.google.com/file/d/1vJqnSguo8C6-om55DHRoilBBcoZ1p1Ny/view?usp=sharing",
   resumeDownloadLink:
-    "https://drive.google.com/uc?export=download&id=12osFv7i6nMe6mUhpsj40jmeuRZ-RHsYd",
+    "https://drive.google.com/uc?export=download&id=1vJqnSguo8C6-om55DHRoilBBcoZ1p1Ny",
   professionalSummary: `Passionate Frontend Software Engineer with a proven track
                   record of 4+ years in designing and implementing innovative
                   and user-friendly web interfaces. Specializing in cutting-edge
