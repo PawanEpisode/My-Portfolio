@@ -1,5 +1,5 @@
 import { getHostAppComponent } from "./config/hostApps";
-import PortfolioApp from "./apps/PortfolioApp";
+import PortfolioApp from "./apps/portfolio/PortfolioApp";
 
 export default function App() {
   const hostname =

@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { submitContact } from "../../../lib/contact";
+import { submitContact } from "../../lib/contact";
 import { FORM_FIELDS } from "../constants";
 import FormField from "./FormField";
 import SubmitButton from "./SubmitButton";

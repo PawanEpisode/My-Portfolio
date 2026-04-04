@@ -1,7 +1,7 @@
 import { motion, useTransform } from "framer-motion";
-import { useStackScroll } from "../../../shared/hooks/useStackScroll";
+import { useStackScroll } from "../../../../../shared/hooks/useStackScroll";
 import ExperienceCard from "./ExperienceCard";
-import SectionNav from "../../../shared/components/SectionNav";
+import SectionNav from "../../../../../shared/components/SectionNav";
 import { SCROLL_PER_CARD } from "../constants";
 
 /** Single animated stack card wrapper driven by scrollYProgress. */

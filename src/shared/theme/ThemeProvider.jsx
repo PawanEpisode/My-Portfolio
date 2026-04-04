@@ -6,7 +6,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { useLocalTimeTheme } from "../shared/hooks/useLocalTimeTheme";
+import { useLocalTimeTheme } from "../hooks/useLocalTimeTheme";
 import {
   cycleThemePreference,
   getThemePreference,

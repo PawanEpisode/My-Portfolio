@@ -6,7 +6,7 @@
  */
 
 import { useMemo } from "react";
-import SectionHeader from "../../shared/components/SectionHeader";
+import SectionHeader from "../../../../shared/components/SectionHeader";
 import DesktopExperienceStack from "./components/DesktopExperienceStack";
 import MobileExperienceStack from "./components/MobileExperienceStack";
 

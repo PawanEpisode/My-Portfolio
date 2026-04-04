@@ -1,14 +1,14 @@
 import { motion, useScroll, useSpring } from "framer-motion";
-import Header from "../layout/Header";
-import Footer from "../layout/Footer";
-import Hero from "../sections/hero/Hero";
-import ExperienceStack from "../sections/experience/ExperienceStack";
-import ProjectsStack from "../sections/projects/ProjectsStack";
-import Skills from "../sections/skills/Skills";
-import Certificates from "../sections/certificates/Certificates";
-import Contact from "../sections/contact/Contact";
-import SectionHeader from "../shared/components/SectionHeader";
-import data from "../content/data";
+import Header from "./layout/Header";
+import Footer from "./layout/Footer";
+import Hero from "./sections/hero/Hero";
+import ExperienceStack from "./sections/experience/ExperienceStack";
+import ProjectsStack from "./sections/projects/ProjectsStack";
+import Skills from "./sections/skills/Skills";
+import Certificates from "./sections/certificates/Certificates";
+import Contact from "../../shared/contact/Contact";
+import SectionHeader from "../../shared/components/SectionHeader";
+import data from "../../shared/content/data";
 
 export default function PortfolioApp() {
   const { scrollYProgress } = useScroll();

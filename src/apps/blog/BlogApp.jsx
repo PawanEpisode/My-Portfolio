@@ -1,29 +1,28 @@
 import { useEffect } from "react";
+import SubdomainAppShell from "../../shared/components/SubdomainAppShell";
 
-export default function FrontendApp() {
+export default function BlogApp() {
   useEffect(() => {
     const prev = document.title;
-    document.title = "Frontend · Pawan Kumar";
+    document.title = "Blog · Pawan Kumar";
     return () => {
       document.title = prev;
     };
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <div className="noise-overlay" />
-
+    <SubdomainAppShell>
       <header className="border-b border-border/60 px-6 py-6 md:px-10">
         <p className="font-['Syne',sans-serif] text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-          frontend app
+          blog app
         </p>
         <h1 className="mt-2 font-['Syne',sans-serif] text-3xl font-bold tracking-tight md:text-4xl">
-          Frontend
+          Writing
         </h1>
         <p className="mt-3 max-w-xl text-muted-foreground">
-          UI experiments and frontend-focused content. Extend in{" "}
+          Posts and notes live here. Extend this app under{" "}
           <code className="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground">
-            src/apps/FrontendApp.jsx
+            src/apps/blog/
           </code>
           .
         </p>
@@ -31,22 +30,22 @@ export default function FrontendApp() {
 
       <main className="px-6 py-12 md:px-10">
         <p className="text-muted-foreground">
-          Local dev:{" "}
+          Local dev (no hosts file):{" "}
           <code className="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground">
-            http://frontend.localhost:5199
+            http://blog.localhost:5199
           </code>
           {" · "}
-          Production-shaped URL: add{" "}
+          Or mirror production:{" "}
           <code className="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground">
-            127.0.0.1 frontend.meetpawan.com
+            127.0.0.1 blog.meetpawan.com
           </code>{" "}
-          to hosts, then{" "}
+          in hosts →{" "}
           <code className="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground">
-            http://frontend.meetpawan.com:5199
+            http://blog.meetpawan.com:5199
           </code>
           .
         </p>
       </main>
-    </div>
+    </SubdomainAppShell>
   );
 }

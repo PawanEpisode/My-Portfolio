@@ -1,5 +1,5 @@
-import BlogApp from "../apps/BlogApp";
-import FrontendApp from "../apps/FrontendApp";
+import BlogApp from "../apps/blog/BlogApp";
+import FrontendApp from "../apps/frontend/FrontendApp";
 
 /**
  * Resolve hostname from Vite env (empty / unset → fallback).
@@ -16,7 +16,7 @@ function envHost(key, fallback) {
  * Subdomain apps (anything not matched falls through to PortfolioApp).
  *
  * To add another app:
- * 1. Create src/apps/YourApp.jsx
+ * 1. Create src/apps/<name>/YourApp.jsx (and optional components/, hooks/, …)
  * 2. Add VITE_*_HOSTNAME to .env.example
  * 3. Push an entry here with a unique `devLocalHost` (*.localhost, dev-only)
  */
