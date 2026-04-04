@@ -5,7 +5,7 @@
  * would create a transform context that breaks position:sticky.
  */
 
-import SectionHeader from "../../shared/components/SectionHeader";
+import SectionHeader from "../../../../shared/components/SectionHeader";
 import DesktopProjectsStack from "./components/DesktopProjectsStack";
 import MobileProjectsStack from "./components/MobileProjectsStack";
 

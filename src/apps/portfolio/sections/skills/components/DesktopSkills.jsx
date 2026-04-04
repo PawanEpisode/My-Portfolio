@@ -1,8 +1,8 @@
-import { useStackScroll } from "../../../shared/hooks/useStackScroll";
+import { useStackScroll } from "../../../../../shared/hooks/useStackScroll";
 import { CATEGORY_ORDER, SKILL_SCROLL_VH } from "../constants";
 import MilestoneBar from "./MilestoneBar";
 import CategoryCard from "./CategoryCard";
-import SectionNav from "../../../shared/components/SectionNav";
+import SectionNav from "../../../../../shared/components/SectionNav";
 
 /** Desktop sticky-scroll layout for the skills section. */
 export default function DesktopSkills({ skillValues }) {

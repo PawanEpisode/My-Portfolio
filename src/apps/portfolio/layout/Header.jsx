@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Linkedin, Menu, X, FileText } from "lucide-react";
-import { useScrolled } from "../shared/hooks/useScrolled";
-import ThemeToggleButton from "../theme/ThemeToggleButton.jsx";
+import { useScrolled } from "../../../shared/hooks/useScrolled";
+import ThemeToggleButton from "../../../shared/theme/ThemeToggleButton.jsx";
 
 const LOGO_SRC = "/assets/pk_logo_comet.gif";
 

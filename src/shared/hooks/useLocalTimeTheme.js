@@ -4,7 +4,7 @@ import {
   msUntilNextAutoThemeChange,
   resolveShouldUseDark,
   THEME_STORAGE_KEY,
-} from "../../theme/localTimeTheme";
+} from "../theme/localTimeTheme";
 
 /**
  * Keeps `document.documentElement` in sync with preference + local time.
