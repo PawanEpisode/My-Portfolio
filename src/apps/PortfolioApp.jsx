@@ -1,0 +1,79 @@
+import { motion, useScroll, useSpring } from "framer-motion";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
+import Hero from "../sections/hero/Hero";
+import ExperienceStack from "../sections/experience/ExperienceStack";
+import ProjectsStack from "../sections/projects/ProjectsStack";
+import Skills from "../sections/skills/Skills";
+import Certificates from "../sections/certificates/Certificates";
+import Contact from "../sections/contact/Contact";
+import SectionHeader from "../shared/components/SectionHeader";
+import data from "../content/data";
+
+export default function PortfolioApp() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    mass: 0.4,
+  });
+
+  const {
+    person,
+    social,
+    moreAboutMe,
+    projects,
+    certificates,
+    timeline,
+    conceptTags,
+    skills,
+  } = data;
+
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Noise texture overlay */}
+      <div className="noise-overlay" />
+
+      {/* Scroll progress bar */}
+      <div className="fixed left-0 right-0 top-0 h-[2px] z-[9999] pointer-events-none overflow-hidden">
+        <motion.div
+          className="origin-left h-full bg-gradient-to-r from-[#818cf8] via-[#22d3ee] to-[#f472b6]"
+          style={{ scaleX }}
+        />
+      </div>
+
+      <Header person={person} social={social} moreAboutMe={moreAboutMe} />
+
+      <main>
+        <Hero
+          person={person}
+          social={social}
+          moreAboutMe={moreAboutMe}
+          projects={projects}
+          certificates={certificates}
+        />
+
+        {/*
+          ExperienceStack, ProjectsStack, and Skills are rendered OUTSIDE <Section>
+          intentionally. Their sticky scroll-driven layouts require position:sticky,
+          which breaks inside Section's whileInView transform wrapper.
+        */}
+        <ExperienceStack timeline={timeline} id="experience" />
+        <ProjectsStack projects={projects} id="projects" />
+        <Skills skillValues={skills} conceptTags={conceptTags} id="skills" />
+
+        <div id="certificates" className="w-full flex flex-col items-center pb-12">
+          <SectionHeader
+            label="Achievements"
+            title="*Certifications* & Badges"
+          />
+          <Certificates certificates={certificates} />
+        </div>
+
+        <Contact person={person} social={social} />
+
+        <Footer person={person} social={social} />
+      </main>
+    </div>
+  );
+}
