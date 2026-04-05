@@ -20,17 +20,17 @@ Copy [`.env.example`](.env.example) to `.env.local` and set Supabase variables b
 
 ## Tech stack
 
-| Layer | Choice | Why |
-|--------|--------|-----|
-| UI | **React 19** | Concurrent-ready, modern hooks, ecosystem fit. |
-| Build | **Vite 7** | Fast HMR, ESM-native dev, straightforward production builds. |
-| Styling | **Tailwind CSS v4** + **`@tailwindcss/vite`** | Utilities at build time without a separate PostCSS-only pipeline for core CSS; tokens live in `src/index.css` (`@import "tailwindcss"`). |
-| Components | **Radix UI** (`dialog`, `tooltip`, `slot`) | Unstyled primitives with focus management and ARIA; styled in-house for a custom look. |
-| Motion | **Framer Motion** | Scroll-linked and in-view animations without hand-rolling physics. |
-| Icons | **lucide-react** | Consistent stroke icons, tree-shakeable. |
-| Class names | **clsx**, **tailwind-merge**, **class-variance-authority** | Predictable composition for variants and conflicting utilities. |
-| Backend (contact) | **Supabase** (Postgres + PostgREST + Edge Functions) | Managed Postgres, row-level security, serverless hooks without running your own API server for a simple form. |
-| Email | **Resend** (from Edge Function) | HTTP API from Deno; no secret keys in the browser. |
+| Layer             | Choice                                                     | Why                                                                                                                                      |
+| ----------------- | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| UI                | **React 19**                                               | Concurrent-ready, modern hooks, ecosystem fit.                                                                                           |
+| Build             | **Vite 7**                                                 | Fast HMR, ESM-native dev, straightforward production builds.                                                                             |
+| Styling           | **Tailwind CSS v4** + **`@tailwindcss/vite`**              | Utilities at build time without a separate PostCSS-only pipeline for core CSS; tokens live in `src/index.css` (`@import "tailwindcss"`). |
+| Components        | **Radix UI** (`dialog`, `tooltip`, `slot`)                 | Unstyled primitives with focus management and ARIA; styled in-house for a custom look.                                                   |
+| Motion            | **Framer Motion**                                          | Scroll-linked and in-view animations without hand-rolling physics.                                                                       |
+| Icons             | **lucide-react**                                           | Consistent stroke icons, tree-shakeable.                                                                                                 |
+| Class names       | **clsx**, **tailwind-merge**, **class-variance-authority** | Predictable composition for variants and conflicting utilities.                                                                          |
+| Backend (contact) | **Supabase** (Postgres + PostgREST + Edge Functions)       | Managed Postgres, row-level security, serverless hooks without running your own API server for a simple form.                            |
+| Email             | **Resend** (from Edge Function)                            | HTTP API from Deno; no secret keys in the browser.                                                                                       |
 
 ---
 
@@ -184,12 +184,12 @@ Supabase **Database Webhooks** POST a JSON body to your Edge Function URL. This 
 
 **Fields the function reads** (aligned with `contact-notification/index.ts`):
 
-| Field | Expected | Notes |
-|--------|-----------|--------|
-| `type` | `"INSERT"` | Ignored for other event types. |
-| `schema` | `"public"` | Must match. |
-| `table` | `"contacts"` | Must match. |
-| `record` | object | New row; required for email path. |
+| Field        | Expected         | Notes                                                   |
+| ------------ | ---------------- | ------------------------------------------------------- |
+| `type`       | `"INSERT"`       | Ignored for other event types.                          |
+| `schema`     | `"public"`       | Must match.                                             |
+| `table`      | `"contacts"`     | Must match.                                             |
+| `record`     | object           | New row; required for email path.                       |
 | `old_record` | `null` on INSERT | Present in webhook payloads; not read by this function. |
 
 **`record`** uses the columns from `001_create_contacts.sql` (types as JSON):
@@ -218,15 +218,15 @@ For the canonical types in code, see `InsertPayload` and `ContactRecord` in [`su
 
 ### Environment variables
 
-| Where | Variable | Purpose |
-|--------|-----------|---------|
-| App (`.env.local`) | `VITE_SUPABASE_URL` | Project URL |
-| App (`.env.local`) | `VITE_SUPABASE_ANON_KEY` | Public anon key (RLS-enforced) |
-| Edge Function secrets | `RESEND_API_KEY` | Resend API auth |
-| Edge Function secrets | `NOTIFY_TO_EMAIL` | Your inbox |
-| Edge Function secrets | `RESEND_FROM_EMAIL` | Optional verified sender |
-| Edge Function secrets | `SITE_NAME` | Email subject/branding |
-| Edge Function secrets | `WEBHOOK_SECRET` | Shared secret with DB webhook |
+| Where                 | Variable                 | Purpose                        |
+| --------------------- | ------------------------ | ------------------------------ |
+| App (`.env.local`)    | `VITE_SUPABASE_URL`      | Project URL                    |
+| App (`.env.local`)    | `VITE_SUPABASE_ANON_KEY` | Public anon key (RLS-enforced) |
+| Edge Function secrets | `RESEND_API_KEY`         | Resend API auth                |
+| Edge Function secrets | `NOTIFY_TO_EMAIL`        | Your inbox                     |
+| Edge Function secrets | `RESEND_FROM_EMAIL`      | Optional verified sender       |
+| Edge Function secrets | `SITE_NAME`              | Email subject/branding         |
+| Edge Function secrets | `WEBHOOK_SECRET`         | Shared secret with DB webhook  |
 
 Never prefix secrets that must stay server-only with `VITE_` — those are embedded in the client bundle.
 
@@ -254,12 +254,12 @@ Any static host can serve **`dist/`** after `npm run build`.
 
 ## Scripts
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Vite dev server |
-| `npm run build` | Optimized production build |
-| `npm run preview` | Preview `dist/` |
-| `npm run lint` | ESLint |
+| Script            | Description                |
+| ----------------- | -------------------------- |
+| `npm run dev`     | Vite dev server            |
+| `npm run build`   | Optimized production build |
+| `npm run preview` | Preview `dist/`            |
+| `npm run lint`    | ESLint                     |
 
 ---
 

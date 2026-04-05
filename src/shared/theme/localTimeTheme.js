@@ -40,7 +40,10 @@ export function shouldUseDarkTheme(date = new Date()) {
  * @param {Date} date
  * @param {"auto" | "light" | "dark"} [preference]
  */
-export function resolveShouldUseDark(date = new Date(), preference = getThemePreference()) {
+export function resolveShouldUseDark(
+  date = new Date(),
+  preference = getThemePreference()
+) {
   if (preference === "light") return false;
   if (preference === "dark") return true;
   return shouldUseDarkTheme(date);

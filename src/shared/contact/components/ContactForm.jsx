@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { submitContact } from "../../lib/contact";
 import { FORM_FIELDS } from "../constants";
+import { cn } from "../../utils/cn";
 import FormField from "./FormField";
 import SubmitButton from "./SubmitButton";
 import ContactLinks from "./ContactLinks";
@@ -30,19 +31,22 @@ function validate(values) {
   return errors;
 }
 
-export default function ContactForm({ person, social }) {
+export default function ContactForm({ person, social, className }) {
   const [values, setValues] = useState(INITIAL_VALUES);
   const [errors, setErrors] = useState(INITIAL_ERRORS);
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
 
-  const handleChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setValues((prev) => ({ ...prev, [name]: value }));
-    // Clear the field error as the user types
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
-  }, [errors]);
+  const handleChange = useCallback(
+    (e) => {
+      const { name, value } = e.target;
+      setValues((prev) => ({ ...prev, [name]: value }));
+      // Clear the field error as the user types
+      if (errors[name]) {
+        setErrors((prev) => ({ ...prev, [name]: "" }));
+      }
+    },
+    [errors]
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -75,7 +79,7 @@ export default function ContactForm({ person, social }) {
   };
 
   return (
-    <div className="glass rounded-2xl border border-border p-4 sm:p-8">
+    <div className={cn("glass rounded-2xl border border-border p-4 sm:p-8", className)}>
       <form onSubmit={handleSubmit} noValidate>
         {/* Name + Email row */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">

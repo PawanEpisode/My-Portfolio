@@ -10,9 +10,7 @@ export default function ScrollIndicator() {
       transition={{ delay: 2, duration: 0.8 }}
       className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
     >
-      <span className="text-xs uppercase tracking-widest text-subtle">
-        Scroll
-      </span>
+      <span className="text-xs uppercase tracking-widest text-subtle">Scroll</span>
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}

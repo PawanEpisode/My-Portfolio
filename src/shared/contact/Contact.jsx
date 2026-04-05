@@ -3,10 +3,7 @@ import ContactForm from "./components/ContactForm";
 
 export default function Contact({ person, social }) {
   return (
-    <section
-      id="contact"
-      className="relative border-t border-border py-12 px-4"
-    >
+    <section id="contact" className="relative border-t border-border py-12 px-4">
       {/* Ambient background glow */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_100%,rgba(129,140,248,0.07),transparent)]" />
 
@@ -43,8 +40,8 @@ export default function Contact({ person, social }) {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mb-6 text-base text-muted text-center w-full"
         >
-          Have a project in mind? I respond within 24 hours and am open to
-          exciting collaborations.
+          Have a project in mind? I respond within 24 hours and am open to exciting
+          collaborations.
         </motion.p>
 
         {/* Form card */}

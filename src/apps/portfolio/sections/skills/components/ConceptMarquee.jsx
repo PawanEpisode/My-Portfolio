@@ -15,7 +15,9 @@ function LoopSlider({ items, direction = "normal", duration = 30000 }) {
     >
       <div className="inner">
         {loopItems.map((label, idx) => (
-          <span key={`${label}-${idx}`} className="concept-tag">{label}</span>
+          <span key={`${label}-${idx}`} className="concept-tag">
+            {label}
+          </span>
         ))}
       </div>
     </div>
@@ -27,7 +29,7 @@ export default function ConceptMarquee({ conceptTags }) {
   if (!conceptTags?.length) return null;
 
   const conceptGroups = chunkArray(conceptTags, 4);
-  const baseDuration  = 50000;
+  const baseDuration = 50000;
 
   return (
     <div className="border-t border-border px-6 py-12">

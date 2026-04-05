@@ -1,0 +1,15 @@
+dist
+dist-ssr
+node_modules
+coverage
+build
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+*.min.js
+*.min.css
+supabase/.temp
+
+# Bundled / editor metadata — do not mass-reformat
+.agents
+.cursor

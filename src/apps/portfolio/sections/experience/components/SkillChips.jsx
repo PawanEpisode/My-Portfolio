@@ -12,7 +12,7 @@ export default function SkillChips({ skills }) {
   const [expanded, setExpanded] = useState(false);
   const sorted = useMemo(
     () => [...skills].sort((a, b) => a.length - b.length),
-    [skills],
+    [skills]
   );
   const visible = sorted.slice(0, VISIBLE_CHIPS);
   const hidden = sorted.slice(VISIBLE_CHIPS);

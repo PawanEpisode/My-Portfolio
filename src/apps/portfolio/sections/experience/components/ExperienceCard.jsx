@@ -12,10 +12,15 @@ export default function ExperienceCard({ item }) {
       <div className="flex items-center gap-3">
         <div className="h-[52px] w-[52px] flex-shrink-0 rounded-[14px] bg-gradient-to-br from-[#818cf8] to-[#22d3ee] p-0.5">
           <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-xl bg-background">
-            {item.icon
-              ? <img src={item.icon} alt={item.headTitle} className="h-full w-full object-cover" />
-              : <Building2 size={22} className="text-muted" />
-            }
+            {item.icon ? (
+              <img
+                src={item.icon}
+                alt={item.headTitle}
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <Building2 size={22} className="text-muted" />
+            )}
           </div>
         </div>
 

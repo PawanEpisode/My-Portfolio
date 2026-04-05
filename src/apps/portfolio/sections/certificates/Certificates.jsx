@@ -47,9 +47,7 @@ export default function Certificates({ certificates }) {
               />
             </div>
 
-            <h3 className="mb-3 text-base font-bold text-foreground">
-              {title}
-            </h3>
+            <h3 className="mb-3 text-base font-bold text-foreground">{title}</h3>
 
             <div className="flex items-center gap-2">
               <Award size={13} className="text-accent-indigo" />

@@ -8,8 +8,7 @@ export default function MobileExperienceStack({ items }) {
       <div className="mb-12 min-w-0 flex flex-col items-center">
         <p className="section-label">Career Path</p>
         <h2 className="section-title-main text-center">
-          Where I&apos;ve <em className="section-title-accent">shipped</em>{" "}
-          things
+          Where I&apos;ve <em className="section-title-accent">shipped</em> things
         </h2>
       </div>
 

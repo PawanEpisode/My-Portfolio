@@ -12,10 +12,7 @@ import { parseMixedTitle } from "../utils/parseMixedTitle";
  */
 export default function Section({ id, label, title, subtitle, children }) {
   return (
-    <section
-      id={id}
-      className="relative border-t border-border px-6 py-24"
-    >
+    <section id={id} className="relative border-t border-border px-6 py-24">
       {/* Subtle background glow */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(129,140,248,0.04),transparent)]" />
 

@@ -17,9 +17,7 @@ export default function CategoryCard({ categoryKey, skills, state }) {
       className="flex flex-col gap-3 rounded-2xl p-5 transition-[background,border-color] duration-[400ms]"
       style={{
         background: isActive ? cfg.bg : "var(--surface)",
-        border: isActive
-          ? `1px solid ${cfg.border}`
-          : "1px solid var(--border)",
+        border: isActive ? `1px solid ${cfg.border}` : "1px solid var(--border)",
       }}
     >
       <div className="flex items-center justify-between">

@@ -9,18 +9,21 @@ import ScrollIndicator from "./components/ScrollIndicator";
 
 export default function Hero({ person, social, moreAboutMe, projects, certificates }) {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y       = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   const typewriterText = useTypewriter(ROLES);
   const { resumeDownloadLink } = moreAboutMe;
 
   const stats = [
-    { value: "4+",                  label: "Years of Experience" },
+    { value: "4+", label: "Years of Experience" },
     { value: `${projects.length}+`, label: "Projects Built" },
-    { value: certificates.length,   label: "Certifications" },
-    { value: "5",                   label: "Companies" },
+    { value: certificates.length, label: "Certifications" },
+    { value: "5", label: "Companies" },
   ];
 
   return (
@@ -31,7 +34,10 @@ export default function Hero({ person, social, moreAboutMe, projects, certificat
     >
       <HeroBackground />
 
-      <motion.div style={{ y, opacity }} className="relative z-10 mx-auto w-full max-w-6xl px-6">
+      <motion.div
+        style={{ y, opacity }}
+        className="relative z-10 mx-auto w-full max-w-6xl px-6"
+      >
         <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-88px)]">
           <HeroContent
             person={person}

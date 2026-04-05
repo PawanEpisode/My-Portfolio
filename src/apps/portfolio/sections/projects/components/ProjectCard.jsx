@@ -1,10 +1,5 @@
 import { useRef, useState, useCallback } from "react";
-import {
-  motion,
-  useTransform,
-  useMotionValue,
-  useSpring,
-} from "framer-motion";
+import { motion, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { ACCENT_COLORS } from "../constants";
 
@@ -29,27 +24,34 @@ function CursorButton({ title, accent, isVisible }) {
 /** Full project card content with cursor-following button and hover state. */
 export default function ProjectCard({ project, index, isActive }) {
   const { photo, title, period, description, tags, link } = project;
-  const accent  = ACCENT_COLORS[index % ACCENT_COLORS.length];
+  const accent = ACCENT_COLORS[index % ACCENT_COLORS.length];
   const wrapRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  const rawX     = useMotionValue(0);
-  const rawY     = useMotionValue(0);
+  const rawX = useMotionValue(0);
+  const rawY = useMotionValue(0);
   const shiftedX = useTransform(rawX, (v) => v - 72);
   const shiftedY = useTransform(rawY, (v) => v - 22);
-  const btnX     = useSpring(shiftedX, { stiffness: 280, damping: 26 });
-  const btnY     = useSpring(shiftedY, { stiffness: 280, damping: 26 });
+  const btnX = useSpring(shiftedX, { stiffness: 280, damping: 26 });
+  const btnY = useSpring(shiftedY, { stiffness: 280, damping: 26 });
 
-  const handleMouseMove = useCallback((e) => {
-    if (!isActive) return;
-    const rect = wrapRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    rawX.set(e.clientX - rect.left);
-    rawY.set(e.clientY - rect.top);
-  }, [isActive, rawX, rawY]);
+  const handleMouseMove = useCallback(
+    (e) => {
+      if (!isActive) return;
+      const rect = wrapRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      rawX.set(e.clientX - rect.left);
+      rawY.set(e.clientY - rect.top);
+    },
+    [isActive, rawX, rawY]
+  );
 
-  const handleMouseEnter = useCallback(() => { if (isActive) setIsHovered(true); },  [isActive]);
-  const handleMouseLeave = useCallback(() => { setIsHovered(false); }, []);
+  const handleMouseEnter = useCallback(() => {
+    if (isActive) setIsHovered(true);
+  }, [isActive]);
+  const handleMouseLeave = useCallback(() => {
+    setIsHovered(false);
+  }, []);
 
   if (!isActive && isHovered) setIsHovered(false);
 

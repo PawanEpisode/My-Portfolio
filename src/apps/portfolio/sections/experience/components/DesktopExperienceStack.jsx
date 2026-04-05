@@ -10,11 +10,15 @@ function StackCard({ item, index, totalCards, scrollYProgress, isActive }) {
 
   const y = useTransform(
     phase,
-    [-1,     -0.05,  0,       0.6,     1.5,     3],
-    ["80px", "80px", "0px",   "-14px", "-24px", "-38px"]
+    [-1, -0.05, 0, 0.6, 1.5, 3],
+    ["80px", "80px", "0px", "-14px", "-24px", "-38px"]
   );
-  const scale   = useTransform(phase, [-1, 0, 0.6, 1.5, 3], [0.95, 1, 0.97, 0.94, 0.88]);
-  const opacity = useTransform(phase, [-0.55, -0.15, 0, 0.7, 1.1, 1.5], [0, 0.3, 1, 1, 0.2, 0]);
+  const scale = useTransform(phase, [-1, 0, 0.6, 1.5, 3], [0.95, 1, 0.97, 0.94, 0.88]);
+  const opacity = useTransform(
+    phase,
+    [-0.55, -0.15, 0, 0.7, 1.1, 1.5],
+    [0, 0.3, 1, 1, 0.2, 0]
+  );
 
   return (
     <motion.div

@@ -63,10 +63,7 @@ export default function PortfolioApp() {
         <Skills skillValues={skills} conceptTags={conceptTags} id="skills" />
 
         <div id="certificates" className="w-full flex flex-col items-center pb-12">
-          <SectionHeader
-            label="Achievements"
-            title="*Certifications* & Badges"
-          />
+          <SectionHeader label="Achievements" title="*Certifications* & Badges" />
           <Certificates certificates={certificates} />
         </div>
 

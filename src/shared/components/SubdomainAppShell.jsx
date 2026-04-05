@@ -1,13 +1,11 @@
 import ThemeToggleButton from "../theme/ThemeToggleButton.jsx";
-import Contact from "../contact/Contact.jsx";
-import data from "../content/data.js";
 
 /**
- * Shared chrome for subdomain apps (blog, frontend, …): noise, theme toggle, contact block.
+ * Shared chrome for subdomain apps (blog, frontend, …): noise, theme toggle, and a host-provided contact region.
+ *
+ * @param {{ children: import("react").ReactNode, contact: import("react").ReactNode }} props
  */
-export default function SubdomainAppShell({ children }) {
-  const { person, social } = data;
-
+export default function SubdomainAppShell({ children, contact }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="noise-overlay" />
@@ -15,7 +13,7 @@ export default function SubdomainAppShell({ children }) {
         <ThemeToggleButton />
       </div>
       {children}
-      <Contact person={person} social={social} />
+      {contact}
     </div>
   );
 }

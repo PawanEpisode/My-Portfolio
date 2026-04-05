@@ -15,28 +15,15 @@ function ContactLink({ href, icon: Icon, label, external = false }) {
 }
 
 function Separator() {
-  return (
-    <span className="hidden select-none text-border-hover sm:block">
-      ·
-    </span>
-  );
+  return <span className="hidden select-none text-border-hover sm:block">·</span>;
 }
 
 export default function ContactLinks({ person, social }) {
   return (
     <div className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 border-t border-border pt-5">
-      <ContactLink
-        href={`mailto:${person.email}`}
-        icon={Mail}
-        label={person.email}
-      />
+      <ContactLink href={`mailto:${person.email}`} icon={Mail} label={person.email} />
       <Separator />
-      <ContactLink
-        href={social.github}
-        icon={Github}
-        label="PawanEpisode"
-        external
-      />
+      <ContactLink href={social.github} icon={Github} label="PawanEpisode" external />
       <Separator />
       <ContactLink
         href={social.linkedin}

@@ -18,18 +18,23 @@ function MobileSkillCategory({ categoryKey, skills, isActive, onToggle }) {
         border: isActive ? `1px solid ${cfg.border}` : "1px solid var(--border)",
       }}
     >
-      <button onClick={onToggle} className="flex w-full items-center justify-between gap-2 p-4 text-left min-[360px]:p-5">
+      <button
+        onClick={onToggle}
+        className="flex w-full items-center justify-between gap-2 p-4 text-left min-[360px]:p-5"
+      >
         <div className="flex items-center gap-3">
           <span
             className="flex h-8 w-8 items-center justify-center rounded-lg text-sm font-bold"
-            style={{ background: cfg.bg, color: cfg.color, border: `1px solid ${cfg.border}` }}
+            style={{
+              background: cfg.bg,
+              color: cfg.color,
+              border: `1px solid ${cfg.border}`,
+            }}
           >
             {cfg.icon}
           </span>
           <div>
-            <h3 className="text-sm font-semibold text-foreground">
-              {cfg.label}
-            </h3>
+            <h3 className="text-sm font-semibold text-foreground">{cfg.label}</h3>
             <p className="text-xs text-muted">{skills.length} skills</p>
           </div>
         </div>
@@ -55,7 +60,13 @@ function MobileSkillCategory({ categoryKey, skills, isActive, onToggle }) {
         >
           <div className="flex flex-wrap gap-2 pt-4">
             {skills.map((skill) => (
-              <SkillTag key={skill} skill={skill} color={cfg.color} bg={cfg.bg} border={cfg.border} />
+              <SkillTag
+                key={skill}
+                skill={skill}
+                color={cfg.color}
+                bg={cfg.bg}
+                border={cfg.border}
+              />
             ))}
           </div>
         </motion.div>
@@ -72,11 +83,13 @@ export default function MobileSkills({ skillValues }) {
     )
   );
 
-  const toggle = (key) => setActiveCategories((prev) => ({ ...prev, [key]: !prev[key] }));
+  const toggle = (key) =>
+    setActiveCategories((prev) => ({ ...prev, [key]: !prev[key] }));
 
-  const orderedEntries = CATEGORY_ORDER.filter((key) => skillValues[key]).map(
-    (key) => [key, skillValues[key]]
-  );
+  const orderedEntries = CATEGORY_ORDER.filter((key) => skillValues[key]).map((key) => [
+    key,
+    skillValues[key],
+  ]);
 
   return (
     <section className="border-t border-border px-4 py-12 min-[360px]:px-6">

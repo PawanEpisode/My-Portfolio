@@ -20,7 +20,7 @@ export default function ProjectCarouselNavigation({ projects }) {
 
   const currentProject = useMemo(
     () => (count > 0 ? projects[safeIndex] : null),
-    [projects, count, safeIndex],
+    [projects, count, safeIndex]
   );
 
   const goTo = (index) => {

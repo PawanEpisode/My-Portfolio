@@ -82,8 +82,7 @@ const projects = [
     photo: Canso,
     title: "Canso.ai",
     period: "Feb 2024",
-    description:
-      "This App provides Reimagine Fraud Control with AI Agents and MLOps",
+    description: "This App provides Reimagine Fraud Control with AI Agents and MLOps",
     tags: [
       "React.js",
       "JavaScript",

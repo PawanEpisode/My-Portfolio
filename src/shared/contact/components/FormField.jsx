@@ -31,9 +31,7 @@ export default function FormField({
         className="text-xs font-semibold uppercase tracking-widest text-muted"
       >
         {label}
-        {required && (
-          <span className="ml-1 text-accent-pink">*</span>
-        )}
+        {required && <span className="ml-1 text-accent-pink">*</span>}
       </label>
 
       {multiline ? (
@@ -60,9 +58,7 @@ export default function FormField({
         />
       )}
 
-      {error && (
-        <p className="text-xs text-accent-pink">{error}</p>
-      )}
+      {error && <p className="text-xs text-accent-pink">{error}</p>}
     </div>
   );
 }

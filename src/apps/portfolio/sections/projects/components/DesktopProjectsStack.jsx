@@ -6,26 +6,22 @@ import { SCROLL_PER_CARD } from "../constants";
 
 /** Single animated stack card wrapper driven by scrollYProgress. */
 function StackCard({ project, index, totalCards, scrollYProgress, isActive }) {
-  const phase = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [-index, totalCards - index],
-  );
+  const phase = useTransform(scrollYProgress, [0, 1], [-index, totalCards - index]);
 
   const y = useTransform(
     phase,
     [-1, -0.05, 0, 0.75, 1.75, 3.5],
-    ["80px", "80px", "0px", "-18px", "-34px", "-54px"],
+    ["80px", "80px", "0px", "-18px", "-34px", "-54px"]
   );
   const scale = useTransform(
     phase,
     [-1, 0, 0.75, 1.75, 3.5],
-    [0.94, 1, 0.97, 0.93, 0.87],
+    [0.94, 1, 0.97, 0.93, 0.87]
   );
   const opacity = useTransform(
     phase,
     [-0.55, -0.15, 0, 0.9, 1.75, 2.8, 4.5],
-    [0, 0.3, 1, 1, 0.5, 0.28, 0.1],
+    [0, 0.3, 1, 1, 0.5, 0.28, 0.1]
   );
 
   return (
@@ -49,7 +45,7 @@ function StackCard({ project, index, totalCards, scrollYProgress, isActive }) {
 /** Desktop sticky-scroll layout for the projects section. */
 export default function DesktopProjectsStack({ projects }) {
   const { containerRef, activeIndex, scrollYProgress } = useStackScroll(
-    projects.length,
+    projects.length
   );
   const totalHeight = `calc(60vh + ${projects.length * SCROLL_PER_CARD}px)`;
 

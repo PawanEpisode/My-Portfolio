@@ -27,8 +27,8 @@ export default function Footer({ person, social }) {
                 <p className="text-sm font-bold text-foreground">{name}</p>
               </div>
               <p className="text-sm leading-relaxed text-muted">
-                Building fast, accessible, and delightful web experiences with
-                modern frontend technologies.
+                Building fast, accessible, and delightful web experiences with modern
+                frontend technologies.
               </p>
             </motion.div>
           </div>
@@ -111,8 +111,7 @@ export default function Footer({ person, social }) {
         >
           <p className="flex items-center gap-1.5 text-xs text-subtle">
             Designed &amp; built with{" "}
-            <Heart size={11} className="fill-[#f472b6] text-[#f472b6]" /> by{" "}
-            {name}
+            <Heart size={11} className="fill-[#f472b6] text-[#f472b6]" /> by {name}
           </p>
           <p className="text-xs text-subtle">© {year} · All rights reserved</p>
         </motion.div>

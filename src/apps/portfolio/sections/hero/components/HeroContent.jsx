@@ -8,11 +8,16 @@ import { containerVariants, itemVariants, CORE_TECH } from "../constants";
  * Renders: available badge, name, typewriter role, summary,
  * location/email, CTA buttons, stats grid, and core tech stack.
  */
-export default function HeroContent({ person, resumeDownloadLink, stats, typewriterText }) {
+export default function HeroContent({
+  person,
+  resumeDownloadLink,
+  stats,
+  typewriterText,
+}) {
   const { name, location, email, summary } = person;
 
   const firstName = name.split(" ")[0];
-  const lastName  = name.split(" ").slice(1).join(" ");
+  const lastName = name.split(" ").slice(1).join(" ");
 
   return (
     <motion.div
@@ -45,9 +50,7 @@ export default function HeroContent({ person, resumeDownloadLink, stats, typewri
       <motion.div variants={itemVariants} className="mt-4 flex items-center gap-2">
         <span className="text-xl font-semibold text-muted md:text-2xl">
           {typewriterText}
-          <span
-            className="mb-0.5 ml-0.5 inline-block h-6 w-0.5 align-middle bg-accent-cyan animate-[blink_1s_step-end_infinite]"
-          />
+          <span className="mb-0.5 ml-0.5 inline-block h-6 w-0.5 align-middle bg-accent-cyan animate-[blink_1s_step-end_infinite]" />
         </span>
       </motion.div>
 
@@ -93,7 +96,9 @@ export default function HeroContent({ person, resumeDownloadLink, stats, typewri
       >
         {stats.map((stat) => (
           <div key={stat.label} className="flex flex-col">
-            <span className="text-2xl font-black text-gradient-static">{stat.value}</span>
+            <span className="text-2xl font-black text-gradient-static">
+              {stat.value}
+            </span>
             <span className="mt-0.5 text-xs leading-tight text-muted">
               {stat.label}
             </span>
@@ -117,10 +122,11 @@ export default function HeroContent({ person, resumeDownloadLink, stats, typewri
               className="flex cursor-default items-center gap-1.5 rounded-lg border border-border bg-white/[0.04] px-2.5 py-1.5 transition-[border-color,background,transform] duration-200"
               whileHover={{ y: -2, scale: 1.06 }}
             >
-              <i className={`${icon} inline-block text-base leading-none not-italic`} aria-hidden />
-              <span className="text-xs font-medium text-muted">
-                {techName}
-              </span>
+              <i
+                className={`${icon} inline-block text-base leading-none not-italic`}
+                aria-hidden
+              />
+              <span className="text-xs font-medium text-muted">{techName}</span>
             </motion.div>
           ))}
         </div>

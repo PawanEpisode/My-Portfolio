@@ -9,9 +9,9 @@ import { useState, useEffect } from "react";
  * @returns {string} The currently displayed text
  */
 export function useTypewriter(words, speed = 80, pause = 1800) {
-  const [display, setDisplay]   = useState("");
-  const [wordIdx, setWordIdx]   = useState(0);
-  const [charIdx, setCharIdx]   = useState(0);
+  const [display, setDisplay] = useState("");
+  const [wordIdx, setWordIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {

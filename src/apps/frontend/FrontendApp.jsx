@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import SubdomainAppShell from "../../shared/components/SubdomainAppShell";
+import FrontendContactSection from "./FrontendContactSection.jsx";
 
 export default function FrontendApp() {
   useEffect(() => {
@@ -11,7 +12,7 @@ export default function FrontendApp() {
   }, []);
 
   return (
-    <SubdomainAppShell>
+    <SubdomainAppShell contact={<FrontendContactSection />}>
       <header className="border-b border-border/60 px-6 py-6 md:px-10">
         <p className="font-['Syne',sans-serif] text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
           frontend app

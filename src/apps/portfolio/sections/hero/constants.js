@@ -9,14 +9,14 @@ export const itemVariants = {
 };
 
 export const CORE_TECH = [
-  { name: "React",      icon: "devicon-react-original colored" },
+  { name: "React", icon: "devicon-react-original colored" },
   { name: "TypeScript", icon: "devicon-typescript-plain colored" },
-  { name: "Next.js",    icon: "devicon-nextjs-plain colored" },
-  { name: "Tailwind",   icon: "devicon-tailwindcss-plain colored" },
-  { name: "Node.js",    icon: "devicon-nodejs-plain colored" },
-  { name: "Docker",     icon: "devicon-docker-plain colored" },
-  { name: "AWS",        icon: "devicon-amazonwebservices-plain colored" },
-  { name: "Git",        icon: "devicon-git-plain colored" },
+  { name: "Next.js", icon: "devicon-nextjs-plain colored" },
+  { name: "Tailwind", icon: "devicon-tailwindcss-plain colored" },
+  { name: "Node.js", icon: "devicon-nodejs-plain colored" },
+  { name: "Docker", icon: "devicon-docker-plain colored" },
+  { name: "AWS", icon: "devicon-amazonwebservices-plain colored" },
+  { name: "Git", icon: "devicon-git-plain colored" },
 ];
 
 export const ROLES = [

@@ -32,17 +32,17 @@ html {
   --tag-pill-bg: rgba(15, 23, 42, 0.06);
   --project-card-inset: rgba(15, 23, 42, 0.05);
   --project-card-shadow-drop: rgba(15, 23, 42, 0.2);
-  --project-card-shadow-active: 0 32px 80px var(--project-card-shadow-drop),
-    0 0 0 1px rgba(15, 23, 42, 0.06);
+  --project-card-shadow-active:
+    0 32px 80px var(--project-card-shadow-drop), 0 0 0 1px rgba(15, 23, 42, 0.06);
   --project-card-shadow-idle: 0 8px 24px rgba(15, 23, 42, 0.08);
-  --experience-card-shadow: 0 32px 80px rgba(15, 23, 42, 0.1),
-    inset 0 0 0 1px rgba(15, 23, 42, 0.06);
+  --experience-card-shadow:
+    0 32px 80px rgba(15, 23, 42, 0.1), inset 0 0 0 1px rgba(15, 23, 42, 0.06);
   --cert-image-bg: rgba(15, 23, 42, 0.03);
   --cert-issuer-bg: rgba(15, 23, 42, 0.06);
   --profile-card-bg: rgba(255, 255, 255, 0.72);
   --profile-card-border: rgba(15, 23, 42, 0.12);
-  --profile-card-shadow: 0 40px 100px rgba(15, 23, 42, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  --profile-card-shadow:
+    0 40px 100px rgba(15, 23, 42, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.95);
   --profile-chrome-border: rgba(15, 23, 42, 0.08);
   --profile-photo-scrim: linear-gradient(
     to top,
@@ -82,17 +82,17 @@ html {
   --tag-pill-bg: rgba(255, 255, 255, 0.04);
   --project-card-inset: rgba(255, 255, 255, 0.06);
   --project-card-shadow-drop: rgba(0, 0, 0, 0.6);
-  --project-card-shadow-active: 0 32px 80px var(--project-card-shadow-drop),
-    0 0 0 1px rgba(255, 255, 255, 0.06);
+  --project-card-shadow-active:
+    0 32px 80px var(--project-card-shadow-drop), 0 0 0 1px rgba(255, 255, 255, 0.06);
   --project-card-shadow-idle: 0 8px 24px rgba(0, 0, 0, 0.3);
-  --experience-card-shadow: 0 32px 80px rgba(0, 0, 0, 0.5),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --experience-card-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   --cert-image-bg: rgba(255, 255, 255, 0.02);
   --cert-issuer-bg: rgba(255, 255, 255, 0.08);
   --profile-card-bg: rgba(255, 255, 255, 0.03);
   --profile-card-border: rgba(255, 255, 255, 0.1);
-  --profile-card-shadow: 0 40px 100px rgba(0, 0, 0, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --profile-card-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   --profile-chrome-border: rgba(255, 255, 255, 0.055);
   --profile-photo-scrim: linear-gradient(
     to top,
@@ -133,7 +133,12 @@ html {
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: "Syne", "Inter", system-ui, -apple-system, sans-serif;
+  font-family:
+    "Syne",
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
 ::selection {
@@ -143,60 +148,119 @@ body {
 
 /* ─── Keyframes ──────────────────────────────────────────────── */
 @keyframes float-slow {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33%       { transform: translateY(-22px) rotate(2deg); }
-  66%       { transform: translateY(-10px) rotate(-2deg); }
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-22px) rotate(2deg);
+  }
+  66% {
+    transform: translateY(-10px) rotate(-2deg);
+  }
 }
 
 @keyframes float-slow-2 {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  40%       { transform: translateY(18px) rotate(-3deg); }
-  70%       { transform: translateY(-8px) rotate(2deg); }
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  40% {
+    transform: translateY(18px) rotate(-3deg);
+  }
+  70% {
+    transform: translateY(-8px) rotate(2deg);
+  }
 }
 
 @keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50%       { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 @keyframes scroll-x {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(32px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes glow-pulse {
-  0%, 100% { opacity: 0.25; transform: scale(1); }
-  50%       { opacity: 0.45; transform: scale(1.06); }
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(1.06);
+  }
 }
 
 @keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 @keyframes border-glow {
-  0%, 100% { border-color: rgba(129, 140, 248, 0.3); }
-  50%       { border-color: rgba(34, 211, 238, 0.5); }
+  0%,
+  100% {
+    border-color: rgba(129, 140, 248, 0.3);
+  }
+  50% {
+    border-color: rgba(34, 211, 238, 0.5);
+  }
 }
 
 /* ─── Gradient Text ──────────────────────────────────────────── */
 .text-gradient {
-  background: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan), var(--accent-pink));
+  background: linear-gradient(
+    135deg,
+    var(--accent-indigo),
+    var(--accent-cyan),
+    var(--accent-pink)
+  );
   background-size: 300% 300%;
   animation: gradient-shift 5s ease infinite;
   -webkit-background-clip: text;
@@ -224,7 +288,10 @@ body {
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border: 1px solid var(--border);
-  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
+  transition:
+    background 0.25s,
+    border-color 0.25s,
+    box-shadow 0.25s;
 }
 
 .glass:hover {
@@ -284,7 +351,12 @@ body {
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan), var(--accent-pink));
+  background: linear-gradient(
+    135deg,
+    var(--accent-indigo),
+    var(--accent-cyan),
+    var(--accent-pink)
+  );
   z-index: -1;
   opacity: 0;
   transition: opacity 0.35s;
@@ -295,9 +367,15 @@ body {
 }
 
 /* ─── Orb Animations ─────────────────────────────────────────── */
-.orb-1 { animation: float-slow 12s ease-in-out infinite; }
-.orb-2 { animation: float-slow-2 15s ease-in-out infinite; }
-.orb-3 { animation: float-slow 18s ease-in-out infinite reverse; }
+.orb-1 {
+  animation: float-slow 12s ease-in-out infinite;
+}
+.orb-2 {
+  animation: float-slow-2 15s ease-in-out infinite;
+}
+.orb-3 {
+  animation: float-slow 18s ease-in-out infinite reverse;
+}
 
 /* ─── Marquee / Concepts ─────────────────────────────────────── */
 .loop-slider {
@@ -305,7 +383,13 @@ body {
   overflow: hidden;
   width: 100%;
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
 }
 
 .loop-slider .inner {
@@ -361,8 +445,12 @@ body {
 }
 
 /* ─── Scrollbar ──────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(var(--accent-indigo), var(--accent-cyan));
   border-radius: 4px;
@@ -446,7 +534,8 @@ body {
 
 /* ─── Timeline line ──────────────────────────────────────────── */
 .timeline-line {
-  background: linear-gradient(to bottom,
+  background: linear-gradient(
+    to bottom,
     transparent,
     var(--accent-indigo) 10%,
     var(--accent-cyan) 50%,
@@ -466,8 +555,11 @@ body {
   font-weight: 600;
   background: linear-gradient(135deg, var(--accent-indigo), var(--accent-violet));
   color: #fff;
-  transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 0 0 rgba(129,140,248,0);
+  transition:
+    opacity 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+  box-shadow: 0 0 0 rgba(129, 140, 248, 0);
 }
 
 .btn-primary:hover {
@@ -487,7 +579,10 @@ body {
   border: 1px solid var(--border-hover);
   color: var(--text-primary);
   background: transparent;
-  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    transform 0.2s;
 }
 
 .btn-ghost:hover {
@@ -508,8 +603,12 @@ body {
   border: 1px solid var(--border);
   color: var(--text-muted);
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease,
-    transform 0.15s ease, box-shadow 0.2s ease;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }

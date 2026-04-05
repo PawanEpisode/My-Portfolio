@@ -7,15 +7,15 @@ import ThemeToggleButton from "../../../shared/theme/ThemeToggleButton.jsx";
 const LOGO_SRC = "/assets/pk_logo_comet.gif";
 
 const NAV_ITEMS = [
-  { label: "Experience",   href: "#experience" },
-  { label: "Projects",     href: "#projects" },
-  { label: "Skills",       href: "#skills" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
   { label: "Certificates", href: "#certificates" },
-  { label: "Contact Me",      href: "#contact" },
+  { label: "Contact Me", href: "#contact" },
 ];
 
 export default function Header({ person, social, moreAboutMe }) {
-  const { name }           = person;
+  const { name } = person;
   const { linkedin } = social;
   const { resumeViewLink } = moreAboutMe;
 
@@ -40,7 +40,7 @@ export default function Header({ person, social, moreAboutMe }) {
     <>
       <motion.header
         initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0,   opacity: 1 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-0 left-0 right-0 z-[500] flex justify-center pt-3 px-3 min-[360px]:pt-4 min-[360px]:px-4"
       >

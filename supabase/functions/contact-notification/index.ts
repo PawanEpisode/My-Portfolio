@@ -31,9 +31,7 @@ function buildAdminNotificationHtml(record: ContactRecord, siteName: string): st
   const email = escapeHtml(record.email);
   const subject = escapeHtml(record.subject);
   const message = escapeHtml(record.message).replaceAll("\n", "<br />");
-  const when = record.created_at
-    ? escapeHtml(record.created_at)
-    : "";
+  const when = record.created_at ? escapeHtml(record.created_at) : "";
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -156,8 +154,7 @@ Deno.serve(async (req) => {
   }
 
   const from =
-    Deno.env.get("RESEND_FROM_EMAIL")?.trim() ||
-    "Portfolio <onboarding@resend.dev>";
+    Deno.env.get("RESEND_FROM_EMAIL")?.trim() || "Portfolio <onboarding@resend.dev>";
   const siteName = Deno.env.get("SITE_NAME")?.trim() || "Portfolio";
 
   const subject = `[${siteName}] Contact: ${record.subject}`.slice(0, 998);
@@ -183,7 +180,7 @@ Deno.serve(async (req) => {
     console.error("Resend error:", res.status, errText);
     return new Response(
       JSON.stringify({ error: "Failed to send email", detail: errText }),
-      { status: 502, headers: { "Content-Type": "application/json" } },
+      { status: 502, headers: { "Content-Type": "application/json" } }
     );
   }
 
