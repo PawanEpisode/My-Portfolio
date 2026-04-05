@@ -4,6 +4,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import react from "eslint-plugin-react";
 import eslintConfigPrettier from "eslint-config-prettier";
+import tseslint from "typescript-eslint";
 import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
@@ -24,31 +25,41 @@ export default defineConfig([
       },
     },
   },
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
   {
-    files: ["src/**/*.{js,jsx}"],
-    plugins: { react },
-    extends: [
-      js.configs.recommended,
-      reactHooks.configs["recommended-latest"],
-      reactRefresh.configs.vite,
-    ],
+    files: ["src/**/*.{ts,tsx}"],
+    plugins: {
+      react,
+    },
+    extends: [reactHooks.configs["recommended-latest"], reactRefresh.configs.vite],
     languageOptions: {
-      ecmaVersion: 2020,
       globals: globals.browser,
       parserOptions: {
-        ecmaVersion: "latest",
         ecmaFeatures: { jsx: true },
-        sourceType: "module",
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    settings: {
+      react: {
+        version: "detect",
       },
     },
     rules: {
       "react/jsx-uses-vars": "error",
-      "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^[A-Z_]",
+        },
+      ],
     },
   },
-  // Radix-style UI primitives and theme context export helpers alongside components.
   {
-    files: ["**/shared/components/ui/**", "**/shared/theme/ThemeProvider.jsx"],
+    files: ["**/shared/components/ui/**", "**/shared/theme/ThemeProvider.tsx"],
     rules: {
       "react-refresh/only-export-components": "off",
     },
