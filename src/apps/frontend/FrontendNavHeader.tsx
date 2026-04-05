@@ -1,5 +1,5 @@
+import SeekhoHeaderBrandLink from "../../shared/components/SeekhoHeaderBrandLink";
 import ThemeToggleButton from "../../shared/theme/ThemeToggleButton";
-import { frontendHostnameDisplay } from "../../shared/lib/subdomainHostDisplay";
 import { cn } from "../../shared/utils/cn";
 import { INTERVIEW_MENU } from "./data/interviewMenu";
 import { PREPARE_MENU } from "./data/prepareMenu";
@@ -22,8 +22,6 @@ export default function FrontendNavHeader({
   onHome,
   contactActive,
 }: FrontendNavHeaderProps) {
-  const host = frontendHostnameDisplay();
-
   return (
     <header
       className={cn(
@@ -32,16 +30,14 @@ export default function FrontendNavHeader({
       )}
     >
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 md:px-6">
-        <a
-          href="/"
-          className="shrink-0 font-['Syne',sans-serif] text-sm font-semibold tracking-tight text-foreground underline-offset-4 hover:underline"
-          onClick={(e) => {
+        <SeekhoHeaderBrandLink
+          productLabel="Frontend"
+          ariaLabel="Seekho.dev Frontend — home"
+          onNavigateHome={(e) => {
             e.preventDefault();
             onHome();
           }}
-        >
-          {host}
-        </a>
+        />
 
         <nav
           className="flex items-center gap-1 md:gap-2"

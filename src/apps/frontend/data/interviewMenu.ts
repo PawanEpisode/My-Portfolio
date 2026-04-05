@@ -59,7 +59,8 @@ export const INTERVIEW_MENU: MegaMenuCategoryConfig[] = [
         id: "performance",
         visible: true,
         title: "Performance storytelling",
-        description: "How to explain metrics, budgets, and rendering work in interviews.",
+        description:
+          "How to explain metrics, budgets, and rendering work in interviews.",
         tags: ["Web Vitals", "Profiling"],
         routeKey: "interview:topics:performance",
         icon: Sparkles,

@@ -1,7 +1,6 @@
 import { Search } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import ThemeToggleButton from "../../shared/theme/ThemeToggleButton";
-import { blogHostnameDisplay } from "../../shared/lib/subdomainHostDisplay";
 import {
   Dialog,
   DialogContent,
@@ -10,9 +9,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../../shared/components/ui/dialog";
+import SeekhoHeaderBrandLink from "../../shared/components/SeekhoHeaderBrandLink";
 import { cn } from "../../shared/utils/cn";
 import type { BlogRouteId } from "./blogRoutes";
-
 export interface BlogNavHeaderProps {
   active: BlogRouteId;
   onNavigatePath: (path: string) => void;
@@ -50,7 +49,6 @@ function NavLink({
 }
 
 export default function BlogNavHeader({ active, onNavigatePath }: BlogNavHeaderProps) {
-  const host = blogHostnameDisplay();
   const [searchOpen, setSearchOpen] = useState(false);
 
   return (
@@ -61,28 +59,38 @@ export default function BlogNavHeader({ active, onNavigatePath }: BlogNavHeaderP
       )}
     >
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 md:px-6">
-        <a
-          href="/"
-          className="shrink-0 font-['Syne',sans-serif] text-sm font-semibold tracking-tight text-foreground underline-offset-4 hover:underline"
-          onClick={(e) => {
+        <SeekhoHeaderBrandLink
+          productLabel="Blog"
+          ariaLabel="Seekho.dev Blog — home"
+          onNavigateHome={(e) => {
             e.preventDefault();
             onNavigatePath("/");
           }}
-        >
-          {host}
-        </a>
+        />
 
         <nav
           className="flex items-center gap-0.5 md:gap-1"
           aria-label="Blog primary navigation"
         >
-          <NavLink href="/about" active={active === "about"} onNavigatePath={onNavigatePath}>
+          <NavLink
+            href="/about"
+            active={active === "about"}
+            onNavigatePath={onNavigatePath}
+          >
             About
           </NavLink>
-          <NavLink href="/posts" active={active === "posts"} onNavigatePath={onNavigatePath}>
+          <NavLink
+            href="/posts"
+            active={active === "posts"}
+            onNavigatePath={onNavigatePath}
+          >
             Posts
           </NavLink>
-          <NavLink href="/contact" active={active === "contact"} onNavigatePath={onNavigatePath}>
+          <NavLink
+            href="/contact"
+            active={active === "contact"}
+            onNavigatePath={onNavigatePath}
+          >
             Contact
           </NavLink>
 
@@ -101,11 +109,14 @@ export default function BlogNavHeader({ active, onNavigatePath }: BlogNavHeaderP
               <DialogHeader>
                 <DialogTitle>Search</DialogTitle>
                 <DialogDescription>
-                  Full-text search across posts will plug in here (e.g. Pagefind, Algolia, or a
-                  server route). This dialog is a production-shaped shell.
+                  Full-text search across posts will plug in here (e.g. Pagefind,
+                  Algolia, or a server route). This dialog is a production-shaped shell.
                 </DialogDescription>
               </DialogHeader>
-              <label className="mt-2 block text-sm font-medium text-foreground" htmlFor="blog-search-q">
+              <label
+                className="mt-2 block text-sm font-medium text-foreground"
+                htmlFor="blog-search-q"
+              >
                 Query
               </label>
               <input

@@ -55,7 +55,10 @@ export default function MegaMenuPanel({
               className={cn(
                 "border-l-2 border-transparent py-2.5 pl-3 pr-2 text-left text-sm font-medium transition-colors",
                 isActive
-                  ? cn("bg-surface font-medium text-accent-indigo", activeCategoryClassName)
+                  ? cn(
+                      "bg-surface font-medium text-accent-indigo",
+                      activeCategoryClassName
+                    )
                   : "text-muted hover:bg-surface-hover hover:text-foreground"
               )}
             >
@@ -83,7 +86,9 @@ export default function MegaMenuPanel({
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="flex items-start justify-between gap-2">
-                      <span className="font-semibold text-foreground">{item.title}</span>
+                      <span className="font-semibold text-foreground">
+                        {item.title}
+                      </span>
                       <ArrowRight
                         className="mt-0.5 h-4 w-4 shrink-0 text-muted opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100"
                         aria-hidden
@@ -114,7 +119,9 @@ export default function MegaMenuPanel({
           })}
         </ul>
         {visibleItems.length === 0 ? (
-          <p className="px-2 py-6 text-sm text-muted">No topics visible in this section yet.</p>
+          <p className="px-2 py-6 text-sm text-muted">
+            No topics visible in this section yet.
+          </p>
         ) : null}
       </div>
     </div>

@@ -29,7 +29,8 @@ export const PREPARE_MENU: MegaMenuCategoryConfig[] = [
         id: "react-patterns",
         visible: true,
         title: "React patterns",
-        description: "Hooks, rendering, performance, and composition in production UIs.",
+        description:
+          "Hooks, rendering, performance, and composition in production UIs.",
         tags: ["React", "Hooks", "Performance"],
         routeKey: "prepare:practice:react",
         icon: LayoutTemplate,

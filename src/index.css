@@ -243,6 +243,31 @@ body {
   }
 }
 
+/* Frontend skill hub — gradient packet along connector (stroke-dash travel) */
+@keyframes skill-hub-stroke-dash {
+  from {
+    stroke-dashoffset: 140;
+  }
+  to {
+    stroke-dashoffset: -140;
+  }
+}
+
+.skill-hub-pulse-stroke {
+  stroke-dasharray: 28 112;
+  stroke-dashoffset: 140;
+  animation: skill-hub-stroke-dash 1.5s ease-in-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-hub-pulse-stroke {
+    animation: none;
+    stroke-dasharray: unset;
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
 @keyframes border-glow {
   0%,
   100% {
