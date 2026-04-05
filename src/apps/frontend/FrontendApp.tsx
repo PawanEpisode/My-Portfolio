@@ -1,26 +1,51 @@
 import { useEffect, useState } from "react";
 import SubdomainAppShell from "../../shared/components/SubdomainAppShell";
+import { normalizePathname, useClientPath } from "../../shared/hooks/useClientPath";
 import FrontendContactSection from "./FrontendContactSection";
 import FrontendNavHeader from "./FrontendNavHeader";
 import FrontendTopicPlaceholder from "./pseudo/FrontendTopicPlaceholder";
 
 export default function FrontendApp() {
+  const { pathname, navigate } = useClientPath();
   const [routeKey, setRouteKey] = useState<string>("home");
+  const isContact = normalizePathname(pathname) === "/contact";
 
   useEffect(() => {
     const prev = document.title;
-    document.title = "Frontend · Pawan Kumar";
+    document.title = isContact
+      ? "Contact · Frontend · Pawan Kumar"
+      : "Frontend · Pawan Kumar";
     return () => {
       document.title = prev;
     };
-  }, []);
+  }, [isContact]);
+
+  const handleTopic = (key: string) => {
+    setRouteKey(key);
+    navigate("/");
+  };
+
+  const handleHome = () => {
+    setRouteKey("home");
+    navigate("/");
+  };
 
   return (
     <SubdomainAppShell
-      header={<FrontendNavHeader onNavigate={setRouteKey} />}
-      contact={<FrontendContactSection />}
+      header={
+        <FrontendNavHeader
+          contactActive={isContact}
+          onNavigatePath={navigate}
+          onNavigateTopic={handleTopic}
+          onHome={handleHome}
+        />
+      }
     >
-      {routeKey === "home" ? (
+      {isContact ? (
+        <main>
+          <FrontendContactSection />
+        </main>
+      ) : routeKey === "home" ? (
         <>
           <header className="border-b border-border/60 px-6 py-6 md:px-10">
             <p className="font-['Syne',sans-serif] text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
@@ -58,7 +83,7 @@ export default function FrontendApp() {
           </main>
         </>
       ) : (
-        <FrontendTopicPlaceholder routeKey={routeKey} onBack={() => setRouteKey("home")} />
+        <FrontendTopicPlaceholder routeKey={routeKey} />
       )}
     </SubdomainAppShell>
   );

@@ -23,7 +23,7 @@ export default function FrontendContactSection() {
       footnote="Your email is only used to reply. I do not subscribe you to anything without your consent."
       person={person}
       social={social}
-      formClassName="border-l-4 border-l-accent-cyan/90"
+      formClassName="border-l-4 border-l-accent-violet/80"
     />
   );
 }

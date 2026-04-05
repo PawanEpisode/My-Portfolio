@@ -24,7 +24,7 @@ export interface MegaMenuPanelProps {
   activeCategoryId: string;
   onCategoryChange: (id: string) => void;
   onSelectItem: (routeKey: string) => void;
-  /** Left border accent for the active category (e.g. amber to match nav highlight) */
+  /** Left border accent for the active category (portfolio: indigo) */
   activeCategoryClassName?: string;
 }
 
@@ -33,7 +33,7 @@ export default function MegaMenuPanel({
   activeCategoryId,
   onCategoryChange,
   onSelectItem,
-  activeCategoryClassName = "border-l-amber-400",
+  activeCategoryClassName = "border-l-accent-indigo",
 }: MegaMenuPanelProps) {
   const active = categories.find((c) => c.id === activeCategoryId) ?? categories[0];
   const visibleItems = active?.items.filter((i) => i.visible) ?? [];
@@ -55,7 +55,7 @@ export default function MegaMenuPanel({
               className={cn(
                 "border-l-2 border-transparent py-2.5 pl-3 pr-2 text-left text-sm font-medium transition-colors",
                 isActive
-                  ? cn("bg-surface text-foreground", activeCategoryClassName)
+                  ? cn("bg-surface font-medium text-accent-indigo", activeCategoryClassName)
                   : "text-muted hover:bg-surface-hover hover:text-foreground"
               )}
             >

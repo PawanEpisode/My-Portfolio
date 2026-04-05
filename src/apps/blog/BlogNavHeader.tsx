@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import ThemeToggleButton from "../../shared/theme/ThemeToggleButton";
 import { blogHostnameDisplay } from "../../shared/lib/subdomainHostDisplay";
 import {
@@ -15,18 +15,41 @@ import type { BlogRouteId } from "./blogRoutes";
 
 export interface BlogNavHeaderProps {
   active: BlogRouteId;
-  onNavigate: (route: BlogRouteId) => void;
-  onScrollToContact: () => void;
+  onNavigatePath: (path: string) => void;
 }
 
-const navBtn =
-  "rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface-hover hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-indigo/50";
+const navClass =
+  "inline-flex items-center rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface-hover hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-indigo/50";
 
-export default function BlogNavHeader({
+function NavLink({
+  href,
   active,
-  onNavigate,
-  onScrollToContact,
-}: BlogNavHeaderProps) {
+  onNavigatePath,
+  children,
+}: {
+  href: string;
+  active: boolean;
+  onNavigatePath: (path: string) => void;
+  children: ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      className={cn(
+        navClass,
+        active && "bg-surface text-foreground ring-1 ring-inset ring-accent-indigo/35"
+      )}
+      onClick={(e) => {
+        e.preventDefault();
+        onNavigatePath(href);
+      }}
+    >
+      {children}
+    </a>
+  );
+}
+
+export default function BlogNavHeader({ active, onNavigatePath }: BlogNavHeaderProps) {
   const host = blogHostnameDisplay();
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -41,6 +64,10 @@ export default function BlogNavHeader({
         <a
           href="/"
           className="shrink-0 font-['Syne',sans-serif] text-sm font-semibold tracking-tight text-foreground underline-offset-4 hover:underline"
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigatePath("/");
+          }}
         >
           {host}
         </a>
@@ -49,23 +76,15 @@ export default function BlogNavHeader({
           className="flex items-center gap-0.5 md:gap-1"
           aria-label="Blog primary navigation"
         >
-          <button
-            type="button"
-            className={cn(navBtn, active === "about" && "bg-surface text-foreground")}
-            onClick={() => onNavigate("about")}
-          >
+          <NavLink href="/about" active={active === "about"} onNavigatePath={onNavigatePath}>
             About
-          </button>
-          <button
-            type="button"
-            className={cn(navBtn, active === "posts" && "bg-surface text-foreground")}
-            onClick={() => onNavigate("posts")}
-          >
+          </NavLink>
+          <NavLink href="/posts" active={active === "posts"} onNavigatePath={onNavigatePath}>
             Posts
-          </button>
-          <button type="button" className={navBtn} onClick={onScrollToContact}>
+          </NavLink>
+          <NavLink href="/contact" active={active === "contact"} onNavigatePath={onNavigatePath}>
             Contact
-          </button>
+          </NavLink>
 
           <Dialog open={searchOpen} onOpenChange={setSearchOpen}>
             <DialogTrigger asChild>

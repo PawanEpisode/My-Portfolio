@@ -2,13 +2,9 @@ import { findFrontendRoute } from "./frontendRouteLookup";
 
 export interface FrontendTopicPlaceholderProps {
   routeKey: string;
-  onBack: () => void;
 }
 
-export default function FrontendTopicPlaceholder({
-  routeKey,
-  onBack,
-}: FrontendTopicPlaceholderProps) {
+export default function FrontendTopicPlaceholder({ routeKey }: FrontendTopicPlaceholderProps) {
   const resolved = findFrontendRoute(routeKey);
   const title = resolved?.item.title ?? "Topic";
   const description =
@@ -24,14 +20,6 @@ export default function FrontendTopicPlaceholder({
         {title}
       </h1>
       <p className="mt-4 text-base leading-relaxed text-muted">{description}</p>
-
-      <button
-        type="button"
-        onClick={onBack}
-        className="mt-8 text-sm font-medium text-accent-indigo underline-offset-4 hover:underline"
-      >
-        ← Back to home
-      </button>
 
       <div className="mt-8 rounded-xl border border-border bg-surface/80 p-6">
         <h2 className="text-sm font-semibold text-foreground">Pseudo page</h2>

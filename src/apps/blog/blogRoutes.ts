@@ -1,1 +1,1 @@
-export type BlogRouteId = "home" | "about" | "posts" | "search";
+export type BlogRouteId = "home" | "about" | "posts" | "contact";

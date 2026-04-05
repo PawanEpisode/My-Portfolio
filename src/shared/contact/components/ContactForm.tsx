@@ -38,10 +38,13 @@ export default function ContactForm({
   person,
   social,
   className,
+  /** `solid` avoids backdrop-blur so fixed noise / gradients do not smudge behind the card. */
+  surface = "glass",
 }: {
   person: { email: string };
   social: { github: string; linkedin: string };
   className?: string;
+  surface?: "glass" | "solid";
 }) {
   const [values, setValues] = useState(INITIAL_VALUES);
   const [errors, setErrors] = useState(INITIAL_ERRORS);
@@ -92,7 +95,15 @@ export default function ContactForm({
   };
 
   return (
-    <div className={cn("glass rounded-2xl border border-border p-4 sm:p-8", className)}>
+    <div
+      className={cn(
+        "rounded-2xl border border-border p-4 sm:p-8",
+        surface === "glass" && "glass",
+        surface === "solid" &&
+          "bg-bg-secondary shadow-sm dark:bg-surface dark:shadow-black/20",
+        className
+      )}
+    >
       <form onSubmit={handleSubmit} noValidate>
         {/* Name + Email row */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">

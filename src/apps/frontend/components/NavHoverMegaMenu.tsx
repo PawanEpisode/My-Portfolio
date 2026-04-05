@@ -35,16 +35,19 @@ export default function NavHoverMegaMenu({
         <button
           type="button"
           className={cn(
-            "inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60",
+            "inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-indigo/50",
             open
-              ? "text-amber-400"
+              ? "bg-surface text-accent-indigo ring-1 ring-inset ring-accent-indigo/30"
               : "text-muted hover:bg-surface-hover hover:text-foreground"
           )}
           aria-expanded={open}
         >
           {label}
           <ChevronDown
-            className={cn("h-4 w-4 transition-transform duration-200", open && "rotate-180")}
+            className={cn(
+              "h-4 w-4 shrink-0 transition-transform duration-200",
+              open ? "rotate-180 text-accent-indigo" : "text-muted"
+            )}
             aria-hidden
           />
         </button>
