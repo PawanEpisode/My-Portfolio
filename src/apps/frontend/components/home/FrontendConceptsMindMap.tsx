@@ -102,7 +102,7 @@ function AnimatedPath({ d, delay, duration, repeatDelay }: AnimatedPathProps) {
       <path
         d={d}
         fill="none"
-        stroke="#2a2a2a"
+        stroke="var(--border)"
         strokeWidth="1.5"
         strokeLinecap="round"
       />
@@ -148,21 +148,8 @@ type NodeCardProps = {
 function NodeCard({ label }: NodeCardProps) {
   return (
     <motion.div
-      whileHover={{ scale: 1.04, borderColor: "#3a3a3a" }}
-      style={{
-        background: "#111",
-        border: "1px solid #252525",
-        borderRadius: 10,
-        padding: "8px 16px",
-        color: "#c8c8c8",
-        fontSize: 13,
-        fontWeight: 400,
-        letterSpacing: "-0.01em",
-        whiteSpace: "nowrap",
-        cursor: "default",
-        transition: "border-color 0.2s",
-        userSelect: "none",
-      }}
+      whileHover={{ scale: 1.04 }}
+      className="cursor-default select-none whitespace-nowrap rounded-[10px]  bg-[var(--card-elevated-bg)] px-4 py-2 text-[13px] font-normal tracking-tight text-muted ring-1 ring-inset ring-[var(--card-elevated-border)] transition-colors duration-200 hover:border-border-hover"
     >
       {label}
     </motion.div>
@@ -226,14 +213,7 @@ function CenterHubCard({ centerRef }: { centerRef: RefObject<HTMLDivElement | nu
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        style={{
-          background: "#111",
-          border: "1px solid #2a2a2a",
-          borderRadius: 14,
-          padding: "6px 6px",
-          width: 280,
-          boxShadow: "0 0 40px rgba(0,0,0,0.8)",
-        }}
+        className="flex w-[280px] flex-col gap-1 rounded-[14px] border border-border bg-[var(--card-elevated-bg)] p-1.5 shadow-[var(--project-card-shadow-idle)] ring-1 ring-inset ring-[var(--card-elevated-border)]"
       >
         {HUB_CENTER_ITEMS.map((item, i) => (
           <motion.div
@@ -241,47 +221,12 @@ function CenterHubCard({ centerRef }: { centerRef: RefObject<HTMLDivElement | nu
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 + i * 0.12, duration: 0.4 }}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-              padding: "10px 14px",
-              borderRadius: 10,
-              marginBottom: i < HUB_CENTER_ITEMS.length - 1 ? 3 : 0,
-              background: i === 2 ? "#1a1a1a" : "transparent",
-              cursor: "pointer",
-              transition: "background 0.2s",
-            }}
-            whileHover={{ background: "#1e1e1e" }}
+            className="flex cursor-pointer items-center gap-3 rounded-[10px] px-3.5 py-2.5 transition-colors duration-200 hover:bg-surface-hover"
           >
-            <span
-              style={{
-                width: 24,
-                height: 24,
-                borderRadius: "50%",
-                background: "#222",
-                border: "1px solid #333",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 11,
-                color: "#777",
-                fontWeight: 500,
-                flexShrink: 0,
-              }}
-            >
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-border bg-[var(--tag-pill-bg)] text-[11px] font-medium text-muted">
               {item.num}
             </span>
-            <span
-              style={{
-                color: "#e8e8e8",
-                fontSize: 14,
-                fontWeight: item.num === 3 ? 600 : 400,
-                letterSpacing: "-0.01em",
-              }}
-            >
-              {item.label}
-            </span>
+            <span className="text-sm tracking-tight text-foreground">{item.label}</span>
           </motion.div>
         ))}
       </motion.div>
@@ -304,8 +249,10 @@ function ConnectorsSvg({
       <defs>
         <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="transparent" />
-          <stop offset="40%" stopColor="#c8f545" stopOpacity="0.9" />
-          <stop offset="60%" stopColor="#e8ff60" stopOpacity="1" />
+          <stop offset="25%" stopColor="var(--accent-indigo)" stopOpacity="0.35" />
+          <stop offset="45%" stopColor="var(--accent-indigo)" stopOpacity="1" />
+          <stop offset="55%" stopColor="var(--accent-cyan)" stopOpacity="1" />
+          <stop offset="75%" stopColor="var(--accent-cyan)" stopOpacity="0.35" />
           <stop offset="100%" stopColor="transparent" />
         </linearGradient>
       </defs>
@@ -365,10 +312,7 @@ export default function FrontendConceptsMindMap() {
   }, []);
 
   return (
-    <div
-      className="min-h-screen w-full flex items-center justify-center"
-      style={{ background: "#0d0d0d", fontFamily: "'Inter', sans-serif" }}
-    >
+    <div className="flex w-full items-center justify-center text-foreground">
       <div
         ref={containerRef}
         className="relative w-full"

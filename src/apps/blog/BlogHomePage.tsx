@@ -39,12 +39,6 @@ export default function BlogHomePage({ onNavigatePath }: BlogHomePageProps) {
       />
       <BlogWritingSection posts={listPosts} onNavigatePath={onNavigatePath} />
       <BlogNewsletterSection />
-      <p className="pb-10 text-center text-xs text-subtle">
-        Local dev:{" "}
-        <code className="rounded bg-muted px-1.5 py-0.5 text-foreground">
-          http://blog.localhost:5199
-        </code>
-      </p>
     </main>
   );
 }

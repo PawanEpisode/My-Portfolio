@@ -30,12 +30,6 @@ export default function FrontendHomePage({
         <SkillHubSection id={SKILL_HUB_ANCHOR} />
         <FrontendValueSection />
         <FrontendExploreTopicsSection onNavigateTopic={onNavigateTopic} />
-        <p className="px-6 pb-10 text-center text-xs text-subtle md:px-10">
-          Local dev:{" "}
-          <code className="rounded bg-muted px-1.5 py-0.5 text-foreground">
-            http://frontend.localhost:5199
-          </code>
-        </p>
       </main>
     </div>
   );
