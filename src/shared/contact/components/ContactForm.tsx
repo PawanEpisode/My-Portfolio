@@ -89,7 +89,8 @@ export default function ContactForm({
       }, 5000);
       setValues(INITIAL_VALUES);
       setErrors(INITIAL_ERRORS);
-    } catch {
+    } catch (err) {
+      console.error("Contact submit failed:", err);
       setStatus("error");
       // Auto-reset error state after 4 s so the user can retry
       setTimeout(() => setStatus("idle"), 4000);
