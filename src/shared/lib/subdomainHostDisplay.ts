@@ -7,9 +7,9 @@ function trimEnv(value: unknown): string | null {
 }
 
 export function blogHostnameDisplay(): string {
-  return trimEnv(import.meta.env.VITE_BLOG_HOSTNAME) ?? "blog.meetpawan.com";
+  return trimEnv(process.env.NEXT_PUBLIC_BLOG_HOSTNAME) ?? "blog.meetpawan.com";
 }
 
 export function frontendHostnameDisplay(): string {
-  return trimEnv(import.meta.env.VITE_FRONTEND_HOSTNAME) ?? "frontend.meetpawan.com";
+  return trimEnv(process.env.NEXT_PUBLIC_FRONTEND_HOSTNAME) ?? "frontend.meetpawan.com";
 }

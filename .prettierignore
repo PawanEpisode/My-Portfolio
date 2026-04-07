@@ -1,5 +1,6 @@
 dist
 dist-ssr
+.next
 node_modules
 coverage
 build

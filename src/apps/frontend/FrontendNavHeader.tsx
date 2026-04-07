@@ -1,5 +1,10 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import SeekhoHeaderBrandLink from "../../shared/components/SeekhoHeaderBrandLink";
 import ThemeToggleButton from "../../shared/theme/ThemeToggleButton";
+import { normalizePathname, stripInternalAppPrefix } from "@/lib/pathname";
 import { cn } from "../../shared/utils/cn";
 import { INTERVIEW_MENU } from "./data/interviewMenu";
 import { PREPARE_MENU } from "./data/prepareMenu";
@@ -7,9 +12,7 @@ import NavHoverMegaMenu from "./components/NavHoverMegaMenu";
 
 export interface FrontendNavHeaderProps {
   onNavigateTopic: (routeKey: string) => void;
-  onNavigatePath: (path: string) => void;
   onHome: () => void;
-  contactActive: boolean;
 }
 
 /** Matches blog nav: indigo focus ring; active state uses surface + indigo ring (design system). */
@@ -18,10 +21,12 @@ const contactNavClass =
 
 export default function FrontendNavHeader({
   onNavigateTopic,
-  onNavigatePath,
   onHome,
-  contactActive,
 }: FrontendNavHeaderProps) {
+  const pathname = usePathname();
+  const p = normalizePathname(stripInternalAppPrefix(pathname, "/frontend"));
+  const contactActive = p === "/contact";
+
   return (
     <header
       className={cn(
@@ -33,10 +38,8 @@ export default function FrontendNavHeader({
         <SeekhoHeaderBrandLink
           productLabel="Frontend"
           ariaLabel="Seekho.dev Frontend — home"
-          onNavigateHome={(e) => {
-            e.preventDefault();
-            onHome();
-          }}
+          href="/"
+          onNavigate={onHome}
         />
 
         <nav
@@ -53,7 +56,7 @@ export default function FrontendNavHeader({
             categories={PREPARE_MENU}
             onSelectItem={onNavigateTopic}
           />
-          <a
+          <Link
             href="/contact"
             className={cn(
               contactNavClass,
@@ -61,13 +64,9 @@ export default function FrontendNavHeader({
                 ? "bg-surface text-foreground ring-1 ring-inset ring-accent-indigo/35"
                 : "text-muted hover:bg-surface-hover hover:text-foreground"
             )}
-            onClick={(e) => {
-              e.preventDefault();
-              onNavigatePath("/contact");
-            }}
           >
             Contact
-          </a>
+          </Link>
           <ThemeToggleButton />
         </nav>
       </div>

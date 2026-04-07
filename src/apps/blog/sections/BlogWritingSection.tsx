@@ -1,12 +1,14 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { ArrowRight, Clock } from "lucide-react";
+import Link from "next/link";
 import type { BlogPost } from "../types";
 import { getCategoryById } from "../data/posts";
 import { Button } from "../../../shared/components/ui/button";
 
 export interface BlogWritingSectionProps {
   posts: BlogPost[];
-  onNavigatePath: (path: string) => void;
 }
 
 function formatDate(iso: string) {
@@ -17,10 +19,7 @@ function formatDate(iso: string) {
   }).format(new Date(iso));
 }
 
-export default function BlogWritingSection({
-  posts,
-  onNavigatePath,
-}: BlogWritingSectionProps) {
+export default function BlogWritingSection({ posts }: BlogWritingSectionProps) {
   return (
     <section
       id="writing"
@@ -61,14 +60,11 @@ export default function BlogWritingSection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <Button
-            type="button"
-            variant="outline"
-            className="shrink-0 border-border"
-            onClick={() => onNavigatePath("/posts")}
-          >
-            View archive
-            <ArrowRight className="h-4 w-4" />
+          <Button asChild variant="outline" className="shrink-0 border-border">
+            <Link href="/posts">
+              View archive
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </Button>
         </motion.div>
       </div>
@@ -87,13 +83,9 @@ export default function BlogWritingSection({
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.04 }}
               >
-                <a
+                <Link
                   href={`/posts#${post.slug}`}
                   className="flex h-full flex-col rounded-xl border border-border bg-[var(--card-elevated-bg)] p-5 ring-1 ring-inset ring-[var(--card-elevated-border)] transition-colors hover:border-border-hover hover:bg-surface"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNavigatePath(`/posts#${post.slug}`);
-                  }}
                 >
                   <div className="flex flex-wrap items-center gap-2 text-xs text-muted">
                     {cat ? (
@@ -116,7 +108,7 @@ export default function BlogWritingSection({
                   <span className="mt-4 text-sm font-medium text-accent-indigo">
                     Read more
                   </span>
-                </a>
+                </Link>
               </motion.li>
             );
           })}

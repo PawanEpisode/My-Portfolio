@@ -1,4 +1,4 @@
-import { supabase } from "./supabase";
+import { getSupabaseBrowserClient } from "./supabase";
 
 export interface ContactSubmission {
   name: string;
@@ -17,7 +17,7 @@ export async function submitContact({
   subject,
   message,
 }: ContactSubmission): Promise<void> {
-  const { error } = await supabase
+  const { error } = await getSupabaseBrowserClient()
     .from("contacts")
     .insert({ name, email, subject, message });
 

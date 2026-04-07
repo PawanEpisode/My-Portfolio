@@ -1,4 +1,4 @@
-import type { MouseEvent } from "react";
+import Link from "next/link";
 import { cn } from "../utils/cn";
 
 const LOGO_SRC = "/assets/brand-logo.png";
@@ -10,7 +10,8 @@ export interface SeekhoHeaderBrandLinkProps {
   ariaLabel: string;
   href?: string;
   className?: string;
-  onNavigateHome: (event: MouseEvent<HTMLAnchorElement>) => void;
+  /** Optional side effect when the home link is activated (e.g. reset client route state). */
+  onNavigate?: () => void;
 }
 
 /**
@@ -21,11 +22,12 @@ export default function SeekhoHeaderBrandLink({
   ariaLabel,
   href = "/",
   className,
-  onNavigateHome,
+  onNavigate,
 }: SeekhoHeaderBrandLinkProps) {
   return (
-    <a
+    <Link
       href={href}
+      onClick={onNavigate}
       className={cn(
         "group relative shrink-0 flex items-center gap-2.5 rounded-xl py-1 pl-1 pr-2 -ml-1",
         "outline-none transition-[color,background-color]",
@@ -33,7 +35,6 @@ export default function SeekhoHeaderBrandLink({
         className
       )}
       aria-label={ariaLabel}
-      onClick={onNavigateHome}
     >
       <span className="relative shrink-0">
         <span
@@ -63,6 +64,6 @@ export default function SeekhoHeaderBrandLink({
           {productLabel}
         </span>
       </span>
-    </a>
+    </Link>
   );
 }

@@ -1,12 +1,15 @@
-import type { ComponentType } from "react";
-import BlogApp from "../apps/blog/BlogApp";
-import FrontendApp from "../apps/frontend/FrontendApp";
+/**
+ * Subdomain hostname registry (aligned with `middleware.ts` + `src/lib/hostRouting.ts`).
+ * Use `getConfiguredHostForAppId` for cross-links; do not hardcode production hostnames in UI.
+ */
 
-/** Env keys used for subdomain hostnames (see `ImportMetaEnv` in `vite-env.d.ts`). */
-type SubdomainHostnameEnvKey = "VITE_BLOG_HOSTNAME" | "VITE_FRONTEND_HOSTNAME";
+/** Env keys for public subdomain hostnames (see `next-env.d.ts` / `src/env.d.ts`). */
+export type SubdomainHostnameEnvKey =
+  | "NEXT_PUBLIC_BLOG_HOSTNAME"
+  | "NEXT_PUBLIC_FRONTEND_HOSTNAME";
 
 function envHost(key: SubdomainHostnameEnvKey, fallback: string): string {
-  const v = import.meta.env[key];
+  const v = typeof process !== "undefined" ? process.env[key] : undefined;
   if (v == null || String(v).trim() === "") return fallback;
   return String(v).trim();
 }
@@ -17,52 +20,36 @@ export interface HostAppEntry {
   defaultHost: string;
   /** Dev-only: resolves to 127.0.0.1 in modern browsers; no /etc/hosts needed */
   devLocalHost: string;
-  component: ComponentType;
 }
 
-/**
- * Subdomain apps (anything not matched falls through to PortfolioApp).
- *
- * To add another app:
- * 1. Create `src/apps/<name>/<Name>App.tsx` (and optional `components/`, `hooks/`, …)
- * 2. Extend `SubdomainHostnameEnvKey` + `ImportMetaEnv` in `vite-env.d.ts`
- * 3. Add `VITE_*_HOSTNAME` to `.env.example`
- * 4. Push an entry here with a unique `devLocalHost` (`*.localhost`, dev-only)
- */
 const HOST_APP_ENTRIES: readonly HostAppEntry[] = [
   {
     id: "blog",
-    envKey: "VITE_BLOG_HOSTNAME",
+    envKey: "NEXT_PUBLIC_BLOG_HOSTNAME",
     defaultHost: "blog.meetpawan.com",
     devLocalHost: "blog.localhost",
-    component: BlogApp,
   },
   {
     id: "frontend",
-    envKey: "VITE_FRONTEND_HOSTNAME",
+    envKey: "NEXT_PUBLIC_FRONTEND_HOSTNAME",
     defaultHost: "frontend.meetpawan.com",
     devLocalHost: "frontend.localhost",
-    component: FrontendApp,
   },
 ];
 
 function resolvedHosts(entry: HostAppEntry): string[] {
   const production = envHost(entry.envKey, entry.defaultHost);
   const hosts = [production];
-  if (import.meta.env.DEV) hosts.push(entry.devLocalHost);
+  if (process.env.NODE_ENV === "development") hosts.push(entry.devLocalHost);
   return hosts;
 }
 
 export function resolveHostAppEntry(hostname: string): HostAppEntry | null {
+  const h = hostname.split(":")[0]?.toLowerCase() ?? "";
   for (const entry of HOST_APP_ENTRIES) {
-    if (resolvedHosts(entry).includes(hostname)) return entry;
+    if (resolvedHosts(entry).includes(h)) return entry;
   }
   return null;
-}
-
-export function getHostAppComponent(hostname: string): ComponentType | null {
-  const entry = resolveHostAppEntry(hostname);
-  return entry ? entry.component : null;
 }
 
 /** Production hostname for an app id (after env), for links / metadata */
@@ -83,6 +70,6 @@ export function listHostAppBindings(): HostAppBindingInfo[] {
   return HOST_APP_ENTRIES.map((e) => ({
     id: e.id,
     productionHost: envHost(e.envKey, e.defaultHost),
-    devLocalHost: import.meta.env.DEV ? e.devLocalHost : null,
+    devLocalHost: process.env.NODE_ENV === "development" ? e.devLocalHost : null,
   }));
 }

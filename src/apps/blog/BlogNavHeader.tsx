@@ -1,4 +1,8 @@
+"use client";
+
 import { Search } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, type ReactNode } from "react";
 import ThemeToggleButton from "../../shared/theme/ThemeToggleButton";
 import {
@@ -11,11 +15,7 @@ import {
 } from "../../shared/components/ui/dialog";
 import SeekhoHeaderBrandLink from "../../shared/components/SeekhoHeaderBrandLink";
 import { cn } from "../../shared/utils/cn";
-import type { BlogRouteId } from "./blogRoutes";
-export interface BlogNavHeaderProps {
-  active: BlogRouteId;
-  onNavigatePath: (path: string) => void;
-}
+import { blogPathToRoute } from "./blogPaths";
 
 const navClass =
   "inline-flex items-center rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface-hover hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-indigo/50";
@@ -23,32 +23,28 @@ const navClass =
 function NavLink({
   href,
   active,
-  onNavigatePath,
   children,
 }: {
   href: string;
   active: boolean;
-  onNavigatePath: (path: string) => void;
   children: ReactNode;
 }) {
   return (
-    <a
+    <Link
       href={href}
       className={cn(
         navClass,
         active && "bg-surface text-foreground ring-1 ring-inset ring-accent-indigo/35"
       )}
-      onClick={(e) => {
-        e.preventDefault();
-        onNavigatePath(href);
-      }}
     >
       {children}
-    </a>
+    </Link>
   );
 }
 
-export default function BlogNavHeader({ active, onNavigatePath }: BlogNavHeaderProps) {
+export default function BlogNavHeader() {
+  const pathname = usePathname();
+  const active = blogPathToRoute(pathname);
   const [searchOpen, setSearchOpen] = useState(false);
 
   return (
@@ -62,35 +58,20 @@ export default function BlogNavHeader({ active, onNavigatePath }: BlogNavHeaderP
         <SeekhoHeaderBrandLink
           productLabel="Blog"
           ariaLabel="Seekho.dev Blog — home"
-          onNavigateHome={(e) => {
-            e.preventDefault();
-            onNavigatePath("/");
-          }}
+          href="/"
         />
 
         <nav
           className="flex items-center gap-0.5 md:gap-1"
           aria-label="Blog primary navigation"
         >
-          <NavLink
-            href="/about"
-            active={active === "about"}
-            onNavigatePath={onNavigatePath}
-          >
+          <NavLink href="/about" active={active === "about"}>
             About
           </NavLink>
-          <NavLink
-            href="/posts"
-            active={active === "posts"}
-            onNavigatePath={onNavigatePath}
-          >
+          <NavLink href="/posts" active={active === "posts"}>
             Posts
           </NavLink>
-          <NavLink
-            href="/contact"
-            active={active === "contact"}
-            onNavigatePath={onNavigatePath}
-          >
+          <NavLink href="/contact" active={active === "contact"}>
             Contact
           </NavLink>
 

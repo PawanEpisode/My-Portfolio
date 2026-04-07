@@ -1,21 +1,48 @@
+import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
-import globals from "globals";
-import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
-import react from "eslint-plugin-react";
 import eslintConfigPrettier from "eslint-config-prettier";
-import tseslint from "typescript-eslint";
+import globals from "globals";
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 import { defineConfig, globalIgnores } from "eslint/config";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+});
+
 export default defineConfig([
-  globalIgnores(["dist", "node_modules", "coverage", "build", "supabase/.temp"]),
+  globalIgnores([
+    "dist",
+    "node_modules",
+    ".next",
+    "coverage",
+    "build",
+    "supabase/.temp",
+  ]),
+  js.configs.recommended,
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    files: ["next-env.d.ts"],
+    rules: {
+      "@typescript-eslint/triple-slash-reference": "off",
+    },
+  },
+  {
+    rules: {
+      "@next/next/no-img-element": "off",
+      "@next/next/no-page-custom-font": "off",
+    },
+  },
   {
     files: [
       "eslint.config.js",
-      "vite.config.js",
-      "postcss.config.js",
-      "tailwind.config.js",
+      "next.config.ts",
+      "postcss.config.mjs",
       "*.config.js",
+      "*.config.mjs",
     ],
     languageOptions: {
       globals: globals.node,
@@ -25,29 +52,8 @@ export default defineConfig([
       },
     },
   },
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
   {
-    files: ["src/**/*.{ts,tsx}"],
-    plugins: {
-      react,
-    },
-    extends: [reactHooks.configs["recommended-latest"], reactRefresh.configs.vite],
-    languageOptions: {
-      globals: globals.browser,
-      parserOptions: {
-        ecmaFeatures: { jsx: true },
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-    settings: {
-      react: {
-        version: "detect",
-      },
-    },
     rules: {
-      "react/jsx-uses-vars": "error",
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": [
         "error",

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useCallback, type ChangeEvent, type FormEvent } from "react";
 import { submitContact } from "../../lib/contact";
 import { FORM_FIELDS } from "../constants";

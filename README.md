@@ -1,6 +1,6 @@
 # Pawan Kumar — Portfolio
 
-A production-oriented personal portfolio: React, Vite, Tailwind CSS v4, accessible UI primitives, motion, and **Supabase** for contact form persistence plus optional **email notifications** via an Edge Function and Resend.
+A production-oriented personal portfolio: **Next.js 15** (App Router), React 19, Tailwind CSS v4, accessible UI primitives, motion, and **Supabase** for contact form persistence plus optional **email notifications** via an Edge Function and Resend.
 
 ---
 
@@ -8,29 +8,29 @@ A production-oriented personal portfolio: React, Vite, Tailwind CSS v4, accessib
 
 ```bash
 npm install
-npm run dev          # dev server (port 5199, see vite.config.js)
-npm run build        # production bundle → dist/
-npm run preview      # serve dist/ locally
+npm run dev          # Next.js dev server (port 5199)
+npm run build        # production build (.next/)
+npm run start        # serve production build locally (port 5199)
 npm run lint         # ESLint
 ```
 
-Copy [`.env.example`](.env.example) to `.env.local` and set Supabase variables before running the app (the client throws if they are missing).
+Copy [`.env.example`](.env.example) to `.env.local` and set `NEXT_PUBLIC_SUPABASE_*` before using the contact form (the browser client throws if they are missing when submitting).
 
 ---
 
 ## Tech stack
 
-| Layer             | Choice                                                     | Why                                                                                                                                      |
-| ----------------- | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| UI                | **React 19**                                               | Concurrent-ready, modern hooks, ecosystem fit.                                                                                           |
-| Build             | **Vite 7**                                                 | Fast HMR, ESM-native dev, straightforward production builds.                                                                             |
-| Styling           | **Tailwind CSS v4** + **`@tailwindcss/vite`**              | Utilities at build time without a separate PostCSS-only pipeline for core CSS; tokens live in `src/index.css` (`@import "tailwindcss"`). |
-| Components        | **Radix UI** (`dialog`, `tooltip`, `slot`)                 | Unstyled primitives with focus management and ARIA; styled in-house for a custom look.                                                   |
-| Motion            | **Framer Motion**                                          | Scroll-linked and in-view animations without hand-rolling physics.                                                                       |
-| Icons             | **lucide-react**                                           | Consistent stroke icons, tree-shakeable.                                                                                                 |
-| Class names       | **clsx**, **tailwind-merge**, **class-variance-authority** | Predictable composition for variants and conflicting utilities.                                                                          |
-| Backend (contact) | **Supabase** (Postgres + PostgREST + Edge Functions)       | Managed Postgres, row-level security, serverless hooks without running your own API server for a simple form.                            |
-| Email             | **Resend** (from Edge Function)                            | HTTP API from Deno; no secret keys in the browser.                                                                                       |
+| Layer             | Choice                                                     | Why                                                                                                           |
+| ----------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| UI                | **React 19**                                               | Concurrent-ready, modern hooks, ecosystem fit.                                                                |
+| Build             | **Next.js 15**                                             | App Router, SSR/SSG, built-in routing, Vercel-optimized production builds.                                    |
+| Styling           | **Tailwind CSS v4** + **`@tailwindcss/postcss`**           | Tokens and `@import "tailwindcss"` in `app/globals.css`.                                                      |
+| Components        | **Radix UI** (`dialog`, `tooltip`, `slot`)                 | Unstyled primitives with focus management and ARIA; styled in-house for a custom look.                        |
+| Motion            | **Framer Motion**                                          | Scroll-linked and in-view animations without hand-rolling physics.                                            |
+| Icons             | **lucide-react**                                           | Consistent stroke icons, tree-shakeable.                                                                      |
+| Class names       | **clsx**, **tailwind-merge**, **class-variance-authority** | Predictable composition for variants and conflicting utilities.                                               |
+| Backend (contact) | **Supabase** (Postgres + PostgREST + Edge Functions)       | Managed Postgres, row-level security, serverless hooks without running your own API server for a simple form. |
+| Email             | **Resend** (from Edge Function)                            | HTTP API from Deno; no secret keys in the browser.                                                            |
 
 ---
 
@@ -38,26 +38,20 @@ Copy [`.env.example`](.env.example) to `.env.local` and set Supabase variables b
 
 ```
 portfolio/
-├── index.html                 # Entry HTML; inline script syncs theme before paint
-├── vite.config.js             # React + Tailwind Vite plugins; dev/preview port 5199
+├── app/
+│   ├── layout.tsx             # Root layout, ThemeProvider, globals.css, fonts
+│   ├── page.tsx               # Portfolio (default host)
+│   ├── globals.css            # Tailwind + design tokens
+│   ├── blog/                  # Blog routes (subdomain via middleware)
+│   └── frontend/              # Frontend hub routes
+├── middleware.ts              # Hostname → /blog/*, /frontend/* rewrites
 ├── public/
-│   ├── vite.svg
 │   └── assets/                # Static images (see “Static assets” below)
 ├── src/
-│   ├── main.jsx               # Root: ThemeProvider → App
-│   ├── App.jsx                # Page shell: scroll progress, sections, data wiring
-│   ├── index.css              # Tailwind import + design tokens (light/dark :root)
-│   ├── content/
-│   │   └── data.js            # Single source of truth for copy, URLs, image paths
-│   ├── layout/
-│   │   ├── Header.jsx
-│   │   └── Footer.jsx
-│   ├── sections/              # Feature folders: hero, experience, projects, skills, certificates, contact
-│   ├── shared/                # Reusable components, hooks, utils (e.g. Section, cn)
-│   ├── theme/                 # ThemeProvider, local-time rules, toggle
-│   └── lib/
-│       ├── supabase.js        # Browser Supabase client (env-based)
-│       └── contact.js         # insert into contacts via anon key
+│   ├── apps/                  # portfolio, blog, frontend feature UI
+│   ├── shared/                # Cross-app components, contact, content, theme, lib
+│   ├── config/hostApps.ts     # Hostname registry for links
+│   └── lib/                   # hostRouting, pathname helpers
 └── supabase/
     ├── config.toml            # Local Supabase + Edge Function settings
     ├── migrations/
@@ -74,13 +68,13 @@ portfolio/
 
 ### Section-based composition
 
-The page is built from **layout** (`Header`, `Footer`) and **sections** under `src/sections/`. Each section owns its UI and imports only what it needs. `App.jsx` passes slices of `data` as props so sections stay testable and dumb where possible.
+The portfolio is built from **layout** (`Header`, `Footer`) and **sections** under `src/apps/portfolio/sections/`. Each section owns its UI and imports only what it needs. `PortfolioApp.tsx` passes slices of `data` as props so sections stay testable and dumb where possible.
 
-**Sticky scroll stacks** (`ExperienceStack`, `ProjectsStack`, `Skills`) are rendered **outside** the generic `Section` wrapper on purpose: `Section` uses Framer Motion `whileInView` transforms that would break `position: sticky` behavior. This is called out in comments in `App.jsx`.
+**Sticky scroll stacks** (`ExperienceStack`, `ProjectsStack`, `Skills`) are rendered **outside** the generic `Section` wrapper on purpose: `Section` uses Framer Motion `whileInView` transforms that would break `position: sticky` behavior. This is called out in comments in `PortfolioApp.tsx`.
 
 ### Content vs presentation
 
-All narrative content, project metadata, timeline entries, skills, certificate rows, and **paths to images** live in `src/content/data.js`. Components render that data; they do not embed long copy. That keeps updates to one file and avoids scattering strings across JSX.
+All narrative content, project metadata, timeline entries, skills, certificate rows, and **paths to images** live in `src/shared/content/data.ts`. Components render that data; they do not embed long copy. That keeps updates to one file and avoids scattering strings across JSX.
 
 ### Shared layer
 
@@ -88,18 +82,18 @@ All narrative content, project metadata, timeline entries, skills, certificate r
 
 ### Theming: local time + user override
 
-Theme behavior is implemented in `src/theme/`:
+Theme behavior is implemented in `src/shared/theme/`:
 
-- **`localTimeTheme.js`** defines `auto` as **light from 06:00–17:59** local time and **dark otherwise** (configurable helpers).
+- **`localTimeTheme.ts`** defines `auto` as **light from 06:00–17:59** local time and **dark otherwise** (configurable helpers).
 - User preference is stored under **`portfolio-theme`** in `localStorage` (`light` | `dark` | `auto`).
-- **`ThemeProvider.jsx`** applies the resolved mode, syncs across tabs via `storage` events, and exposes context for the toggle.
-- **`index.html`** includes a small inline script that reads the same key and sets `theme-color` / `class` before React hydrates to reduce flash.
+- **`ThemeProvider.tsx`** applies the resolved mode, syncs across tabs via `storage` events, and exposes context for the toggle.
+- **`app/layout.tsx`** uses Next `Script` (`beforeInteractive`) with the same logic to set `theme-color` / `class` before paint and reduce flash.
 
 **Why:** Many portfolios only offer manual light/dark. Here, `auto` ties the default to the visitor’s day/night without removing manual control.
 
 ### Styling model
 
-- **CSS variables** in `src/index.css` define surfaces, borders, accents, and dark-mode overrides under `.dark`.
+- **CSS variables** in `app/globals.css` define surfaces, borders, accents, and dark-mode overrides under `.dark`.
 - **Tailwind** consumes those via theme extension patterns and utility classes.
 - Plugins in `package.json` (`@tailwindcss/forms`, `typography`, `aspect-ratio`) support form styling and rich text if you extend content later.
 
@@ -117,7 +111,7 @@ Radix primitives supply focus traps, keyboard navigation, and correct roles for 
 
 Raster and vector files (logos, project screenshots, certificates, profile photo, animated logo) live under **`public/assets/`**.
 
-Vite serves the `public/` directory at the **site root**, so files are referenced as **`/assets/<filename>`** (e.g. `/assets/my-image.jpeg`).
+Next.js serves the `public/` directory at the **site root**, so files are referenced as **`/assets/<filename>`** (e.g. `/assets/my-image.jpeg`).
 
 **Why not `import` from `src/assets`?**
 
@@ -152,11 +146,11 @@ Shape is intentionally plain objects/arrays so you can later move the same schem
 2. **Row Level Security (RLS)** — the **anon** key (used in the browser) may **INSERT** only; it cannot read other people’s rows.
 3. **Optional Edge Function `contact-notification`** — invoked by a **Database Webhook** on `INSERT` into `contacts` to send you an email via **Resend**.
 
-The browser **never** sees Resend or service-role keys; only `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`.
+The browser **never** sees Resend or service-role keys; only `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
 
 ### Client (`src/lib/supabase.js`)
 
-Creates a single `createClient` instance from `@supabase/supabase-js` using `import.meta.env.VITE_SUPABASE_*`. If either variable is missing, the module throws at import time so misconfiguration fails fast during development.
+Uses `getSupabaseBrowserClient()` from `@supabase/supabase-js` with `process.env.NEXT_PUBLIC_SUPABASE_*`. If either variable is missing, the factory throws when the contact form runs in the browser.
 
 ### Contact submit (`src/lib/contact.js`)
 
@@ -218,17 +212,17 @@ For the canonical types in code, see `InsertPayload` and `ContactRecord` in [`su
 
 ### Environment variables
 
-| Where                 | Variable                 | Purpose                        |
-| --------------------- | ------------------------ | ------------------------------ |
-| App (`.env.local`)    | `VITE_SUPABASE_URL`      | Project URL                    |
-| App (`.env.local`)    | `VITE_SUPABASE_ANON_KEY` | Public anon key (RLS-enforced) |
-| Edge Function secrets | `RESEND_API_KEY`         | Resend API auth                |
-| Edge Function secrets | `NOTIFY_TO_EMAIL`        | Your inbox                     |
-| Edge Function secrets | `RESEND_FROM_EMAIL`      | Optional verified sender       |
-| Edge Function secrets | `SITE_NAME`              | Email subject/branding         |
-| Edge Function secrets | `WEBHOOK_SECRET`         | Shared secret with DB webhook  |
+| Where                 | Variable                        | Purpose                        |
+| --------------------- | ------------------------------- | ------------------------------ |
+| App (`.env.local`)    | `NEXT_PUBLIC_SUPABASE_URL`      | Project URL                    |
+| App (`.env.local`)    | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public anon key (RLS-enforced) |
+| Edge Function secrets | `RESEND_API_KEY`                | Resend API auth                |
+| Edge Function secrets | `NOTIFY_TO_EMAIL`               | Your inbox                     |
+| Edge Function secrets | `RESEND_FROM_EMAIL`             | Optional verified sender       |
+| Edge Function secrets | `SITE_NAME`                     | Email subject/branding         |
+| Edge Function secrets | `WEBHOOK_SECRET`                | Shared secret with DB webhook  |
 
-Never prefix secrets that must stay server-only with `VITE_` — those are embedded in the client bundle.
+Never prefix secrets that must stay server-only with `NEXT_PUBLIC_` — those are embedded in the client bundle.
 
 ### Operational checklist (hosted Supabase)
 
@@ -247,7 +241,7 @@ Use the Supabase CLI: `supabase start`, link the project, apply migrations, serv
 
 Any static host can serve **`dist/`** after `npm run build`.
 
-- Set **`VITE_SUPABASE_URL`** and **`VITE_SUPABASE_ANON_KEY`** in the host’s environment (Vercel/Netlify env UI, etc.).
+- Set **`NEXT_PUBLIC_SUPABASE_URL`** and **`NEXT_PUBLIC_SUPABASE_ANON_KEY`** in the host’s environment (Vercel env UI, etc.).
 - Supabase Edge Function secrets are configured in the Supabase project, not on the static host.
 
 ---

@@ -1,11 +1,13 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { ArrowUpRight, Clock } from "lucide-react";
+import Link from "next/link";
 import type { BlogPost } from "../types";
 import { getCategoryById } from "../data/posts";
 
 export interface BlogFeaturedPostProps {
   post: BlogPost;
-  onNavigatePath: (path: string) => void;
 }
 
 function formatDate(iso: string) {
@@ -16,10 +18,7 @@ function formatDate(iso: string) {
   }).format(new Date(iso));
 }
 
-export default function BlogFeaturedPost({
-  post,
-  onNavigatePath,
-}: BlogFeaturedPostProps) {
+export default function BlogFeaturedPost({ post }: BlogFeaturedPostProps) {
   const primaryCategory = getCategoryById(post.categoryIds[0] ?? "");
 
   return (
@@ -53,13 +52,9 @@ export default function BlogFeaturedPost({
         transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         className="mt-8 overflow-hidden rounded-2xl border border-border bg-[var(--card-elevated-bg)] shadow-[var(--project-card-shadow-idle)] ring-1 ring-inset ring-[var(--card-elevated-border)] transition-shadow hover:shadow-[var(--project-card-shadow-active)]"
       >
-        <a
+        <Link
           href={`/posts#${post.slug}`}
           className="group block px-6 py-8 md:px-10 md:py-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-indigo/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          onClick={(e) => {
-            e.preventDefault();
-            onNavigatePath(`/posts#${post.slug}`);
-          }}
         >
           <div className="flex flex-wrap items-center gap-3 text-sm text-muted">
             {primaryCategory ? (
@@ -83,7 +78,7 @@ export default function BlogFeaturedPost({
             Read the full post
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </span>
-        </a>
+        </Link>
       </motion.article>
     </section>
   );

@@ -1,3 +1,7 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useFrontendTopic } from "../../useFrontendTopic";
 import FrontendExploreTopicsSection from "./FrontendExploreTopicsSection";
 import FrontendHeroSection from "./FrontendHeroSection";
 import FrontendValueSection from "./FrontendValueSection";
@@ -5,15 +9,10 @@ import SkillHubSection from "./SkillHubSection";
 
 const SKILL_HUB_ANCHOR = "frontend-skill-hub";
 
-export interface FrontendHomePageProps {
-  onNavigateTopic: (routeKey: string) => void;
-  onNavigatePath: (path: string) => void;
-}
+export default function FrontendHomePage() {
+  const router = useRouter();
+  const { navigateToTopic } = useFrontendTopic();
 
-export default function FrontendHomePage({
-  onNavigateTopic,
-  onNavigatePath,
-}: FrontendHomePageProps) {
   const scrollToHub = () => {
     document
       .getElementById(SKILL_HUB_ANCHOR)
@@ -24,12 +23,12 @@ export default function FrontendHomePage({
     <div className="relative">
       <FrontendHeroSection
         onScrollToHub={scrollToHub}
-        onContact={() => onNavigatePath("/contact")}
+        onContact={() => router.push("/contact")}
       />
       <main className="mx-auto w-full max-w-6xl">
         <SkillHubSection id={SKILL_HUB_ANCHOR} />
         <FrontendValueSection />
-        <FrontendExploreTopicsSection onNavigateTopic={onNavigateTopic} />
+        <FrontendExploreTopicsSection onNavigateTopic={navigateToTopic} />
       </main>
     </div>
   );

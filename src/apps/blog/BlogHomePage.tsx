@@ -1,3 +1,5 @@
+"use client";
+
 import { useMemo, useState } from "react";
 import { getAllPosts, getCategories, getFeaturedPost } from "./data/posts";
 import BlogPurposeSection from "./sections/BlogPurposeSection";
@@ -6,11 +8,7 @@ import BlogCategoriesSection from "./sections/BlogCategoriesSection";
 import BlogWritingSection from "./sections/BlogWritingSection";
 import BlogNewsletterSection from "./sections/BlogNewsletterSection";
 
-export interface BlogHomePageProps {
-  onNavigatePath: (path: string) => void;
-}
-
-export default function BlogHomePage({ onNavigatePath }: BlogHomePageProps) {
+export default function BlogHomePage() {
   const [categoryId, setCategoryId] = useState<string | null>(null);
   const allPosts = useMemo(() => getAllPosts(), []);
   const categories = useMemo(() => getCategories(), []);
@@ -29,15 +27,13 @@ export default function BlogHomePage({ onNavigatePath }: BlogHomePageProps) {
   return (
     <main className="mx-auto max-w-6xl px-6 md:px-10">
       <BlogPurposeSection />
-      {featured ? (
-        <BlogFeaturedPost post={featured} onNavigatePath={onNavigatePath} />
-      ) : null}
+      {featured ? <BlogFeaturedPost post={featured} /> : null}
       <BlogCategoriesSection
         categories={categories}
         selectedCategoryId={categoryId}
         onCategoryChange={setCategoryId}
       />
-      <BlogWritingSection posts={listPosts} onNavigatePath={onNavigatePath} />
+      <BlogWritingSection posts={listPosts} />
       <BlogNewsletterSection />
     </main>
   );

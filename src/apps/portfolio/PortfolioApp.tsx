@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, useScroll, useSpring } from "framer-motion";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";

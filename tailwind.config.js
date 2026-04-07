@@ -3,9 +3,9 @@ import forms from "@tailwindcss/forms";
 import aspectRatio from "@tailwindcss/aspect-ratio";
 
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   darkMode: "class",
-  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./app/**/*.{js,ts,tsx}", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       fontFamily: {
@@ -29,3 +29,5 @@ export default {
   },
   plugins: [typography, forms, aspectRatio],
 };
+
+export default config;
