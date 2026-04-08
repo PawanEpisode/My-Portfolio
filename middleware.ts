@@ -1,36 +1,55 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { createServerClient } from "@supabase/ssr";
+import { NextResponse, type NextRequest } from "next/server";
 import { normalizeHostHeader, resolveHostAppId } from "./src/lib/hostRouting";
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const host = normalizeHostHeader(request.headers.get("host"));
   const pathname = request.nextUrl.pathname;
   const appId = resolveHostAppId(host);
 
+  let response: NextResponse;
+
   if (appId === "portfolio") {
     if (pathname.startsWith("/blog") || pathname.startsWith("/frontend")) {
-      return NextResponse.redirect(new URL("/", request.url));
+      response = NextResponse.redirect(new URL("/", request.url));
+    } else {
+      response = NextResponse.next({ request });
     }
-    return NextResponse.next();
-  }
-
-  if (pathname.startsWith("/blog") || pathname.startsWith("/frontend")) {
-    return NextResponse.next();
-  }
-
-  const url = request.nextUrl.clone();
-
-  if (appId === "blog") {
+  } else if (pathname.startsWith("/blog") || pathname.startsWith("/frontend")) {
+    response = NextResponse.next({ request });
+  } else if (appId === "blog") {
+    const url = request.nextUrl.clone();
     url.pathname = pathname === "/" ? "/blog" : `/blog${pathname}`;
-    return NextResponse.rewrite(url);
-  }
-
-  if (appId === "frontend") {
+    response = NextResponse.rewrite(url);
+  } else if (appId === "frontend") {
+    const url = request.nextUrl.clone();
     url.pathname = pathname === "/" ? "/frontend" : `/frontend${pathname}`;
-    return NextResponse.rewrite(url);
+    response = NextResponse.rewrite(url);
+  } else {
+    response = NextResponse.next({ request });
   }
 
-  return NextResponse.next();
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return response;
+  }
+
+  const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
+    cookies: {
+      getAll() {
+        return request.cookies.getAll();
+      },
+      setAll(cookiesToSet) {
+        cookiesToSet.forEach(({ name, value, options }) => {
+          response.cookies.set(name, value, options);
+        });
+      },
+    },
+  });
+
+  await supabase.auth.getUser();
+  return response;
 }
 
 export const config = {

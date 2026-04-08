@@ -5,6 +5,6 @@ export function blogPathToRoute(pathname: string): BlogRouteId {
   const p = normalizePathname(stripInternalAppPrefix(pathname, "/blog"));
   if (p === "/contact") return "contact";
   if (p === "/about") return "about";
-  if (p === "/posts") return "posts";
+  if (p === "/posts" || p.startsWith("/posts/")) return "posts";
   return "home";
 }

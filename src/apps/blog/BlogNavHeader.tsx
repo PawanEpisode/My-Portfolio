@@ -16,6 +16,7 @@ import {
 import SeekhoHeaderBrandLink from "../../shared/components/SeekhoHeaderBrandLink";
 import { cn } from "../../shared/utils/cn";
 import { blogPathToRoute } from "./blogPaths";
+import BlogAdminNavLink from "./BlogAdminNavLink";
 
 const navClass =
   "inline-flex items-center rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface-hover hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-indigo/50";
@@ -74,6 +75,8 @@ export default function BlogNavHeader() {
           <NavLink href="/contact" active={active === "contact"}>
             Contact
           </NavLink>
+
+          <BlogAdminNavLink />
 
           <Dialog open={searchOpen} onOpenChange={setSearchOpen}>
             <DialogTrigger asChild>

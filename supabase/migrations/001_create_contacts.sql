@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS public.contacts (
 ALTER TABLE public.contacts ENABLE ROW LEVEL SECURITY;
 
 -- Anon (browser) role: INSERT only, no SELECT / UPDATE / DELETE
+DROP POLICY IF EXISTS "anon_insert_contacts" ON public.contacts;
 CREATE POLICY "anon_insert_contacts"
   ON public.contacts
   FOR INSERT
@@ -24,6 +25,7 @@ CREATE POLICY "anon_insert_contacts"
 
 -- Authenticated users (service role bypasses RLS anyway, this is for
 -- any future admin dashboard using the authenticated role)
+DROP POLICY IF EXISTS "auth_read_contacts" ON public.contacts;
 CREATE POLICY "auth_read_contacts"
   ON public.contacts
   FOR SELECT

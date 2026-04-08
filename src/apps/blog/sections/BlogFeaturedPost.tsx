@@ -53,7 +53,7 @@ export default function BlogFeaturedPost({ post }: BlogFeaturedPostProps) {
         className="mt-8 overflow-hidden rounded-2xl border border-border bg-[var(--card-elevated-bg)] shadow-[var(--project-card-shadow-idle)] ring-1 ring-inset ring-[var(--card-elevated-border)] transition-shadow hover:shadow-[var(--project-card-shadow-active)]"
       >
         <Link
-          href={`/posts#${post.slug}`}
+          href={`/posts/${post.slug}`}
           className="group block px-6 py-8 md:px-10 md:py-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-indigo/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           <div className="flex flex-wrap items-center gap-3 text-sm text-muted">

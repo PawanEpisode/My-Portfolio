@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import BlogHomePage from "@/apps/blog/BlogHomePage";
+import { fetchPublishedPostSummaries } from "@/apps/blog/db/queries";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -10,6 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogHome() {
-  return <BlogHomePage />;
+export default async function BlogHome() {
+  const initialPosts = await fetchPublishedPostSummaries();
+  return <BlogHomePage initialPosts={initialPosts} />;
 }

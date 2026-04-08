@@ -84,7 +84,7 @@ export default function BlogWritingSection({ posts }: BlogWritingSectionProps) {
                 transition={{ delay: i * 0.04 }}
               >
                 <Link
-                  href={`/posts#${post.slug}`}
+                  href={`/posts/${post.slug}`}
                   className="flex h-full flex-col rounded-xl border border-border bg-[var(--card-elevated-bg)] p-5 ring-1 ring-inset ring-[var(--card-elevated-border)] transition-colors hover:border-border-hover hover:bg-surface"
                 >
                   <div className="flex flex-wrap items-center gap-2 text-xs text-muted">

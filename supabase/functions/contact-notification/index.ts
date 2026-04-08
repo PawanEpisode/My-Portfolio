@@ -61,14 +61,24 @@ function buildAdminNotificationHtml(record: ContactRecord, siteName: string): st
           <tr>
             <td style="padding:8px 28px 28px 28px;">
               <div style="border:1px solid #e4e4e7;border-radius:10px;padding:16px 18px;background:#fafafa;">
-                <p style="margin:0 0 6px 0;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#71717a;">Name</p>
-                <p style="margin:0 0 14px 0;font-size:15px;line-height:1.5;color:#18181b;">${name}</p>
-                <p style="margin:0 0 6px 0;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#71717a;">Email</p>
-                <p style="margin:0 0 14px 0;font-size:15px;line-height:1.5;color:#18181b;"><a href="mailto:${email}" style="color:#2563eb;">${email}</a></p>
-                <p style="margin:0 0 6px 0;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#71717a;">Subject</p>
-                <p style="margin:0 0 14px 0;font-size:15px;line-height:1.5;color:#18181b;">${subject}</p>
-                <p style="margin:0 0 6px 0;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#71717a;">Message</p>
-                <p style="margin:0;font-size:15px;line-height:1.6;color:#3f3f46;">${message}</p>
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
+                  <tr>
+                    <td style="padding:0 12px 10px 0;vertical-align:top;white-space:nowrap;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#71717a;width:1%;">Name</td>
+                    <td style="padding:0 0 10px 0;vertical-align:top;font-size:15px;line-height:1.5;color:#18181b;">${name}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:0 12px 10px 0;vertical-align:top;white-space:nowrap;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#71717a;">Email</td>
+                    <td style="padding:0 0 10px 0;vertical-align:top;font-size:15px;line-height:1.5;color:#18181b;"><a href="mailto:${email}" style="color:#2563eb;">${email}</a></td>
+                  </tr>
+                  <tr>
+                    <td style="padding:0 12px 10px 0;vertical-align:top;white-space:nowrap;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#71717a;">Subject</td>
+                    <td style="padding:0 0 10px 0;vertical-align:top;font-size:15px;line-height:1.5;color:#18181b;">${subject}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:0 12px 0 0;vertical-align:top;white-space:nowrap;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#71717a;">Message</td>
+                    <td style="padding:0;font-size:15px;line-height:1.6;color:#3f3f46;">${message}</td>
+                  </tr>
+                </table>
                 ${
                   when
                     ? `<p style="margin:16px 0 0 0;padding-top:14px;border-top:1px solid #e4e4e7;font-size:12px;color:#a1a1aa;">Submitted at (UTC): ${when}</p>`

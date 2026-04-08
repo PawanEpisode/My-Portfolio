@@ -1,14 +1,13 @@
-import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { createBrowserClient } from "@supabase/ssr";
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 let browserClient: SupabaseClient | null = null;
 
 /**
- * Browser-only Supabase client (contact form). Safe to call from client components.
- * Throws if env is missing — only call after mount or from event handlers.
+ * Browser Supabase client (contact form, blog comments/likes). Keeps auth cookies
+ * in sync with the server via `@supabase/ssr`.
  *
  * Important: read `process.env.NEXT_PUBLIC_*` with **static** property access only.
- * Next.js inlines these at build time; dynamic keys like `process.env[name]` are
- * not replaced and end up undefined in the client bundle (immediate submit failure).
  */
 export function getSupabaseBrowserClient(): SupabaseClient {
   if (typeof window === "undefined") {
@@ -22,7 +21,7 @@ export function getSupabaseBrowserClient(): SupabaseClient {
     );
   }
   if (!browserClient) {
-    browserClient = createClient(supabaseUrl, supabaseAnonKey);
+    browserClient = createBrowserClient(supabaseUrl, supabaseAnonKey);
   }
   return browserClient;
 }
