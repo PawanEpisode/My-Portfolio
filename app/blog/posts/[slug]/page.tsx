@@ -128,7 +128,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       ) : null}
 
       <div
-        className="prose prose-invert mt-10 max-w-none prose-headings:font-['Syne',sans-serif] prose-a:text-accent-indigo"
+        className="blog-doc-prose prose prose-invert mt-10 max-w-none text-foreground prose-headings:font-['Syne',sans-serif] prose-a:text-accent-indigo"
         dangerouslySetInnerHTML={{ __html: html }}
       />
 

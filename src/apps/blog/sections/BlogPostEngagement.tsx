@@ -4,6 +4,7 @@ import type { CommentWithAuthor } from "@/apps/blog/db/queries";
 import { looksLikeSpamComment } from "@/apps/blog/lib/comment-spam";
 import { getSupabaseBrowserClient } from "@/shared/lib/supabase";
 import { Button } from "@/shared/components/ui/button";
+import { cn } from "@/shared/utils/cn";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
@@ -136,27 +137,50 @@ export default function BlogPostEngagement({
 
   return (
     <section
-      className="mt-16 border-t border-border pt-12"
+      className="mt-16 border-t border-border pt-12 text-foreground"
       aria-labelledby="engagement-heading"
     >
       <h2
         id="engagement-heading"
-        className="font-['Syne',sans-serif] text-xl font-bold tracking-tight"
+        className="font-['Syne',sans-serif] text-xl font-bold tracking-tight text-foreground"
       >
         Reactions & comments
       </h2>
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
-        <Button
+        <button
           type="button"
-          variant={liked ? "default" : "outline"}
-          size="sm"
           disabled={likeBusy}
+          aria-pressed={liked}
           onClick={() => void toggleLike()}
-          className={liked ? "bg-accent-indigo text-white" : "border-border"}
+          className={cn(
+            "inline-flex h-9 shrink-0 items-center justify-center gap-2 rounded-lg border px-3 text-sm font-medium",
+            "transition-[color,background-color,border-color,box-shadow,transform] duration-150 ease-out",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-indigo focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+            "disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none disabled:ring-0 cursor-pointer motion-safe:active:scale-[0.98]",
+            liked
+              ? [
+                  "border-transparent bg-indigo-600 text-white shadow-md shadow-indigo-900/25",
+                  "hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-900/30",
+                  "focus-visible:ring-offset-2 focus-visible:ring-white/50 focus-visible:ring-offset-indigo-600",
+                  "dark:bg-indigo-500 dark:shadow-indigo-950/50 dark:hover:bg-indigo-400",
+                  "dark:focus-visible:ring-offset-indigo-500",
+                ]
+              : [
+                  "border-border bg-[var(--card-elevated-bg)] text-[var(--text-primary)]",
+                  "shadow-[0_1px_2px_rgba(15,23,42,0.06),0_1px_3px_rgba(15,23,42,0.08)]",
+                  "ring-1 ring-inset ring-[var(--card-elevated-border)]",
+                  "hover:border-[var(--border-hover)] hover:bg-[var(--surface-hover)]",
+                  "hover:shadow-[0_2px_6px_rgba(15,23,42,0.08),0_1px_2px_rgba(15,23,42,0.06)]",
+                  "dark:border-border dark:bg-[var(--card-elevated-bg)] dark:text-[var(--text-primary)]",
+                  "dark:shadow-[0_1px_3px_rgba(0,0,0,0.45)] dark:ring-[var(--card-elevated-border)]",
+                  "dark:hover:border-[var(--border-hover)] dark:hover:bg-[var(--surface-hover)]",
+                  "dark:hover:shadow-[0_2px_8px_rgba(0,0,0,0.5)]",
+                ]
+          )}
         >
           {liked ? "Liked" : "Like"} · {likeCount}
-        </Button>
+        </button>
       </div>
 
       <form onSubmit={submitComment} className="mt-8 space-y-3">

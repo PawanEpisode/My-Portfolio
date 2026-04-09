@@ -11,9 +11,9 @@ const buttonVariants = cva(
         default:
           "bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white hover:opacity-90",
         outline:
-          "border border-slate-200 dark:border-white/10 bg-transparent text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10",
+          "border border-slate-200 dark:border-white/10 bg-transparent text-foreground dark:text-white hover:bg-slate-100 dark:hover:bg-white/10",
         ghost:
-          "bg-transparent hover:bg-slate-100 dark:hover:bg-white/10 text-slate-800 dark:text-white",
+          "bg-transparent text-foreground hover:bg-slate-100 dark:hover:bg-white/10 dark:text-white",
       },
       size: {
         default: "px-4 py-2",

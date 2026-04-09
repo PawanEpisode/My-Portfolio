@@ -1,10 +1,15 @@
 "use client";
 
+import BlogBodyPreview from "@/apps/blog/admin/BlogBodyPreview";
+import BlogEditorToolbar from "@/apps/blog/admin/BlogEditorToolbar";
+import BlogTableBubbleMenu from "@/apps/blog/admin/BlogTableBubbleMenu";
 import { upsertBlogPostAction } from "@/apps/blog/admin/actions";
-import { getBlogEditorExtensions } from "@/apps/blog/lib/tiptap-extensions";
+import { getBlogEditorExtensions } from "@/apps/blog/lib/tiptap-editor-extensions";
+import { tiptapJsonToSafeHtml } from "@/apps/blog/lib/tiptap-html";
 import { slugifyTitle } from "@/apps/blog/lib/slug";
 import { getSupabaseBrowserClient } from "@/shared/lib/supabase";
 import { Button } from "@/shared/components/ui/button";
+import { cn } from "@/shared/utils/cn";
 import { EditorContent, useEditor } from "@tiptap/react";
 import type { JSONContent } from "@tiptap/core";
 import { useRouter } from "next/navigation";
@@ -38,6 +43,8 @@ export default function BlogPostEditor(props: {
   const [coverUploading, setCoverUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
+  const [viewMode, setViewMode] = useState<"edit" | "preview" | "split">("split");
+  const [docRev, setDocRev] = useState(0);
 
   const extensions = useMemo(() => getBlogEditorExtensions(), []);
 
@@ -45,13 +52,23 @@ export default function BlogPostEditor(props: {
     extensions,
     content: props.initial.content,
     immediatelyRender: false,
+    onUpdate: () => setDocRev((n) => n + 1),
     editorProps: {
       attributes: {
         class:
-          "prose prose-invert max-w-none min-h-[280px] rounded-lg border border-border bg-background px-4 py-3 text-sm focus-visible:outline-none",
+          "blog-doc-prose prose prose-invert max-w-none min-h-[280px] px-4 py-3 text-sm text-foreground focus-visible:outline-none",
       },
     },
   });
+
+  const previewHtml = useMemo(() => {
+    if (!editor) return "";
+    void docRev;
+    return tiptapJsonToSafeHtml(editor.getJSON());
+  }, [editor, docRev]);
+
+  const editorSurfaceClass =
+    "rounded-lg border border-border bg-background focus-within:ring-2 focus-within:ring-accent-indigo/25";
 
   async function uploadCover(file: File) {
     setCoverUploading(true);
@@ -211,9 +228,77 @@ export default function BlogPostEditor(props: {
       </div>
 
       <div>
-        <span className="block text-sm font-medium text-foreground">Body</span>
-        <div className="mt-2">
-          <EditorContent editor={editor} />
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <span className="text-sm font-medium text-foreground">Body</span>
+          <div
+            className="inline-flex rounded-lg border border-border bg-surface/50 p-0.5"
+            role="group"
+            aria-label="Editor view"
+          >
+            {(
+              [
+                ["edit", "Write"],
+                ["split", "Split"],
+                ["preview", "Preview"],
+              ] as const
+            ).map(([id, label]) => (
+              <button
+                key={id}
+                type="button"
+                onClick={() => setViewMode(id)}
+                className={cn(
+                  "rounded-md px-3 py-1.5 text-xs font-medium transition-colors",
+                  viewMode === id
+                    ? "bg-background text-foreground shadow-sm"
+                    : "text-muted hover:text-foreground"
+                )}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+        <p className="mt-1 max-w-2xl text-xs text-muted">
+          Type{" "}
+          <kbd className="rounded border border-border bg-surface px-1 font-mono">
+            /
+          </kbd>{" "}
+          for a quick insert menu, or use the toolbar. Tables support row/column
+          controls when the cursor is inside the table. Flowcharts work best in a{" "}
+          <strong className="font-medium text-foreground">code block</strong> (monospace
+          + box). Matches published styling in Preview.
+        </p>
+
+        <div
+          className={cn(
+            "mt-2",
+            viewMode === "split" && "grid gap-4 lg:grid-cols-2 lg:items-start"
+          )}
+        >
+          {(viewMode === "edit" || viewMode === "split") && (
+            <div className={cn("min-h-0", viewMode === "split" && "min-h-[320px]")}>
+              {viewMode === "split" ? (
+                <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-muted">
+                  Editor
+                </span>
+              ) : null}
+              <div className={editorSurfaceClass}>
+                <BlogEditorToolbar editor={editor} />
+                <BlogTableBubbleMenu editor={editor} />
+                <EditorContent editor={editor} />
+              </div>
+            </div>
+          )}
+          {(viewMode === "preview" || viewMode === "split") && (
+            <div className={cn("min-h-0", viewMode === "split" && "min-h-[320px]")}>
+              {viewMode === "split" ? (
+                <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-muted">
+                  Preview
+                </span>
+              ) : null}
+              <BlogBodyPreview html={previewHtml} />
+            </div>
+          )}
         </div>
       </div>
 
