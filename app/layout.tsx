@@ -72,11 +72,11 @@ export default function RootLayout({
         <Script id="theme-bootstrap" strategy="beforeInteractive">
           {themeBootstrap}
         </Script>
-        {/* <script
+        <script
           async
           src="https://script-stg.getbreakout.ai/command_bar_widget.js"
-          {...({ "tenant-id": "cursor", "agent-id": "1" } as Record<string, string>)}
-        /> */}
+          {...({ "tenant-id": "plazza", "agent-id": "1" } as Record<string, string>)}
+        />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
