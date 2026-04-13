@@ -1,4 +1,5 @@
 import { requireAuthor } from "@/apps/blog/admin/requireAuthor";
+import { TooltipProvider } from "@/shared/components/ui/tooltip";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
@@ -24,7 +25,9 @@ export default async function BlogAdminProtectedLayout({
           </Link>
         </nav>
       </div>
-      <div className="mx-auto max-w-4xl px-6 py-10">{children}</div>
+      <TooltipProvider delayDuration={350}>
+        <div className="mx-auto max-w-4xl px-6 py-10">{children}</div>
+      </TooltipProvider>
     </div>
   );
 }

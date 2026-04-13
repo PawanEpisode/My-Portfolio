@@ -2,7 +2,7 @@
 
 import BlogBodyPreview from "@/apps/blog/admin/BlogBodyPreview";
 import BlogEditorToolbar from "@/apps/blog/admin/BlogEditorToolbar";
-import BlogTableBubbleMenu from "@/apps/blog/admin/BlogTableBubbleMenu";
+import BlogTableEditorUi from "@/apps/blog/admin/tables/BlogTableEditorUi";
 import { upsertBlogPostAction } from "@/apps/blog/admin/actions";
 import { getBlogEditorExtensions } from "@/apps/blog/lib/tiptap-editor-extensions";
 import { tiptapJsonToSafeHtml } from "@/apps/blog/lib/tiptap-html";
@@ -13,7 +13,7 @@ import { cn } from "@/shared/utils/cn";
 import { EditorContent, useEditor } from "@tiptap/react";
 import type { JSONContent } from "@tiptap/core";
 import { useRouter } from "next/navigation";
-import { useMemo, useState, useTransition } from "react";
+import { useMemo, useRef, useState, useTransition } from "react";
 
 export type BlogPostEditorInitial = {
   title: string;
@@ -45,6 +45,7 @@ export default function BlogPostEditor(props: {
   const [pending, startTransition] = useTransition();
   const [viewMode, setViewMode] = useState<"edit" | "preview" | "split">("split");
   const [docRev, setDocRev] = useState(0);
+  const editorSurfaceRef = useRef<HTMLDivElement>(null);
 
   const extensions = useMemo(() => getBlogEditorExtensions(), []);
 
@@ -68,7 +69,7 @@ export default function BlogPostEditor(props: {
   }, [editor, docRev]);
 
   const editorSurfaceClass =
-    "rounded-lg border border-border bg-background focus-within:ring-2 focus-within:ring-accent-indigo/25";
+    "relative rounded-lg border border-border bg-background focus-within:ring-2 focus-within:ring-accent-indigo/25";
 
   async function uploadCover(file: File) {
     setCoverUploading(true);
@@ -282,9 +283,9 @@ export default function BlogPostEditor(props: {
                   Editor
                 </span>
               ) : null}
-              <div className={editorSurfaceClass}>
+              <div ref={editorSurfaceRef} className={editorSurfaceClass}>
                 <BlogEditorToolbar editor={editor} />
-                <BlogTableBubbleMenu editor={editor} />
+                <BlogTableEditorUi editor={editor} wrapperRef={editorSurfaceRef} />
                 <EditorContent editor={editor} />
               </div>
             </div>
